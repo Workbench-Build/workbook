@@ -1,8 +1,8 @@
-# Token Utility
+# Token Value
 
 > Why could/should/would anyone care about your token?
 
-This section talks about how to make your token useful (aka provide value) to drive demand. It ain't much, but it's honest work.
+This section talks about how to make your token useful (aka provide value) to drive demand (aka token price). It ain't much, but it's honest work.
 
 ## Notes
 

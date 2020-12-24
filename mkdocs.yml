@@ -11,7 +11,7 @@ nav:
     - About: 'about-1to10.md'
     - Building something people want: 'token-value.md'
     - Creating together: 'creating-together.md'
-    - Community collaborations: 'collaborations.md'
+    - Community collaborations: 'community-collaborations.md'
   - 10 => 100:
     - About: 'about-10to100.md'
     - Modeling: 'modeling.md'
