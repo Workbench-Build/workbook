@@ -1,0 +1,19 @@
+site_name: Workbench
+theme: material
+nav:
+  - Home: 'index.md'
+  - 0 => 1:
+    - About: 'about-0to1.md'
+    - Start with why: 'start-with-why.md'
+    - Creating a token: 'creating-a-token.md'
+    - Creating a community: 'creating-a-community.md'
+  - 1 => 10:
+    - About: 'about-1to10.md'
+    - Building something people want: 'token-value.md'
+    - Creating together: 'creating-together.md'
+    - Community collaborations: 'collaborations.md'
+  - 10 => 100:
+    - About: 'about-10to100.md'
+    - Modeling: 'modeling.md'
+    - Markets: 'markets.md'
+    - Governance: 'governance.md'
