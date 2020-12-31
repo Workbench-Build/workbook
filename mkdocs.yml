@@ -1,11 +1,16 @@
 site_name: Workbench
 theme: material
+markdown_extensions:
+  - pymdownx.tabbed
 nav:
   - Home: 'index.md'
+  - Workbench: 'about-workbench.md'
   - 0 => 1:
     - About: 'about-0to1.md'
     - Start with why: 'start-with-why.md'
-    - Creating a token: 'creating-a-token.md'
+    - Creating a token:
+      - Overview: 'tokens-overview.md'
+      - ERC20: 'erc20.md'
     - Creating a community: 'creating-a-community.md'
   - 1 => 10:
     - About: 'about-1to10.md'
