@@ -2,7 +2,7 @@
 
 > Why could/should/would anyone care about your token?
 
-This section talks about how to make your token useful (aka provide value) to drive demand (aka token price). It ain't much, but it's honest work.
+This section talks about how to make your token useful (aka provide value) to drive demand (aka token price). It's really just supply and demand 101, but in token land. It ain't much, but it's honest work.
 
 ## Notes
 
@@ -14,4 +14,3 @@ This section talks about how to make your token useful (aka provide value) to dr
 - Governance (easier said than done)
   - Signalling: Snapshot
   - Binding: optimistic games or on-chain mechanisms
-
