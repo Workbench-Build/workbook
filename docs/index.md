@@ -18,6 +18,7 @@
     - [Other](#other)
   - [Prototyping](#prototyping)
     - [Design](#design)
+      - [Tokens](#tokens)
     - [Implementation](#implementation)
     - [Languages](#languages)
       - [Solidity](#solidity)
@@ -29,12 +30,13 @@
   - [Incentivized Testing](#incentivized-testing)
   - [Deployment](#deployment)
   - [Monitoring and analysis](#monitoring-and-analysis)
-  - [Governance](#governance)
+  - [Community engagement and governance](#community-engagement-and-governance)
   - [Upgrades](#upgrades)
+  - [Examples](#examples)
   - [Stuff](#stuff)
     - [Courses and tooling](#courses-and-tooling)
     - [Communities](#communities)
-  - [Examples](#examples)
+  - [Examples](#examples-1)
 
 ---
 
@@ -166,6 +168,59 @@ Based on your initial 1pager, diagrams, and model you should be able to answer t
 - Are tokens transferable and/or is it possible to unlock transferability via a governance decision (admin, community multi-sig, token holder vote, etc..)?
 - What is the supply schedule: fixed, inflationary, variable (ex: bonding curve)?
 
+#### Tokens
+
+**Fungible:**
+
+The most common form of fungible Ethereum tokens is the ERC-20 token standard. ERC-20 allows for the implementation of a standard API for tokens within smart contracts. This standard provides basic functionality to transfer tokens, as well as allow tokens to be approved so they can be spent by another on-chain third party. A standard interface allows any tokens on Ethereum to be re-used by other applications: from wallets to decentralized exchanges.
+
+An ERC20 token contract keeps track of fungible tokens: any one token is exactly equal to any other token; no tokens have special rights or behavior associated with them. This makes ERC20 tokens useful for things like a medium of exchange currency, voting rights, staking, and more.
+
+Often times people will use the ERC-20 template as a base, but then add additional features and functionality on top. This ensures that the token will have the standard ERC-20 interfaces required to work with wallets, protocols, and exchanges while also incorporating additional features needed for the tokens use case.
+
+Resources:
+
+- [Ethereum.org Developer Docs: ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) - A high level overview of fungible tokens and how ERC-20 works.
+- [Ethereum EIP repo Issue 20](https://github.com/ethereum/EIPs/issues/20) - The original discussion and specification for ERC-20.
+- [Ethereum Improvement Proposal 20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) - The final technical specification for ERC-20.
+
+Examples:
+
+- [OpenZeppelin Safe ERC-20](https://docs.openzeppelin.com/contracts/3.x/erc20-supply) - A guide on how to use the [OpenZeppelin ERC-20 implementation](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/SafeERC20.sol).
+- [TORN token](https://github.com/tornadocash/torn-token/blob/master/contracts/TORN.sol) - The [TornadoCash](https://tornado.cash/) token uses the OpenZeppelin Safe ERC-20 as a base, then extends additional functionality on top.
+
+**Non-Fungible:**
+
+A Non-Fungible Tokens (NFT) is used to identify something or someone in a unique way. This type of Token is perfect to be used on platforms that offer collectible items, access keys, lottery tickets, numbered seats for concerts and sports matches, etc. This special type of Token has amazing possibilities so it deserves a proper Standard, the ERC-721 came to solve that!
+
+The ERC-721 introduces a standard for NFT, in other words, this type of Token is unique and can have different value than another Token from the same Smart Contract, maybe due to its age, rarity or even something else.
+
+All NFTs have a uint256 variable called tokenId, so for any ERC-721 Contract, the pair contract address, uint256 tokenId must be globally unique. Said that a dApp can have a "converter" that uses the tokenId as input and outputs an image of something cool like zombies, weapons, skills, or amazing characters.
+
+Resources:
+
+- [Ethereum.org Developer Docs: ERC-721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) - A high level overview of non-fungible tokens and how ERC-721 works. Also links to other non-fungible token standards at the bottom of the page.
+- [Ethereum EIP repo Issue 721: non fungible token standard](https://github.com/ethereum/EIPs/issues/721) - The original discussion and specification for ERC-721.
+- [Ethereum Improvement Proposal 721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) - The final specification for ERC-721.
+
+Examples:
+
+- [ERC-721 Impleimentations](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md#references) - See the "NFT Implementations and Other Projects" section.
+
+**Other:**
+
+Beyond fungible (ERC-20) and non-fungible (ERC-721) tokens, there are many other types of tokens. This includes, but is not limited to:
+
+- 1450 A compatible security token for issuing and trading SEC-compliant securities
+- 1155 Multi Token Standard
+- 1167 Minimal Proxy Contract
+- See more here: `https://eips.ethereum.org/erc`
+
+Examples:
+
+- Lots of games use 1155
+- Some dapps are starting to use 1167
+
 ### Implementation
 
 Then once you know what you want, your resources (time/money) and technical ability will determine the tools that are the best fit:
@@ -290,9 +345,23 @@ This will involve monitoring markets as well as fundamentals, both onchain (toke
 
 ---
 
-## Governance
+## Community engagement and governance
 
-use said analysis to inform governance decisions.
+> Talk about how analysis informs governance and governance informs what we analyze.
+> Create a place for the community to discuss things and mechanisms for them to express their sentiments to affect change.
+
+- General community best practices
+- Discord server organization
+- Token permissioned chats
+- Giving people a reason to stay engaged
+- Recognize and reward community contributors
+- Governance and governance minimization
+
+Governance is hard.
+
+This section will talk about why you might need governance (managing shared resources) and the tools you might use to do so (Snapshot, dApps, etc..).
+
+We'll also talk about the difference between global governance and local governance, and when you might want to use one vs the other. For example, allowing decisions about how to organize Discord be managed via Discord polls but decisions on the inflation rate of your token to be managed by token holders directly.
 
 Talk about various governance models:
 
@@ -320,6 +389,21 @@ Potential mechanisms include, but are not limited to:
 - AMMs
 - NFT minting factories
 - Etc...
+
+Explore ways to help your community go from consuming what you create to creating things themselves.
+
+- Token bounties/rewards/challenges mechanisms (both for fans and creators)
+- Prediction markets (on challenges fans can create for creators)
+- Tipping/gifting mechanisms (give first)
+- Signalling/polling mechanisms (soft governance)
+- Voting mechanisms (hard governance)
+- Collaborations/mergers with other projects
+
+## Examples
+
+- 1UP
+- CommonsStack praise bot
+- 1Hive nominations
 
 ---
 ---
