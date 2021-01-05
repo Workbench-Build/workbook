@@ -1,6 +1,6 @@
-# Notes
+# (Unorganized) Notes
 
-## Resources
+[How to write great docs](https://coss.media/open-source-documentation-technical-writing-101/).
 
 Additional resources related to the token design, development, and deployment process:
 
@@ -8,6 +8,8 @@ Additional resources related to the token design, development, and deployment pr
 - [Token Engineering community](https://tokenengineeringcommunity.github.io/website/) - A community working to further the discipline of token engineering through education and outreach. Check out their [Library](https://tokenengineeringcommunity.github.io/website/docs/library-te-101) for more resources.
 - [CommonsStack](https://commonsstack.org/) - A community working to create templates and best practices to realign incentives around public goods.
 - [cadCAD Edu](https://www.cadcad.education/) is a great resource to learn about the token engineering process. While it's focused on cadCAD, the Complete Foundations Bootcamp is a great intro to the token engineering design process as a whole.
+
+[diversity of DAOs](https://www.youtube.com/watch?v=75769EjciVk)
 
 ## Is it a DAO?
 
@@ -24,3 +26,25 @@ Additional resources related to the token design, development, and deployment pr
 - [Web3 business models](https://github.com/FEMBusinessModelsRing/web3_revenue_primitives) - In a capitalist world, autonomy is often directly related to wealth. As such, most DAOs need money. This might look like a treasury, cash flows, or an inflationary rewards token. There just needs to be some sort of value flow that makes the organization sustainable.
 
 ### Organization
+
+---
+---
+---
+
+Consultation process
+
+Overview
+
+The DAO consultation allows us to get a better understanding of the DAO design goals, any preferences the client might have in regards to implementation details, and how we might go from our initial overview to an actual DAO live in the wild. The initial consultation should take no more than 2-3 hours over the course of 2-3 days. If it takes longer than that the client is probably not ready to actually summon and lead a DAO.
+
+Process
+
+- Someone has a doc and need help figuring out how to turn their idea into a DAO.
+- Create a chat (we recommend Discord, Telegram, or Discourse) to ask clarifying questions (10-15min).
+- Sketch out a doc that restates their goals, but organized in the context of goals, roles, states, methods, mechanisms, etc... (30-60min).
+- Share your summary doc and hop on a call to discuss questions, comments, concerns, and suggestions for next steps such as design improvements and/or deployment instructions/suggestions (30-60min).
+
+Next Steps
+
+Identify design goals.
+

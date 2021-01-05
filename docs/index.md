@@ -4,6 +4,7 @@
   - [Design](#design)
     - [Brainstorming](#brainstorming)
     - [Mechanism design](#mechanism-design)
+      - [Roles, methods, and states](#roles-methods-and-states)
       - [Templates](#templates)
       - [Governance mechanisms](#governance-mechanisms)
       - [Mechanisms](#mechanisms)
@@ -40,6 +41,12 @@
 
 ## Design
 
+- understand the goals of the system and the problems that need to be solved
+- define design goals
+- define roles, methods, states
+- define mechanisms
+- design the composition of mechanisms into a DAO syste
+
 ### Brainstorming
 
 It's better to be finding the solution to a big problem than finding a problem for your big solution.
@@ -68,11 +75,44 @@ Startup founders have the same problem. They need to solve a problem for end use
 
 ### Mechanism design
 
+Once you're figured out what you want to do, why, and how/when then you can actually design your DAO. The important thing here is to know what you want to do, then use the tools required to get the job done. Don't start with the tools! Otherwise you'll become like a man with a hammer. Choose the tools based on your goals and design constraints.
+
 So the question then becomes, how do you design a system? When you think through your token system it's important to consider what properties you want to hold. This will help you make (or not make) design decisions. For example, do you want the system to be truly permissionless or do you want a core team (or community multi-sig) to have admin permissions for a while?
 
 From there you can look at currently available token system templates to see if any meet your needs and/or just design your own. You'll likely end up starting with a base template and extending it for your use case.
 
 Also, there are many token system templates that you can use to get started. You can use them as is, modify them to suite your needs, or create something from scratch. Knowing the resources available could save you a lot of time and money. This way you can focus on the unique aspects of your system vs having to build everything from scratch for everything.
+
+#### Roles, methods, and states
+
+Roles, methods, and states is just a fancy way of saying who can do what and under what circumstances.
+
+Rights and access controls can be broken down into roles, methods, and states:
+- **Roles:** bundles of rights determined by "the system state"
+- **Methods:** actions that can be taken, mutates "the system state" but access or effect may be dependent on roles
+- **State:** all of the information (not limited to smart contract state)
+
+**Why do roles, methods, and states matter?**
+
+The moment you create a DAO you have a governance problem. Another way of framing this is as a rights/roles access problem. To more easily reason about this you need a process to describe and discuss the rules of the game. Then you can figuring out what the rules actually are, who can do what when, and how people participating in the system can change the rules of the system.
+
+For governance to work people need to understand and respect the rules of the system, even if they don't agree with every decision. This is very important. We don't need consensus on the decisions themselves. We need consensus on the way we make decisions.
+
+For example: if you respect the rules of a game you respect the scores that arise from playing, even if you wish your team won. Once people buy into the idea of the game they can focus on playing the game vs figuring out what the game is or arguing about the rules.
+
+**Questions to ask:**
+
+- What are the requirements for participation?
+- What the current rules are and how to change the rules?
+- Would you be comfortable being dropped into a random role in the system?
+
+> Warning: no one likes a rigged game. No one likes watching them and no one likes playing them. If everyone's not bound by the same rules and/or if the rules change or are fuzzy things are going to get weird. People get pissed if the rules don't apply equally or if they change in ways that are unfair or unclear. People like it, however, if they feel like they have agency in a system. If there is mobility within the system then people can engage how they want and move into a roles that suites them.
+
+**Things to consider:**
+
+What does it mean for the world to be fair? Rights access paradigms are a way to explicitly model and reason through these things. We need to map out rights and access controls to show who can do what and how people can move through the system. This is important because meritocracy and democracy are dependent on rights access controls. If we want to make it so that the rules apply to everyone equally the rules need to change slowly in a participatory way. We have to collectively buy into and accept the trade offs. Everyone can engage in the process and have agency in that process. You should be comfortable being dropped into a random role in society because there's a path towards the role you want.
+
+Once we understand who's going to do what and under what circumstances, then we'll need to [determine the mechanisms that will allow them to do those things](mechanisms.md).
 
 #### Templates
 
@@ -103,7 +143,7 @@ Some templates that might serve as inspiration and/or a starting point for your 
 Moloch:
 
 - [Moloch V1 source code](https://github.com/MolochVentures/moloch/tree/master/v1_contracts) - The original Moloch. It's simple and effective. Start here.
-- [Moloch Subgraph highlight](https://medium.com/graphprotocol/moloch-subgraph-highlight-faf9da2f7e73) - An overview of the Moloch subgraph from late 2019. 
+- [Moloch Subgraph highlight](https://medium.com/graphprotocol/moloch-subgraph-highlight-faf9da2f7e73) - An overview of the Moloch subgraph from late 2019.
 - [Moloch V2 source code](https://github.com/MolochVentures/moloch) - The V2 MolochDAO code and docs. Very informative. If you have to pick one, read this instead of all the other blog posts.
 - [Moloch V2 audit report blog post](https://medium.com/@thelaoofficial/moloch-v2-smart-contract-audit-report-for-the-lao-48fb0415695a) - Overview of the Moloch V2 audit.
 - [Moloch Evolved](https://medium.com/raid-guild/moloch-evolved-v2-primer-25c9cdeab455) - A primer on Moloch V2.
@@ -413,6 +453,12 @@ Deployment tips and tools (remix, buidler, etc..) go here.
 
 And [create a bug bounty](https://consensys.github.io/smart-contract-best-practices/software_engineering/#bug-bounty-programs)! (even if it's only in your native token1)
 
+You might also want to have:
+
+- documentation and user guides
+- onboarding support
+- community marketing/outreach
+
 ### Monitoring and analysis
 
 Resources to monitor on-chain and community engagement goes here.
@@ -437,6 +483,15 @@ This will involve monitoring markets as well as fundamentals, both onchain (toke
 - Recognize and reward community contributors
 - Governance and governance minimization
 
+It's very very important, esp in the early days, that you curate a strong group of value aligned members. They set the foundation for the rest of the project's evolution.
+
+How to community:
+
+- have a clear direction with strong goals (meme)
+- curate members (onboarding)
+- ensure that everyone know what the DAO is about and how to participate to move towards the DAO's goals (user guides and content marketing)
+
+This will be hard. It will take a long time. It will test your patience. Good luck!
 Governance is hard.
 
 This section will talk about why you might need governance (managing shared resources) and the tools you might use to do so (Snapshot, dApps, etc..).
