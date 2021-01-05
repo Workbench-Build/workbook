@@ -20,10 +20,6 @@
     - [Design](#design)
       - [Tokens](#tokens)
     - [Implementation](#implementation)
-    - [Languages](#languages)
-      - [Solidity](#solidity)
-      - [Vyper](#vyper)
-      - [Fe](#fe)
   - [Auditing](#auditing)
     - [Economic Review](#economic-review)
     - [Technical Review](#technical-review)
@@ -33,10 +29,7 @@
   - [Community engagement and governance](#community-engagement-and-governance)
   - [Upgrades](#upgrades)
   - [Examples](#examples)
-  - [Stuff](#stuff)
-    - [Courses and tooling](#courses-and-tooling)
-    - [Communities](#communities)
-  - [Examples](#examples-1)
+  - [Resources](#resources)
 
 ---
 
@@ -223,6 +216,8 @@ Examples:
 
 ### Implementation
 
+> For now we're starting with Ethereum. Can't boil the ocean. That being said, the token design process is rather general and can be applied to any blockchain project.
+
 Then once you know what you want, your resources (time/money) and technical ability will determine the tools that are the best fit:
 
 - If you want something that works out of the box a social token platform such as CollabLand, Roll, or StakeOnMe might be a good choice. While you'll be able create a token in minutes these platforms may charge fees, have proprietary components, and/or limited customization. As such you'll likely be tied to the platform so choose wisely.
@@ -248,23 +243,19 @@ Once you've selected, assembled, or written your contracts you'll want to check 
 
 `https://github.com/OpenZeppelin/openzeppelin-contracts`
 
-### Languages
+Within the wild world of Ethereum there are many languages to write contracts. Solidity is the most popular with many tutorials, support, and tooling. Vyper and Fe are for more advanced developers. If you're not familiar with these languages already, here's a few resources to get started.
 
-> For now we're starting with Ethereum. Can't boil the ocean. That being said, the token design process is rather general and can be applied to any blockchain project.
-
-Within the wild world of Ethereum there are many languages to write contracts. Solidity is the most popular with many tutorials, support, and tooling. Vyper and Fe are for more advanced developers.
-
-#### Solidity
+Solidity:
 
 - `https://docs.soliditylang.org/`
 - `https://consensys.github.io/smart-contract-best-practices/`
 
-#### Vyper
+Vyper:
 
 - `https://vyper.readthedocs.io/`
 - `https://github.com/ethereum/fe`
 
-#### Fe
+Fe:
 
 `https://fe.ethereum.org/`
 
@@ -409,23 +400,11 @@ Explore ways to help your community go from consuming what you create to creatin
 ---
 ---
 
-## Stuff
+## Resources
 
-### Courses and tooling
+Additional resources related to the token design, development, and deployment process:
 
+- [A Token Engineering Process](https://medium.com/@stephen_yo/a-token-engineering-process-16687f3b9a74) - Great article that covers the basics of system mapping and diagramming in the context of token engineering. More great articles on the token engineering process [here](https://blog.oceanprotocol.com/towards-a-practice-of-token-engineering-b02feeeff7ca) and [here](https://medium.com/block-science/on-the-practice-of-token-engineering-part-i-c2cc2434e727)
+- [Token Engineering community](https://tokenengineeringcommunity.github.io/website/) - A community working to further the discipline of token engineering through education and outreach. Check out their [Library](https://tokenengineeringcommunity.github.io/website/docs/library-te-101) for more resources.
+- [CommonsStack](https://commonsstack.org/) - A community working to create templates and best practices to realign incentives around public goods.
 - [cadCAD Edu](https://www.cadcad.education/) is a great resource to learn about the token engineering process. While it's focused on cadCAD, the Complete Foundations Bootcamp is a great intro to the token engineering design process as a whole.
-- [A Token Engineering Process](https://medium.com/@stephen_yo/a-token-engineering-process-16687f3b9a74) - Great article that covers the basics of system mapping and diagramming in the context of token engineering.
-- `https://blog.oceanprotocol.com/towards-a-practice-of-token-engineering-b02feeeff7ca`
-- `https://medium.com/block-science/on-the-practice-of-token-engineering-part-i-c2cc2434e727`
-- `https://tokenengineeringcommunity.github.io/website/docs/library-te-101`
-
-### Communities
-
-- Token Engineering community: `https://tokenengineeringcommunity.github.io/website/`
-- CommonsStack community
-
-## Examples
-
-- Ocean V2 is going through the token engineering process to launch V2 of their network.
-- 1Hive uses token engineering to design and manage their HNY token and DAO.
-- The Token Engineering Commons is designing and deploying their token/DAO using these techniques and tools.
