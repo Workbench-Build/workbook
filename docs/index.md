@@ -5,10 +5,13 @@
     - [Brainstorming](#brainstorming)
     - [Mechanism design](#mechanism-design)
       - [Roles, methods, and states](#roles-methods-and-states)
-      - [Templates](#templates)
+      - [Token System Templates](#token-system-templates)
       - [Governance mechanisms](#governance-mechanisms)
-      - [Mechanisms](#mechanisms)
+      - [Additional token mechanisms](#additional-token-mechanisms)
       - [Tokens](#tokens)
+        - [Fungible](#fungible)
+        - [Non-Fungible](#non-fungible)
+        - [Other](#other)
     - [1 Pager](#1-pager)
     - [Diagramming](#diagramming)
       - [Causal Loop](#causal-loop)
@@ -18,7 +21,7 @@
       - [Technical contract specification](#technical-contract-specification)
     - [Modeling](#modeling)
       - [cadCAD](#cadcad)
-      - [Other](#other)
+      - [Other](#other-1)
   - [Development](#development)
     - [Platform or DIY?](#platform-or-diy)
       - [Languages](#languages)
@@ -32,20 +35,26 @@
     - [Monitoring and analysis](#monitoring-and-analysis)
     - [Community engagement and governance](#community-engagement-and-governance)
     - [Upgrades](#upgrades)
+  - [Notes](#notes)
 
 ---
 
-> This document will take you through the token design, development, and deployment process. Some parts may or may not be relevant to you. Choose your own adventure.
+> This document will take you through the token design, development, and deployment process. In practice you'll go back and forth between steps as your project progresses. Some parts may or may not be relevant to you. Choose your own adventure.
 
 ---
 
 ## Design
 
-- understand the goals of the system and the problems that need to be solved
-- define design goals
+**TL;DR:**
+
+- find a problem to solve
+- define your design goals
 - define roles, methods, states
 - define mechanisms
-- design the composition of mechanisms into a DAO syste
+- compose said mechanisms into a token system
+- write a blog post describing it
+- draw a picture describing it
+- create a model of it
 
 ### Brainstorming
 
@@ -61,8 +70,6 @@ Ideally you want to be solving a problem that is:
 - Expensive (it's hard for people to solve for themselves)
 - Mandatory (it must be solved)
 
-> This list is from [YC's Startup School](https://www.youtube.com/watch?v=DOtCl5PU8F0). While it's focused on startups, a lot of the same concepts apply to both startups and token projects. Highly recommend checking out their videos.
-
 From there, you should be able to explain [why](https://simonsinek.com/product/start-with-why/) you're solving this problem in a way that's simple and intuitive. It should be something so simple you can explain it in a single sentence and people get it. It should be a [meme](https://en.wikipedia.org/wiki/Meme). People should understand what and why. It's your job to abstract away all the complexity of the how so that the solution "just works."
 
 Once you've identified a problem to solve, and people who have that problem, you have to then go solve it for them. This is hard. While choosing the right thing to work on is often what will determine your success or failure, after that it's all about execution. In blockchain land this means you need to create a token system to align incentives for the community to create, use, and maintain an application/protocol.
@@ -73,15 +80,46 @@ This is two layers deep in the problem solving stack. First you need to figure o
 
 Startup founders have the same problem. They need to solve a problem for end users, while also building a company to solve that problem at scale. The main difference is that there's library of knowledge freely available on how to create, fund, and grow startups. Best practices for token projects are TBD. Token projects are mix of entrepreneurship, politics, economics, software development, systems design, and more. Depending on your goals and system architecture your token project will probably sit on the spectrum between an API, corporation, and government.
 
-### Mechanism design
+**Questions to ask:**
 
-Once you're figured out what you want to do, why, and how/when then you can actually design your DAO. The important thing here is to know what you want to do, then use the tools required to get the job done. Don't start with the tools! Otherwise you'll become like a man with a hammer. Choose the tools based on your goals and design constraints.
+- What problem are you solving?
+- Who has this problem? How often?
+- How much do they need this problem to be solved?
+- Why do you need a token (aka what are you trying to incentivize)?
+- How will the token system work with 1 user? What about 10 or 100 (bootstrapping)?
+- How will the token system get better as more people use it (network effects)?
+
+**Examples:**
+
+- TBD
+
+**Resources:**
+
+- [YC's Startup School](https://www.startupschool.org/) is a great resource to help you make something people want. The [How to find startup ideas](https://www.youtube.com/watch?v=DOtCl5PU8F0) video can help build intuition for what types of problems to solve, and more likely, prevent you from working on the wrong thing. While YC is focused on startups, a lot of the same concepts around solving problems and creating value for users apply to both startups and token projects. Highly recommend checking out [their videos](https://www.youtube.com/channel/UCcefcZRL2oaA_uBNeo5UOWg).
+- Not to be outdone, [a16z](https://a16z.com/crypto/) also has a [crypto startup school](https://a16z.com/crypto-startup-school/). It has lots of content explaining high level concepts that are essential for the space. You can also sign up for their newsletter to get ongoing insights delivered to your inbox.
+- [Simon Sinek](https://simonsinek.com/) has a lot of great content explaining why you should [start with why](https://simonsinek.com/product/start-with-why/).
+
+### Mechanism design
 
 So the question then becomes, how do you design a system? When you think through your token system it's important to consider what properties you want to hold. This will help you make (or not make) design decisions. For example, do you want the system to be truly permissionless or do you want a core team (or community multi-sig) to have admin permissions for a while?
 
 From there you can look at currently available token system templates to see if any meet your needs and/or just design your own. You'll likely end up starting with a base template and extending it for your use case.
 
 Also, there are many token system templates that you can use to get started. You can use them as is, modify them to suite your needs, or create something from scratch. Knowing the resources available could save you a lot of time and money. This way you can focus on the unique aspects of your system vs having to build everything from scratch for everything.
+
+The architecture of your token system will vary based on your use case. The important thing here is to know what you want to do, then use the tools required to get the job done. Don't start with the tools! Otherwise you'll become like a man with a hammer. Choose the tools based on your goals and design constraints.
+
+**Questions to ask:**
+
+- TBD
+
+**Examples:**
+
+- TBD
+
+**Resources:**
+
+- The [Wikipedia mechanism design page](https://en.wikipedia.org/wiki/Mechanism_design). Is a great place to start. If you read one thing on mechanism design, make it this. There's also a whole [category on Wikipedia dedicated to the topic](https://en.wikipedia.org/wiki/Category:Mechanism_design).
 
 #### Roles, methods, and states
 
@@ -94,31 +132,42 @@ Rights and access controls can be broken down into roles, methods, and states:
 
 **Why do roles, methods, and states matter?**
 
-The moment you create a DAO you have a governance problem. Another way of framing this is as a rights/roles access problem. To more easily reason about this you need a process to describe and discuss the rules of the game. Then you can figuring out what the rules actually are, who can do what when, and how people participating in the system can change the rules of the system.
+The moment you create a modifiable/upgradeable token system you have a governance problem. Another way of framing this is as a rights/roles access problem. To more easily reason about this you need a process to describe and discuss the rules of the game. Then you can figuring out what the rules actually are, who can do what when, and how people participating in the system can change the rules of the system.
 
 For governance to work people need to understand and respect the rules of the system, even if they don't agree with every decision. This is very important. We don't need consensus on the decisions themselves. We need consensus on the way we make decisions.
 
 For example: if you respect the rules of a game you respect the scores that arise from playing, even if you wish your team won. Once people buy into the idea of the game they can focus on playing the game vs figuring out what the game is or arguing about the rules.
+
+> Note: no one likes a rigged game. No one likes watching them and no one likes playing them. If everyone's not bound by the same rules and/or if the rules change or are fuzzy things are going to get weird. People get pissed if the rules don't apply equally or if they change in ways that are unfair or unclear. People like it, however, if they feel like they have agency in a system. If there is mobility within the system then people can engage how they want and move into a roles that suites them.
+
+Rights access paradigms are a way to explicitly model and reason through these things. We need to map out rights and access controls to show who can do what and how people can move through the system. This is important because meritocracy and democracy are dependent on rights access controls. If we want to make it so that the rules apply to everyone equally the rules need to change slowly in a participatory way. We have to collectively buy into and accept the trade offs. Everyone can engage in the process and have agency in that process. You should be comfortable being dropped into a random role in society because there's a path towards the role you want.
+
+Once we understand who's going to do what and under what circumstances, then we'll need to determine the mechanisms that will allow them to do those things.
 
 **Questions to ask:**
 
 - What are the requirements for participation?
 - What the current rules are and how to change the rules?
 - Would you be comfortable being dropped into a random role in the system?
+- What does it mean for the world to be fair?
 
-> Warning: no one likes a rigged game. No one likes watching them and no one likes playing them. If everyone's not bound by the same rules and/or if the rules change or are fuzzy things are going to get weird. People get pissed if the rules don't apply equally or if they change in ways that are unfair or unclear. People like it, however, if they feel like they have agency in a system. If there is mobility within the system then people can engage how they want and move into a roles that suites them.
+**Examples:**
 
-**Things to consider:**
+- TBD
 
-What does it mean for the world to be fair? Rights access paradigms are a way to explicitly model and reason through these things. We need to map out rights and access controls to show who can do what and how people can move through the system. This is important because meritocracy and democracy are dependent on rights access controls. If we want to make it so that the rules apply to everyone equally the rules need to change slowly in a participatory way. We have to collectively buy into and accept the trade offs. Everyone can engage in the process and have agency in that process. You should be comfortable being dropped into a random role in society because there's a path towards the role you want.
+**Resources:**
 
-Once we understand who's going to do what and under what circumstances, then we'll need to [determine the mechanisms that will allow them to do those things](mechanisms.md).
+- TBD
 
-#### Templates
+#### Token System Templates
 
 To start, we recommend checking out the current templates and token systems live in the wild. This can give you an idea of what's available, what's working, and where you might have an opportunity to create something new and exciting.
 
-Some templates that might serve as inspiration and/or a starting point for your token system:
+**Questions to ask:**
+
+- Is there an example of a project similar to what you want to build or working on a similar problem? If so, what's working for them and what's not? How can you do better?
+
+**Resources:**
 
 - [Gnosis multi-sig](https://blog.gnosis.pm/gnosis-safe-multisig-desktop-app-and-contract-interactions-6f8b92c3275b) - A shared bank account.
 - [Snapshot](https://github.com/balancer-labs/snapshot) - Verify user's token balances, then let them sign messages to create off-chain signalling votes. Perform votes off-chain, then enact on-chain via a trusted community multi-sig. [Create your Snapshot page here](https://docs.snapshot.page/guides/create-a-space). Check out current Snapshot pages [here](https://snapshot.page/#/).
@@ -129,6 +178,8 @@ Some templates that might serve as inspiration and/or a starting point for your 
 - [Colony](https://colony.io/dev/docs/colonynetwork/intro-welcome) - Reputation based task management and dispute resolution.
 - [Commons Stack](https://commonsstack.org/) - Coordinate and sustain common goods.
 - [Gardens](https://forum.1hive.org/t/gardens-overview/32) - Composable community currencies.
+    - TEC template: `https://github.com/TECommons/tec-template`
+    - 1Hive template: `https://github.com/1Hive/gardens-template`
 - [MolochDAO](https://github.com/MolochVentures/moloch/tree/minimal-revenue/v1_contracts) - Coordinate and manage capital.
 - [MolochDAO V2](https://github.com/MolochVentures/moloch) - Coordinate and manage capital.
 - [MolochDAO V3](https://github.com/Moloch-Mystics) - Modular Moloch - plug and play DAO legos (WIP).
@@ -139,6 +190,8 @@ Some templates that might serve as inspiration and/or a starting point for your 
 - [LAOland](https://github.com/openlawteam/laoland) - More modular moloch (WIP).
 - [TrojanDAO V2](https://github.com/TROJANFOUNDATION/Trojan-DAO-Token-Engineering) - Fundraise and coordinate and manage capital with Moloch DAO and a bonding curve.
 - [Liquidity Delegated Governance](https://medium.com/@andre_54855/liquidity-delegated-governance-89184d40643a) - If you are looking for a boilerplate Liquidity Provision + Delegation + Governance + Timelock solution, all you need to do is create your token, provide liquidity to uniswap/balancer, and then call the deploy functions on the liquidity and governance factories. No multisig required and you have a fully configurable decentralized solution.
+- [Buy back and make](https://www.placeholder.vc/blog/2020/9/17/stop-burning-tokens-buyback-and-make-instead) - Description goes here.
+- [The da0](https://github.com/the-dao/whitepaper) - Description goes here.
 
 Moloch:
 
@@ -167,6 +220,19 @@ Moloch:
 
 Goverance is [the process of applying any design feature or control mechanism that maintains and steers a system](https://www.placeholder.vc/blog/2020/9/30/ten-theses-on-decentralized-network-governance). Here's a few governance mechanisms that are popular in blockchain land (although you might need L2/optimistic solutions to use some of them).
 
+**Questions to ask:**
+
+- Are there aspects of your system that will need to adapt and change over time?
+- If so, who has the right to make that change?
+- What is the process to make that change?
+- Is it possible to change the process to make changes (meta-governance)?
+
+**Examples:**
+
+- TBD
+
+**Resources:**
+
 - [Ranked choice](https://en.wikipedia.org/wiki/Ranked_voting) - Voters use a ranked (or preferential) ballot to rank choices in a sequence on the ordinal scale: 1st, 2nd, 3rd, etc.
 - [Budget box](https://blog.colony.io/introducing-budgetbox/) - Pairwise comparisons for budgetting.
 - [Conviction voting](https://medium.com/giveth/conviction-voting-a-novel-continuous-decision-making-alternative-to-governance-aa746cfb9475) - Proposals are passed based on aggregated continuous preferences of community members.
@@ -178,17 +244,27 @@ Goverance is [the process of applying any design feature or control mechanism th
 - [MACI](https://github.com/clrfund/maci) - Minimum anti-collustion infrasctructure. Great for grants/investments DAOs.
 - [Snapshot](https://github.com/balancer-labs/snapshot) - Verify user's token balances, then let them sign messages to create off-chain signalling votes. [Create your Snapshot page here](https://docs.snapshot.page/guides/create-a-space)!
 - [Compound Autonomous Proposals](https://medium.com/compound-finance/compound-autonomous-proposals-354e7a2ad6b7) - Let's anyone submit a proposal, then if/when there's enough delgation power the proposal can be put to a vote.
-
-Talk about various governance models:
-
 - rough consensus
 - snapshot/multi-sig
 - global voting mechanism (token params)
 - local voting mechanism (ecosystem mechanisms)
+- [MetaGov](https://metagov.org/) is a community project working to understand and improve community governance across the interwebs.
 
-#### Mechanisms
+#### Additional token mechanisms
 
 These mechanisms can be composed into systems themselves, or added onto a template.
+
+**Questions to ask:**
+
+- Are there features you want that aren't available via any of the token system templates available?
+- How will the addition of a feature/mechanism affect your token economy? Will it increase velocity or create a sink that locks up supply (and liquidity)?
+
+**Examples:**
+
+- TBD
+- Find a few token systems that started as templates and extended their functionality by composing in additional mechanisms.
+
+**Resources:**
 
 - [Open Raise](https://github.com/dOrgTech/OpenRaise) - Open Raise is a modular library of smart contracts and UI components that bring these ideas to life and make it easy for organizations to run accountable fundraising campaigns.
 - [TrojanDAO V2](https://docs.google.com/document/d/1mnUcjCKE-j4B9qraH2RkC8sEnUNw6Y2t4yF33XMRsU8/edit) (WIP) - A fundraising mechanism that has a minimum presale goal to start, an open bonding curve for the fundraise, and then flattens the curve so that participants have a propotional stake in the upcoming venture.
@@ -203,14 +279,7 @@ These mechanisms can be composed into systems themselves, or added onto a templa
 
 #### Tokens
 
-A few common questions you might want to ask yourself as you design your token system:
-
-- Are you creating a single or multi-token system (KISS!)?
-- What type of token is the best fit for your use case fungible (ERC-20), unique (ERC-721), or exotic (ERC-XXX).
-- Are tokens transferable and/or is it possible to unlock transferability via a governance decision (admin, community multi-sig, token holder vote, etc..)?
-- What is the supply schedule: fixed, inflationary, variable (ex: bonding curve)?
-
-**Fungible:**
+##### Fungible
 
 The most common form of fungible Ethereum tokens is the ERC-20 token standard. ERC-20 allows for the implementation of a standard API for tokens within smart contracts. This standard provides basic functionality to transfer tokens, as well as allow tokens to be approved so they can be spent by another on-chain third party. A standard interface allows any tokens on Ethereum to be re-used by other applications: from wallets to decentralized exchanges.
 
@@ -218,7 +287,7 @@ An ERC20 token contract keeps track of fungible tokens: any one token is exactly
 
 Often times people will use the ERC-20 template as a base, but then add additional features and functionality on top. This ensures that the token will have the standard ERC-20 interfaces required to work with wallets, protocols, and exchanges while also incorporating additional features needed for the tokens use case.
 
-Resources:
+**Resources:**
 
 - [Ethereum.org Developer Docs: ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) - A high level overview of fungible tokens and how ERC-20 works.
 - [Ethereum EIP repo Issue 20](https://github.com/ethereum/EIPs/issues/20) - The original discussion and specification for ERC-20.
@@ -229,7 +298,7 @@ Examples:
 - [OpenZeppelin Safe ERC-20](https://docs.openzeppelin.com/contracts/3.x/erc20-supply) - A guide on how to use the [OpenZeppelin ERC-20 implementation](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/SafeERC20.sol).
 - [TORN token](https://github.com/tornadocash/torn-token/blob/master/contracts/TORN.sol) - The [TornadoCash](https://tornado.cash/) token uses the OpenZeppelin Safe ERC-20 as a base, then extends additional functionality on top.
 
-**Non-Fungible:**
+##### Non-Fungible
 
 A Non-Fungible Tokens (NFT) is used to identify something or someone in a unique way. This type of Token is perfect to be used on platforms that offer collectible items, access keys, lottery tickets, numbered seats for concerts and sports matches, etc. This special type of Token has amazing possibilities so it deserves a proper Standard, the ERC-721 came to solve that!
 
@@ -237,7 +306,7 @@ The ERC-721 introduces a standard for NFT, in other words, this type of Token is
 
 All NFTs have a uint256 variable called tokenId, so for any ERC-721 Contract, the pair contract address, uint256 tokenId must be globally unique. Said that a dApp can have a "converter" that uses the tokenId as input and outputs an image of something cool like zombies, weapons, skills, or amazing characters.
 
-Resources:
+**Resources:**
 
 - [Ethereum.org Developer Docs: ERC-721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) - A high level overview of non-fungible tokens and how ERC-721 works. Also links to other non-fungible token standards at the bottom of the page.
 - [Ethereum EIP repo Issue 721: non fungible token standard](https://github.com/ethereum/EIPs/issues/721) - The original discussion and specification for ERC-721.
@@ -247,19 +316,21 @@ Examples:
 
 - [ERC-721 Impleimentations](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md#references) - See the "NFT Implementations and Other Projects" section.
 
-**Other:**
+##### Other
 
 Beyond fungible (ERC-20) and non-fungible (ERC-721) tokens, there are many other types of tokens. This includes, but is not limited to:
 
 - 1450 A compatible security token for issuing and trading SEC-compliant securities
-- 1155 Multi Token Standard
-- 1167 Minimal Proxy Contract
+- 1155 Multi Token Standard (lots of games use this for in-game items, weapons, skins, etc..)
+- 1167 Minimal Proxy Contract (some dApps and factories are using this)
 - See more here: `https://eips.ethereum.org/erc`
 
-Examples:
+**Questions to ask:**
 
-- Lots of games use 1155
-- Some dapps are starting to use 1167
+- Are you creating a single or multi-token system (KISS!)?
+- What type of token is the best fit for your use case fungible (ERC-20), unique (ERC-721), or exotic (ERC-XXX).
+- Are tokens transferable and/or is it possible to unlock transferability via a governance decision (admin, community multi-sig, token holder vote, etc..)?
+- What is the supply schedule: fixed, inflationary, variable (ex: bonding curve)?
 
 ### 1 Pager
 
@@ -489,7 +560,7 @@ How to community:
 
 - have a clear direction with strong goals (meme)
 - curate members (onboarding)
-- ensure that everyone know what the DAO is about and how to participate to move towards the DAO's goals (user guides and content marketing)
+- ensure that everyone know what the token system is about and how to participate
 
 This will be hard. It will take a long time. It will test your patience. Good luck!
 Governance is hard.
@@ -532,3 +603,13 @@ Explore ways to help your community go from consuming what you create to creatin
 ---
 ---
 ---
+
+## Notes
+
+Each section should have:
+
+- A TL;DR:
+- A description
+- Questions to ask
+- Examples and templates
+- Resources to learn more
