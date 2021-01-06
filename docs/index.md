@@ -1,5 +1,9 @@
 # The Workbook
 
+> This document will take you through the token design, development, and deployment process. In practice you'll go back and forth between steps as your project progresses. Some parts may or may not be relevant to you. Choose your own adventure.
+
+---
+
 - [The Workbook](#the-workbook)
   - [Design](#design)
     - [Brainstorming](#brainstorming)
@@ -40,24 +44,28 @@
 
 ---
 
-> This document will take you through the token design, development, and deployment process. In practice you'll go back and forth between steps as your project progresses. Some parts may or may not be relevant to you. Choose your own adventure.
-
----
-
 ## Design
 
 **TL;DR:**
 
-- find a problem to solve
-- define your design goals
-- define roles, methods, states
-- define mechanisms
-- compose said mechanisms into a token system
-- write a blog post describing it
-- draw a picture describing it
-- create a model of it
+- Find a problem to solve.
+- Define your design goals.
+- Define roles, methods, states.
+- Define mechanisms.
+- Define the composition of mechanisms into a token system.
+- Write a blog post describing it.
+- Draw a picture describing it.
+- Create a model simulating it's behavior.
 
 ### Brainstorming
+
+**TL;DR:**
+
+- What is the problem you're solving?
+- What is the purpose of your token (access, discounts, unique items/experiences, governance, etc..)?
+- Is there any part of your token system (including the token itself) that could be removed while still achieving your goals?
+- How will people acquire tokens (buy, earn, other)?
+- How will the value of those tokens increase as the token system grows (network effects)?
 
 It's better to be finding the solution to a big problem than finding a problem for your big solution.
 
@@ -88,11 +96,13 @@ In addition to exploring the technical specifications of tokens/mechanisms/syste
 - What problem are you solving?
 - Who has this problem? How often?
 - How much do they need this problem to be solved?
-- How does your token incentivize people to solve this problem?
-- If you substitute a stable coin or ETH with your token, will things still work or do you need a unique token?
+- How will your token contribute to solving this problem? Is your token incentivizing people to do work to solve the problem directly, or is it a component of a larger system that's working to solve that problem?
+- What is the value prop of your token (access, unique items, discounts, governance, etc..)? Why would anyone want it?
+- When it comes to token systems, simple is better. Is there anything you can remove while still maintaining the core value prop (and thus incentivizes) of your token system?
+- If you substitute a stable coin or ETH with your token will things still work? If so, then you probably don't need to create a new token.
 - How will people acquire your tokens (buy, earn, gift, etc..)?
 - How will the token system work with 1 user? What about 10 or 100 (bootstrapping)?
-- How will the token system get better as more people use it (network effects)?
+- How will the token system get better as more people use it (network effects)? How will each additional user add more value than those before as the system grows?
 
 **Examples:**
 
@@ -632,11 +642,9 @@ Each section should have:
 - Examples and templates
 - Resources to learn more
 
-In addition to exploring the technical specifications of tokens/mechanisms/systems it would be good to first identify the high level things such as the core value prop of the token (access, discounts, unique items/experiences, governance, etc..), how to acquire tokens (buy and/or earn), and how to extend and grow the value of tokens over time (network effects). There should be a quickstart guide so that if someone just wants to create a token or add a feature to do a thing they can do so easily.
-
 Should add more stuff on:
 
 - optimistic games and L2git
 - community management/engagement
 
----
+There should be a quickstart guide so that if someone just wants to create a token or add a feature to do a thing they can do so easily.
