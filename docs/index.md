@@ -24,7 +24,9 @@
       - [Other](#other-1)
   - [Development](#development)
     - [Platform or DIY?](#platform-or-diy)
-      - [Languages](#languages)
+      - [Platform](#platform)
+      - [Templates](#templates)
+      - [DIY](#diy)
       - [Scaling](#scaling)
     - [Auditing](#auditing)
       - [Economic Review](#economic-review)
@@ -79,12 +81,16 @@ This is two layers deep in the problem solving stack. First you need to figure o
 
 Startup founders have the same problem. They need to solve a problem for end users, while also building a company to solve that problem at scale. The main difference is that there's library of knowledge freely available on how to create, fund, and grow startups. Best practices for token projects are TBD. Token projects are mix of entrepreneurship, politics, economics, software development, systems design, and more. Depending on your goals and system architecture your token project will probably sit on the spectrum between an API, corporation, and government.
 
+In addition to exploring the technical specifications of tokens/mechanisms/systems it would be good to first identify the high level things such as the core value prop of the token (access, discounts, unique items/experiences, governance, etc..), how to acquire tokens (buy and/or earn), and how to extend and grow the value of tokens over time (network effects). There should be a quickstart guide so that if someone just wants to create a token or add a feature to do a thing they can do so easily.
+
 **Questions to ask:**
 
 - What problem are you solving?
 - Who has this problem? How often?
 - How much do they need this problem to be solved?
-- Why do you need a token (aka what are you trying to incentivize)?
+- How does your token incentivize people to solve this problem?
+- If you substitute a stable coin or ETH with your token, will things still work or do you need a unique token?
+- How will people acquire your tokens (buy, earn, gift, etc..)?
 - How will the token system work with 1 user? What about 10 or 100 (bootstrapping)?
 - How will the token system get better as more people use it (network effects)?
 
@@ -168,7 +174,14 @@ To start, we recommend checking out the current templates and token systems live
 
 **Resources:**
 
-- [Gnosis multi-sig](https://blog.gnosis.pm/gnosis-safe-multisig-desktop-app-and-contract-interactions-6f8b92c3275b) - A shared bank account.
+To be organized:
+
+- Loot tokens (play to earn): `https://medium.com/@adamscochran/what-are-loot-tokens-understanding-an-emerging-asset-class-380b0cc38749`
+
+Stuff:
+
+- ***NEED TO ADD MORE DEFI AND TOKEN TEMPLATE STUFF HERE***
+- [Gnosis multi-sig](https://blog.gnosis.pm/gnosis-safe-multisig-desktop-app-and-contract-interactions-6f8b92c3275b) - It's a shared Ethereum account. Parameters can be set so that actions can only be taken if signatures from many accounts are provided. Those actions can including sending tokens as well as contract interactions.
 - [Snapshot](https://github.com/balancer-labs/snapshot) - Verify user's token balances, then let them sign messages to create off-chain signalling votes. Perform votes off-chain, then enact on-chain via a trusted community multi-sig. [Create your Snapshot page here](https://docs.snapshot.page/guides/create-a-space). Check out current Snapshot pages [here](https://snapshot.page/#/).
 - [ERC3K](https://eips.ethereum.org/EIPS/eip-3000) - An open template for optimistic organizations.
 - [Aragon Govern](https://github.com/aragon/govern) - Aragon's implementation of ERC3K. Optimistic organizations that use [Snapshot](https://snapshot.page/#/) for voting with the option for disputes if the vote is incorrect.
@@ -398,25 +411,15 @@ Then once you know what you want, your resources (time/money) and technical abil
 - Do you want to create an [upgrade path for bugfixes and improvements](https://consensys.github.io/smart-contract-best-practices/software_engineering/#upgrading-broken-contracts), or migrate to new contracts?
 - Is the security of Ethereum mainnet (and it's associated cost) a feature or a bug for your use case? Would you benefit from a faster/cheaper settlement layer, and if so, is a sidechain, L2, or optimistic solution best for your use case?
 
-Remember to have a full test suite with 100% test coverage (or close to it) so that your community and/or a profession review team isn't spending time on easily avoidable errors.
+#### Platform
 
-Once you've selected, assembled, or written your contracts you'll want to check if they work on one of Ethereum's many testnet (free) or xDAI (very cheap).
+Stuff about platforms goes here.
 
-`https://remix.ethereum.org/`
+#### Templates
 
-`https://eth.build/`
+Stuff about templates goes here.
 
-`https://ethereum.org/en/developers/learning-tools/`
-
-`https://ethereum.org/en/developers/local-environment/`
-
-`https://consensys.github.io/smart-contract-best-practices/general_philosophy/`
-
-`https://github.com/OpenZeppelin/openzeppelin-contracts`
-
-Add that defi library/tutorial thing
-
-#### Languages
+#### DIY
 
 Within the wild world of Ethereum there are many languages to write contracts. Solidity is the most popular with many tutorials, support, and tooling. Vyper and Fe are for more advanced developers. If you're not familiar with these languages already, here's a few resources to get started.
 
@@ -433,6 +436,22 @@ Vyper:
 Fe:
 
 `https://fe.ethereum.org/`
+
+**Resources:**
+
+- `https://remix.ethereum.org/`
+- `https://eth.build/`
+- `https://ethereum.org/en/developers/learning-tools/`
+- `https://ethereum.org/en/developers/local-environment/`
+- `https://consensys.net/developers/`
+- `https://github.com/ConsenSys/ethereum-developer-tools-list`
+- `https://consensys.github.io/smart-contract-best-practices/general_philosophy/`
+- `https://github.com/OpenZeppelin/openzeppelin-contracts`
+- Add that defi library/tutorial thing
+
+Whenever you build stuff yourself remember to have a full test suite with 100% test coverage (or close to it) so that your community and/or a profession review team isn't spending time on easily avoidable errors.
+
+- Ethereum testing resources and best practices goes here.
 
 #### Scaling
 
@@ -612,3 +631,12 @@ Each section should have:
 - Questions to ask
 - Examples and templates
 - Resources to learn more
+
+In addition to exploring the technical specifications of tokens/mechanisms/systems it would be good to first identify the high level things such as the core value prop of the token (access, discounts, unique items/experiences, governance, etc..), how to acquire tokens (buy and/or earn), and how to extend and grow the value of tokens over time (network effects). There should be a quickstart guide so that if someone just wants to create a token or add a feature to do a thing they can do so easily.
+
+Should add more stuff on:
+
+- optimistic games and L2git
+- community management/engagement
+
+---
