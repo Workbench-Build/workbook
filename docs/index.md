@@ -35,7 +35,6 @@
     - [Monitoring and analysis](#monitoring-and-analysis)
     - [Community engagement and governance](#community-engagement-and-governance)
     - [Upgrades](#upgrades)
-  - [Notes](#notes)
 
 ---
 
@@ -604,7 +603,7 @@ Explore ways to help your community go from consuming what you create to creatin
 ---
 ---
 
-## Notes
+> ***Notes***
 
 Each section should have:
 
