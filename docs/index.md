@@ -38,8 +38,8 @@
   - [Deployment](#deployment)
     - [Testing](#testing)
     - [Production](#production)
-    - [Monitoring and analysis](#monitoring-and-analysis)
-    - [Community engagement and governance](#community-engagement-and-governance)
+    - [Monitoring](#monitoring)
+    - [Management](#management)
     - [Upgrades](#upgrades)
 
 ---
@@ -85,6 +85,8 @@ Once you've identified a problem to solve, and people who have that problem, you
 
 Tokens = value = incentives. If your token has value people should be incentivized to do things to create/capture that value. If done correctly this can be positive-sum. It's very important that you understand this. Token networks are socio-economic systems. Incentives + humans = value creation. Your token system needs to reward people for doing things that create value for token holders. Then people will want to earn, buy, and hold/use your token. Supply and demand.
 
+This is great, but you can already do this with stocks, commodities, and credits for web2 platforms. What makes blockchain tokens more interesting is that the token contracts themselves create credible commitments. Trust is transferred from people to code. You know what the contract will do, if/how it can be changed, and the process to create those changes. This reduces the risk for people to use these contracts/protocols vs a more centralized service that might change the terms of their API at any time.
+
 This is two layers deep in the problem solving stack. First you need to figure out how to solve the core problem (whatever that is) for end users. Then you need to solve the problem of creating an incentive system that gets people to work on that problem. It's like building the car and the factory that builds the car. You need both.
 
 Startup founders have the same problem. They need to solve a problem for end users, while also building a company to solve that problem at scale. The main difference is that there's library of knowledge freely available on how to create, fund, and grow startups. Best practices for token projects are TBD. Token projects are mix of entrepreneurship, politics, economics, software development, systems design, and more. Depending on your goals and system architecture your token project will probably sit on the spectrum between an API, corporation, and government.
@@ -112,6 +114,7 @@ In addition to exploring the technical specifications of tokens/mechanisms/syste
 
 - [YC's Startup School](https://www.startupschool.org/) is a great resource to help you make something people want. The [How to find startup ideas](https://www.youtube.com/watch?v=DOtCl5PU8F0) video can help build intuition for what types of problems to solve, and more likely, prevent you from working on the wrong thing. While YC is focused on startups, a lot of the same concepts around solving problems and creating value for users apply to both startups and token projects. Highly recommend checking out [their videos](https://www.youtube.com/channel/UCcefcZRL2oaA_uBNeo5UOWg).
 - Not to be outdone, [a16z](https://a16z.com/crypto/) also has a [crypto startup school](https://a16z.com/crypto-startup-school/). It has lots of content explaining high level concepts that are essential for the space. You can also sign up for their newsletter to get ongoing insights delivered to your inbox.
+- [The idea maze](https://a16z.com/tag/idea-maze/) can help you navigate the wild world of emerging technologies.
 - [Simon Sinek](https://simonsinek.com/) has a lot of great content explaining why you should [start with why](https://simonsinek.com/product/start-with-why/).
 
 ### Mechanism design
@@ -184,13 +187,8 @@ To start, we recommend checking out the current templates and token systems live
 
 **Resources:**
 
-To be organized:
-
-- Loot tokens (play to earn): `https://medium.com/@adamscochran/what-are-loot-tokens-understanding-an-emerging-asset-class-380b0cc38749`
-
-Stuff:
-
 - ***NEED TO ADD MORE DEFI AND TOKEN TEMPLATE STUFF HERE***
+- Loot tokens (play to earn): `https://medium.com/@adamscochran/what-are-loot-tokens-understanding-an-emerging-asset-class-380b0cc38749`
 - [Gnosis multi-sig](https://blog.gnosis.pm/gnosis-safe-multisig-desktop-app-and-contract-interactions-6f8b92c3275b) - It's a shared Ethereum account. Parameters can be set so that actions can only be taken if signatures from many accounts are provided. Those actions can including sending tokens as well as contract interactions.
 - [Snapshot](https://github.com/balancer-labs/snapshot) - Verify user's token balances, then let them sign messages to create off-chain signalling votes. Perform votes off-chain, then enact on-chain via a trusted community multi-sig. [Create your Snapshot page here](https://docs.snapshot.page/guides/create-a-space). Check out current Snapshot pages [here](https://snapshot.page/#/).
 - [ERC3K](https://eips.ethereum.org/EIPS/eip-3000) - An open template for optimistic organizations.
@@ -214,9 +212,6 @@ Stuff:
 - [Liquidity Delegated Governance](https://medium.com/@andre_54855/liquidity-delegated-governance-89184d40643a) - If you are looking for a boilerplate Liquidity Provision + Delegation + Governance + Timelock solution, all you need to do is create your token, provide liquidity to uniswap/balancer, and then call the deploy functions on the liquidity and governance factories. No multisig required and you have a fully configurable decentralized solution.
 - [Buy back and make](https://www.placeholder.vc/blog/2020/9/17/stop-burning-tokens-buyback-and-make-instead) - Description goes here.
 - [The da0](https://github.com/the-dao/whitepaper) - Description goes here.
-
-Moloch:
-
 - [Moloch V1 source code](https://github.com/MolochVentures/moloch/tree/master/v1_contracts) - The original Moloch. It's simple and effective. Start here.
 - [Moloch Subgraph highlight](https://medium.com/graphprotocol/moloch-subgraph-highlight-faf9da2f7e73) - An overview of the Moloch subgraph from late 2019.
 - [Moloch V2 source code](https://github.com/MolochVentures/moloch) - The V2 MolochDAO code and docs. Very informative. If you have to pick one, read this instead of all the other blog posts.
@@ -240,7 +235,7 @@ Moloch:
 
 > Talk about how you can include governance now, or leave it as an upgrade feature by enabling the `onlyOwner` (or whatever) to be changed so that you can transfer it to a multi-sig or DAO in the future.
 
-Goverance is [the process of applying any design feature or control mechanism that maintains and steers a system](https://www.placeholder.vc/blog/2020/9/30/ten-theses-on-decentralized-network-governance). Here's a few governance mechanisms that are popular in blockchain land (although you might need L2/optimistic solutions to use some of them).
+Governance is [the process of applying any design feature or control mechanism that maintains and steers a system](https://www.placeholder.vc/blog/2020/9/30/ten-theses-on-decentralized-network-governance). Here's a few governance mechanisms that are popular in blockchain land (although you might need L2/optimistic solutions to use some of them).
 
 **Questions to ask:**
 
@@ -248,10 +243,15 @@ Goverance is [the process of applying any design feature or control mechanism th
 - If so, who has the right to make that change?
 - What is the process to make that change?
 - Is it possible to change the process to make changes (meta-governance)?
+- Is there any way for you to minimize governance while still giving users control over your token system? It's very important to make your governance process as simple as possible.
+- Do all parties involved in your token system (end users, service providers, token holders, etc..) have tokens so that they can participate in the fincancial upside and management of the token system? If not, why not? How can you enable more stakeholders to participate in a meaningful way?
 
 **Examples:**
 
-- TBD
+- [Gitcoin quadratic funding](https://qf.gitcoin.co/). Learn more about Gitcoin grants [here](https://gitcoin.co/blog/towards-computer-aided-governance-of-gitcoin-grants/).
+- [Snapshot](https://docs.snapshot.page/) time boxed voting. See them in action [here](https://snapshot.page/).
+- [1Hive conviction voting](https://github.com/1Hive/conviction-voting-app). Learn more about conviction voting in general [here](https://medium.com/giveth/conviction-voting-a-novel-continuous-decision-making-alternative-to-governance-aa746cfb9475).
+- [Compound delegated voting](https://medium.com/compound-finance/delegation-and-voting-with-eip-712-signatures-a636c9dfec5e)
 
 **Resources:**
 
@@ -558,11 +558,33 @@ You might also want to have:
 - onboarding support
 - community marketing/outreach
 
-### Monitoring and analysis
+### Monitoring
 
-Resources to monitor on-chain and community engagement goes here.
+Things to monitor:
 
-This will involve monitoring markets as well as fundamentals, both onchain (token price, distribution, hodl waves, volatility, etc...) and offchain (community engagement, etc..)
+- token usage (if your token is used to acquire goods or services)
+- token supply (if dynamic)
+- token price
+- token velocity
+- hodl waves
+- developer activity (git)
+- community chat activity
+- governance activity (if you have governance)
+- search activity (may or may not be available/reliable)
+- your idea here!
+
+> With all the above metrics we want the metrics, but also the volatility of the metrics and the 30, 60, and 90 day averages of them.
+
+Depending on the use case of your token the velocity/hodl ratio might be a feature or a bug. For example: if your token is supposed to be used to access services velocity is good and hodl is bad. If you token is supposed to be used for governance then hold would show long term engagement/interest whereas velocity might point to traders/investors acquiring tokens to support their short term interests.
+
+**Examples:**
+
+- `https://www.hodlwave.com/` - hodl waves example
+- `https://charts.woobull.com/bitcoin-hodl-waves/` - Bitcoin hodl waves
+- `https://ethgasstation.info/` - usage of ETH to pay for gas
+- `https://etherscan.io/charts` - lots of Ethereum stats
+
+**Resources:**
 
 - [Apiary Explorer](https://apiary.1hive.org/orgs)
 - [DAO Dashboard](https://mydaodashboard.com/)
@@ -570,7 +592,9 @@ This will involve monitoring markets as well as fundamentals, both onchain (toke
 - [Deep DAO - Insights for a Decentralized World](http://deepdao.world/#/app/dashboard)
 - [How to monitor your Aragon Organization using Tenderly](https://blog.tenderly.dev/how-to-monitor-your-aragon-organization-using-tenderly/)
 
-### Community engagement and governance
+### Management
+
+AKA community engagement and governance
 
 > Talk about how analysis informs governance and governance informs what we analyze.
 > Create a place for the community to discuss things and mechanisms for them to express their sentiments to affect change.
@@ -627,6 +651,8 @@ Explore ways to help your community go from consuming what you create to creatin
 - 1UP
 - CommonsStack praise bot
 - 1Hive nominations
+
+> Lots of ideas here: `https://newsletter.banklesshq.com/p/crypto-will-fix-the-music-industry`
 
 ---
 ---
