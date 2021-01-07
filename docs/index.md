@@ -85,7 +85,7 @@ Once you've identified a problem to solve, and people who have that problem, you
 
 Tokens = value = incentives. If your token has value people should be incentivized to do things to create/capture that value. If done correctly this can be positive-sum. It's very important that you understand this. Token networks are socio-economic systems. Incentives + humans = value creation. Your token system needs to reward people for doing things that create value for token holders. Then people will want to earn, buy, and hold/use your token. Supply and demand.
 
-This is great, but you can already do this with stocks, commodities, and credits for web2 platforms. What makes blockchain tokens more interesting is that the token contracts themselves create credible commitments. Trust is transferred from people to code. You know what the contract will do, if/how it can be changed, and the process to create those changes. This reduces the risk for people to use these contracts/protocols vs a more centralized service that might change the terms of their API at any time.
+This is great, but you can already do this with stocks, commodities, and credits for web2 platforms. What makes blockchain tokens more interesting is that the token contracts themselves create credible commitments. Trust is transferred from people to code. You know what the contract will do, if/how it can be changed, and the process to create those changes. This reduces the risk for people to use these [contracts/protocols vs more centralized services that might change the terms of their API at any time](https://cdixon.org/2018/02/18/why-decentralization-matters).
 
 This is two layers deep in the problem solving stack. First you need to figure out how to solve the core problem (whatever that is) for end users. Then you need to solve the problem of creating an incentive system that gets people to work on that problem. It's like building the car and the factory that builds the car. You need both.
 
@@ -118,6 +118,9 @@ In addition to exploring the technical specifications of tokens/mechanisms/syste
 - [Simon Sinek](https://simonsinek.com/) has a lot of great content explaining why you should [start with why](https://simonsinek.com/product/start-with-why/).
 
 ### Mechanism design
+
+> This section is too complex. Need to reduce it into a simple and intuitive workflow with actionable insights, questions, and resources.
+> Should start with design principles, defining constraints and properties we want to hold, then composing mechanisms to achieve said design principles and properties.
 
 So the question then becomes, how do you design a system? When you think through your token system it's important to consider what properties you want to hold. This will help you make (or not make) design decisions. For example, do you want the system to be truly permissionless or do you want a core team (or community multi-sig) to have admin permissions for a while?
 
@@ -651,6 +654,8 @@ Explore ways to help your community go from consuming what you create to creatin
 - 1UP
 - CommonsStack praise bot
 - 1Hive nominations
+- Token curated lists
+- Staking on things to boost them and earn future profits from them: `https://discourse.sourcecred.io/t/boosting-a-prediction-market-on-ideas/306`
 
 > Lots of ideas here: `https://newsletter.banklesshq.com/p/crypto-will-fix-the-music-industry`
 
@@ -674,3 +679,5 @@ Should add more stuff on:
 - community management/engagement
 
 There should be a quickstart guide so that if someone just wants to create a token or add a feature to do a thing they can do so easily.
+
+Do we want to add resources for progressive decentralization for projects to start centralized, then decentralize - or do we just want to focuse on community driven token projects that are decentralized from day 1.
