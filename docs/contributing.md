@@ -6,6 +6,8 @@ The Workbook aims to be a self serve choose your own adventure guide through the
 
 ## Syntax
 
+In the future we might aim to break each section of the workbook into a component so that it's easier to contribute to and update the docs.
+
 ```
 ## Name
 

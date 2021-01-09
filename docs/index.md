@@ -1,46 +1,30 @@
 # The Workbook
 
+> This document will take you through the token design, development, and deployment process. In practice you'll go back and forth between steps as your project progresses. Some parts may or may not be relevant to you. Choose your own adventure.
+
+---
+
 - [The Workbook](#the-workbook)
   - [Design](#design)
     - [Brainstorming](#brainstorming)
     - [Mechanism design](#mechanism-design)
-      - [Roles, methods, and states](#roles-methods-and-states)
-      - [Token System Templates](#token-system-templates)
-      - [Governance mechanisms](#governance-mechanisms)
-      - [Additional token mechanisms](#additional-token-mechanisms)
-      - [Tokens](#tokens)
-        - [Fungible](#fungible)
-        - [Non-Fungible](#non-fungible)
-        - [Other](#other)
-    - [1 Pager](#1-pager)
+    - [Tokens](#tokens)
+    - [Templates](#templates)
     - [Diagramming](#diagramming)
-      - [Causal Loop](#causal-loop)
-      - [Stock and Flow](#stock-and-flow)
-      - [cadCAD Differential Specification](#cadcad-differential-specification)
-      - [cadCAD Diagram](#cadcad-diagram)
-      - [Technical contract specification](#technical-contract-specification)
+    - [1 Pager](#1-pager)
     - [Modeling](#modeling)
-      - [cadCAD](#cadcad)
-      - [Other](#other-1)
   - [Development](#development)
-    - [Platform or DIY?](#platform-or-diy)
-      - [Platform](#platform)
-      - [Templates](#templates)
-      - [DIY](#diy)
-      - [Scaling](#scaling)
+    - [Building](#building)
     - [Auditing](#auditing)
       - [Economic Review](#economic-review)
       - [Technical Review](#technical-review)
   - [Deployment](#deployment)
-    - [Testing](#testing)
-    - [Production](#production)
-    - [Monitoring and analysis](#monitoring-and-analysis)
-    - [Community engagement and governance](#community-engagement-and-governance)
+    - [Scaling](#scaling)
+    - [Beta Testing](#beta-testing)
+    - [Shipping](#shipping)
+    - [Monitoring](#monitoring)
+    - [Management](#management)
     - [Upgrades](#upgrades)
-
----
-
-> This document will take you through the token design, development, and deployment process. In practice you'll go back and forth between steps as your project progresses. Some parts may or may not be relevant to you. Choose your own adventure.
 
 ---
 
@@ -48,14 +32,14 @@
 
 **TL;DR:**
 
-- find a problem to solve
-- define your design goals
-- define roles, methods, states
-- define mechanisms
-- compose said mechanisms into a token system
-- write a blog post describing it
-- draw a picture describing it
-- create a model of it
+- Find a problem to solve.
+- Define your design goals.
+- Define roles, methods, states.
+- Define mechanisms.
+- Define the composition of mechanisms into a token system.
+- Write a blog post describing it.
+- Draw a picture describing it.
+- Create a model simulating it's behavior.
 
 ### Brainstorming
 
@@ -77,6 +61,10 @@ Once you've identified a problem to solve, and people who have that problem, you
 
 Tokens = value = incentives. If your token has value people should be incentivized to do things to create/capture that value. If done correctly this can be positive-sum. It's very important that you understand this. Token networks are socio-economic systems. Incentives + humans = value creation. Your token system needs to reward people for doing things that create value for token holders. Then people will want to earn, buy, and hold/use your token. Supply and demand.
 
+This is great, but you can already do this with stocks, commodities, and credits for web2 platforms. What makes blockchain tokens more interesting is that the token contracts themselves create credible commitments. Trust is tat the solution "just works."
+
+Once you've identified a problem to solve, and people who have that problem, you have to then go solve it for them. This is hard. While cransferred from people to code. You know what the contract will do, if/how it can be changed, and the process to create those changes. This reduces the risk for people to use these [contracts/protocols vs more centralized services that might change the terms of their API at any time](https://cdixon.org/2018/02/18/why-decentralization-matters). This way parties that don't trust each other can still coordinate and transact via the blockchain, and hopefully your token system helps them do that for your use case.
+
 This is two layers deep in the problem solving stack. First you need to figure out how to solve the core problem (whatever that is) for end users. Then you need to solve the problem of creating an incentive system that gets people to work on that problem. It's like building the car and the factory that builds the car. You need both.
 
 Startup founders have the same problem. They need to solve a problem for end users, while also building a company to solve that problem at scale. The main difference is that there's library of knowledge freely available on how to create, fund, and grow startups. Best practices for token projects are TBD. Token projects are mix of entrepreneurship, politics, economics, software development, systems design, and more. Depending on your goals and system architecture your token project will probably sit on the spectrum between an API, corporation, and government.
@@ -88,11 +76,20 @@ In addition to exploring the technical specifications of tokens/mechanisms/syste
 - What problem are you solving?
 - Who has this problem? How often?
 - How much do they need this problem to be solved?
-- How does your token incentivize people to solve this problem?
-- If you substitute a stable coin or ETH with your token, will things still work or do you need a unique token?
+- How will your token contribute to solving this problem? Is your token incentivizing people to do work to solve the problem directly, or is it a component of a larger system that's working to solve that problem?
+- Tokens are scarce digital assets that people can own. Is there an opportunity for your token to turn what was preciously an expenditure into an investment?
+- What is the value prop of your token (access, unique items, discounts, governance, etc..)? Why would anyone want it?
+- When it comes to token systems, simple is better. Is there anything you can remove while still maintaining the core value prop (and thus incentivizes) of your token system?
+- If you substitute a stable coin or ETH with your token will things still work? If so, then you probably don't need to create a new token.
 - How will people acquire your tokens (buy, earn, gift, etc..)?
 - How will the token system work with 1 user? What about 10 or 100 (bootstrapping)?
-- How will the token system get better as more people use it (network effects)?
+- How will the token system get better as more people use it (network effects)? How will each additional user add more value than those before as the system grows?
+- Are incentives aligned for all participants of the system? Do they all participate in value creation and capture via the token?
+- What is the problem you're solving?
+- What is the purpose of your token (access, discounts, unique items/experiences, governance, etc..)?
+- Is there any part of your token system (including the token itself) that could be removed while still achieving your goals?
+- How will people acquire tokens (buy, earn, other)?
+- How will the value of those tokens increase as the token system grows (network effects)?
 
 **Examples:**
 
@@ -102,9 +99,13 @@ In addition to exploring the technical specifications of tokens/mechanisms/syste
 
 - [YC's Startup School](https://www.startupschool.org/) is a great resource to help you make something people want. The [How to find startup ideas](https://www.youtube.com/watch?v=DOtCl5PU8F0) video can help build intuition for what types of problems to solve, and more likely, prevent you from working on the wrong thing. While YC is focused on startups, a lot of the same concepts around solving problems and creating value for users apply to both startups and token projects. Highly recommend checking out [their videos](https://www.youtube.com/channel/UCcefcZRL2oaA_uBNeo5UOWg).
 - Not to be outdone, [a16z](https://a16z.com/crypto/) also has a [crypto startup school](https://a16z.com/crypto-startup-school/). It has lots of content explaining high level concepts that are essential for the space. You can also sign up for their newsletter to get ongoing insights delivered to your inbox.
+- [The idea maze](https://a16z.com/tag/idea-maze/) can help you navigate the wild world of emerging technologies.
 - [Simon Sinek](https://simonsinek.com/) has a lot of great content explaining why you should [start with why](https://simonsinek.com/product/start-with-why/).
 
 ### Mechanism design
+
+> This section is too complex. Need to reduce it into a simple and intuitive workflow with actionable insights, questions, and resources.
+> Should start with design principles, defining constraints and properties we want to hold, then composing mechanisms to achieve said design principles and properties.
 
 So the question then becomes, how do you design a system? When you think through your token system it's important to consider what properties you want to hold. This will help you make (or not make) design decisions. For example, do you want the system to be truly permissionless or do you want a core team (or community multi-sig) to have admin permissions for a while?
 
@@ -114,30 +115,15 @@ Also, there are many token system templates that you can use to get started. You
 
 The architecture of your token system will vary based on your use case. The important thing here is to know what you want to do, then use the tools required to get the job done. Don't start with the tools! Otherwise you'll become like a man with a hammer. Choose the tools based on your goals and design constraints.
 
-**Questions to ask:**
-
-- TBD
-
-**Examples:**
-
-- TBD
-
-**Resources:**
-
-- The [Wikipedia mechanism design page](https://en.wikipedia.org/wiki/Mechanism_design). Is a great place to start. If you read one thing on mechanism design, make it this. There's also a whole [category on Wikipedia dedicated to the topic](https://en.wikipedia.org/wiki/Category:Mechanism_design).
-
-#### Roles, methods, and states
-
-Roles, methods, and states is just a fancy way of saying who can do what and under what circumstances.
+Before jumping into any concrete implimentation we want to define the roles, methods, and states of our system. This is just a fancy way of saying who can do what and under what circumstances.
 
 Rights and access controls can be broken down into roles, methods, and states:
+
 - **Roles:** bundles of rights determined by "the system state"
 - **Methods:** actions that can be taken, mutates "the system state" but access or effect may be dependent on roles
 - **State:** all of the information (not limited to smart contract state)
 
-**Why do roles, methods, and states matter?**
-
-The moment you create a modifiable/upgradeable token system you have a governance problem. Another way of framing this is as a rights/roles access problem. To more easily reason about this you need a process to describe and discuss the rules of the game. Then you can figuring out what the rules actually are, who can do what when, and how people participating in the system can change the rules of the system.
+Why do roles, methods, and states matter? The moment you create a modifiable/upgradeable token system you have a governance problem. Another way of framing this is as a rights/roles access problem. To more easily reason about this you need a process to describe and discuss the rules of the game. Then you can figuring out what the rules actually are, who can do what when, and how people participating in the system can change the rules of the system.
 
 For governance to work people need to understand and respect the rules of the system, even if they don't agree with every decision. This is very important. We don't need consensus on the decisions themselves. We need consensus on the way we make decisions.
 
@@ -147,14 +133,28 @@ For example: if you respect the rules of a game you respect the scores that aris
 
 Rights access paradigms are a way to explicitly model and reason through these things. We need to map out rights and access controls to show who can do what and how people can move through the system. This is important because meritocracy and democracy are dependent on rights access controls. If we want to make it so that the rules apply to everyone equally the rules need to change slowly in a participatory way. We have to collectively buy into and accept the trade offs. Everyone can engage in the process and have agency in that process. You should be comfortable being dropped into a random role in society because there's a path towards the role you want.
 
-Once we understand who's going to do what and under what circumstances, then we'll need to determine the mechanisms that will allow them to do those things.
+Talk about how you can include governance now, or leave it as an upgrade feature by enabling the `onlyOwner` (or whatever) to be changed so that you can transfer it to a multi-sig or DAO in the future.
+
+Governance is [the process of applying any design feature or control mechanism that maintains and steers a system](https://www.placeholder.vc/blog/2020/9/30/ten-theses-on-decentralized-network-governance). Here's a few governance mechanisms that are popular in blockchain land (although you might need L2/optimistic solutions to use some of them).
 
 **Questions to ask:**
 
+- What is your token system supposed to incentivize people to do?
+- Who are the participants who will use the token in some way?
+- How can you align incentives for all parties involved?
+- Is your token system simple and intuitive? If not, why not and is there anything you can do to make it simpler while still aligning incentives for all parties involved?
 - What are the requirements for participation?
 - What the current rules are and how to change the rules?
 - Would you be comfortable being dropped into a random role in the system?
 - What does it mean for the world to be fair?
+- Are there aspects of your system that will need to adapt and change over time?
+- If so, who has the right to make that change?
+- What is the process to make that change?
+- Is it possible to change the process to make changes (meta-governance)?
+- Is there any way for you to minimize governance while still giving users control over your token system? It's very important to make your governance process as simple as possible.
+- Do all parties involved in your token system (end users, service providers, token holders, etc..) have tokens so that they can participate in the fincancial upside and management of the token system? If not, why not? How can you enable more stakeholders to participate in a meaningful way?
+- Are there features you want that aren't available via any of the token system templates available?
+- How will the addition of a feature/mechanism affect your token economy? Will it increase velocity or create a sink that locks up supply (and liquidity)?
 
 **Examples:**
 
@@ -162,25 +162,79 @@ Once we understand who's going to do what and under what circumstances, then we'
 
 **Resources:**
 
-- TBD
+- The [Wikipedia mechanism design page](https://en.wikipedia.org/wiki/Mechanism_design). Is a great place to start. If you read one thing on mechanism design, make it this. There's also a whole [category on Wikipedia dedicated to the topic](https://en.wikipedia.org/wiki/Category:Mechanism_design).
+- The Foundations of Cryptoeconomic Systems [lecture](https://www.youtube.com/watch?v=HldQF_MJN_Y) and [paper](https://epub.wu.ac.at/7309/) can help you build intuition around token system design. Beyond that, all the [resources on the BlockScience website](https://block.science/resources) are good.
 
-#### Token System Templates
+### Tokens
 
-To start, we recommend checking out the current templates and token systems live in the wild. This can give you an idea of what's available, what's working, and where you might have an opportunity to create something new and exciting.
+The most common form of fungible Ethereum tokens is the ERC-20 token standard. ERC-20 allows for the implementation of a standard API for tokens within smart contracts. This standard provides basic functionality to transfer tokens, as well as allow tokens to be approved so they can be spent by another on-chain third party. A standard interface allows any tokens on Ethereum to be re-used by other applications: from wallets to decentralized exchanges.
+
+An ERC20 token contract keeps track of fungible tokens: any one token is exactly equal to any other token; no tokens have special rights or behavior associated with them. This makes ERC20 tokens useful for things like a medium of exchange currency, voting rights, staking, and more.
+
+Often times people will use the ERC-20 template as a base, but then add additional features and functionality on top. This ensures that the token will have the standard ERC-20 interfaces required to work with wallets, protocols, and exchanges while also incorporating additional features needed for the tokens use case.
+
+A Non-Fungible Tokens (NFT) is used to identify something or someone in a unique way. This type of Token is perfect to be used on platforms that offer collectible items, access keys, lottery tickets, numbered seats for concerts and sports matches, etc. This special type of Token has amazing possibilities so it deserves a proper Standard, the ERC-721 came to solve that!
+
+The ERC-721 introduces a standard for NFT, in other words, this type of Token is unique and can have different value than another Token from the same Smart Contract, maybe due to its age, rarity or even something else.
+
+All NFTs have a uint256 variable called tokenId, so for any ERC-721 Contract, the pair contract address, uint256 tokenId must be globally unique. Said that a dApp can have a "converter" that uses the tokenId as input and outputs an image of something cool like zombies, weapons, skills, or amazing characters.
+
+Beyond fungible (ERC-20) and non-fungible (ERC-721) tokens, there are many other types of tokens. This includes, but is not limited to:
+
+- 1450 A compatible security token for issuing and trading SEC-compliant securities
+- 1155 Multi Token Standard (lots of games use this for in-game items, weapons, skins, etc..)
+- 1167 Minimal Proxy Contract (some dApps and factories are using this)
+- See more here: `https://eips.ethereum.org/erc`
 
 **Questions to ask:**
 
-- Is there an example of a project similar to what you want to build or working on a similar problem? If so, what's working for them and what's not? How can you do better?
+- Are you creating a single or multi-token system (KISS!)?
+- What type of token is the best fit for your use case fungible (ERC-20), unique (ERC-721), or exotic (ERC-XXX).
+- Are tokens transferable and/or is it possible to unlock transferability via a governance decision (admin, community multi-sig, token holder vote, etc..)?
+- What is the supply schedule: fixed, inflationary, variable (ex: bonding curve)?
 
 **Resources:**
 
-To be organized:
+- [Ethereum.org Developer Docs: ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) - A high level overview of fungible tokens and how ERC-20 works.
+- [Ethereum EIP repo Issue 20](https://github.com/ethereum/EIPs/issues/20) - The original discussion and specification for ERC-20.
+- [Ethereum Improvement Proposal 20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) - The final technical specification for ERC-20.
+- [Ethereum.org Developer Docs: ERC-721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) - A high level overview of non-fungible tokens and how ERC-721 works. Also links to other non-fungible token standards at the bottom of the page.
+- [Ethereum EIP repo Issue 721: non fungible token standard](https://github.com/ethereum/EIPs/issues/721) - The original discussion and specification for ERC-721.
+- [Ethereum Improvement Proposal 721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) - The final specification for ERC-721.
 
-- Loot tokens (play to earn): `https://medium.com/@adamscochran/what-are-loot-tokens-understanding-an-emerging-asset-class-380b0cc38749`
+**Examples:**
 
-Stuff:
+- [OpenZeppelin Safe ERC-20](https://docs.openzeppelin.com/contracts/3.x/erc20-supply) - A guide on how to use the [OpenZeppelin ERC-20 implementation](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/SafeERC20.sol).
+- [TORN token](https://github.com/tornadocash/torn-token/blob/master/contracts/TORN.sol) - The [TornadoCash](https://tornado.cash/) token uses the OpenZeppelin Safe ERC-20 as a base, then extends additional functionality on top.
+- [ERC-721 Implementations](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md#references) - See the "NFT Implementations and Other Projects" section.
+
+### Templates
+
+Once we understand who's going to do what and under what circumstances, then we'll need to determine the mechanisms that will allow them to do those things.
+
+To start, we recommend checking out the current templates and token systems live in the wild. This can give you an idea of what's available, what's working, and where you might have an opportunity to create something new and exciting.
+
+These mechanisms can be composed into systems themselves, or added onto a template.
+
+Is there an example of a project similar to what you want to build or working on a similar problem? If so, what's working for them and what's not? How can you do better?
+
+**Questions to ask:**
+
+- Is there currently available code (ideally audited and battle tested) that you can use to create all or part of your token system?
+- Can you use templates as a base and then extend them with the additional functionality that you need?
+
+**Examples:**
+
+- [Gitcoin quadratic funding](https://qf.gitcoin.co/). Learn more about Gitcoin grants [here](https://gitcoin.co/blog/towards-computer-aided-governance-of-gitcoin-grants/).
+- [Snapshot](https://docs.snapshot.page/) time boxed voting. See them in action [here](https://snapshot.page/).
+- [1Hive conviction voting](https://github.com/1Hive/conviction-voting-app). Learn more about conviction voting in general [here](https://medium.com/giveth/conviction-voting-a-novel-continuous-decision-making-alternative-to-governance-aa746cfb9475).
+- [Compound delegated voting](https://medium.com/compound-finance/delegation-and-voting-with-eip-712-signatures-a636c9dfec5e)
+- Find a few token systems that started as templates and extended their functionality by composing in additional mechanisms.
+
+**Resources:**
 
 - ***NEED TO ADD MORE DEFI AND TOKEN TEMPLATE STUFF HERE***
+- Loot tokens (play to earn): `https://medium.com/@adamscochran/what-are-loot-tokens-understanding-an-emerging-asset-class-380b0cc38749`
 - [Gnosis multi-sig](https://blog.gnosis.pm/gnosis-safe-multisig-desktop-app-and-contract-interactions-6f8b92c3275b) - It's a shared Ethereum account. Parameters can be set so that actions can only be taken if signatures from many accounts are provided. Those actions can including sending tokens as well as contract interactions.
 - [Snapshot](https://github.com/balancer-labs/snapshot) - Verify user's token balances, then let them sign messages to create off-chain signalling votes. Perform votes off-chain, then enact on-chain via a trusted community multi-sig. [Create your Snapshot page here](https://docs.snapshot.page/guides/create-a-space). Check out current Snapshot pages [here](https://snapshot.page/#/).
 - [ERC3K](https://eips.ethereum.org/EIPS/eip-3000) - An open template for optimistic organizations.
@@ -204,9 +258,6 @@ Stuff:
 - [Liquidity Delegated Governance](https://medium.com/@andre_54855/liquidity-delegated-governance-89184d40643a) - If you are looking for a boilerplate Liquidity Provision + Delegation + Governance + Timelock solution, all you need to do is create your token, provide liquidity to uniswap/balancer, and then call the deploy functions on the liquidity and governance factories. No multisig required and you have a fully configurable decentralized solution.
 - [Buy back and make](https://www.placeholder.vc/blog/2020/9/17/stop-burning-tokens-buyback-and-make-instead) - Description goes here.
 - [The da0](https://github.com/the-dao/whitepaper) - Description goes here.
-
-Moloch:
-
 - [Moloch V1 source code](https://github.com/MolochVentures/moloch/tree/master/v1_contracts) - The original Moloch. It's simple and effective. Start here.
 - [Moloch Subgraph highlight](https://medium.com/graphprotocol/moloch-subgraph-highlight-faf9da2f7e73) - An overview of the Moloch subgraph from late 2019.
 - [Moloch V2 source code](https://github.com/MolochVentures/moloch) - The V2 MolochDAO code and docs. Very informative. If you have to pick one, read this instead of all the other blog posts.
@@ -225,26 +276,6 @@ Moloch:
 - [ScoutDAO](https://discourse.thelao.io/t/scoutdao/48) - Yet another minion use case, this time related to creating a shared account multiple Molochs can jointly manage.
 - [Qaudratic Moloch](https://github.com/DemocracyEarth/DemocracyDAO) - A MolochDAO with quadratic voting built in.
 - [Moloch L2 voting via merle tries](https://github.com/openlawteam/moloch/issues/2) - An exploration of off-chain voting with on-chain resolution in Moloch DAOs.
-
-#### Governance mechanisms
-
-> Talk about how you can include governance now, or leave it as an upgrade feature by enabling the `onlyOwner` (or whatever) to be changed so that you can transfer it to a multi-sig or DAO in the future.
-
-Goverance is [the process of applying any design feature or control mechanism that maintains and steers a system](https://www.placeholder.vc/blog/2020/9/30/ten-theses-on-decentralized-network-governance). Here's a few governance mechanisms that are popular in blockchain land (although you might need L2/optimistic solutions to use some of them).
-
-**Questions to ask:**
-
-- Are there aspects of your system that will need to adapt and change over time?
-- If so, who has the right to make that change?
-- What is the process to make that change?
-- Is it possible to change the process to make changes (meta-governance)?
-
-**Examples:**
-
-- TBD
-
-**Resources:**
-
 - [Ranked choice](https://en.wikipedia.org/wiki/Ranked_voting) - Voters use a ranked (or preferential) ballot to rank choices in a sequence on the ordinal scale: 1st, 2nd, 3rd, etc.
 - [Budget box](https://blog.colony.io/introducing-budgetbox/) - Pairwise comparisons for budgetting.
 - [Conviction voting](https://medium.com/giveth/conviction-voting-a-novel-continuous-decision-making-alternative-to-governance-aa746cfb9475) - Proposals are passed based on aggregated continuous preferences of community members.
@@ -261,23 +292,6 @@ Goverance is [the process of applying any design feature or control mechanism th
 - global voting mechanism (token params)
 - local voting mechanism (ecosystem mechanisms)
 - [MetaGov](https://metagov.org/) is a community project working to understand and improve community governance across the interwebs.
-
-#### Additional token mechanisms
-
-These mechanisms can be composed into systems themselves, or added onto a template.
-
-**Questions to ask:**
-
-- Are there features you want that aren't available via any of the token system templates available?
-- How will the addition of a feature/mechanism affect your token economy? Will it increase velocity or create a sink that locks up supply (and liquidity)?
-
-**Examples:**
-
-- TBD
-- Find a few token systems that started as templates and extended their functionality by composing in additional mechanisms.
-
-**Resources:**
-
 - [Open Raise](https://github.com/dOrgTech/OpenRaise) - Open Raise is a modular library of smart contracts and UI components that bring these ideas to life and make it easy for organizations to run accountable fundraising campaigns.
 - [TrojanDAO V2](https://docs.google.com/document/d/1mnUcjCKE-j4B9qraH2RkC8sEnUNw6Y2t4yF33XMRsU8/edit) (WIP) - A fundraising mechanism that has a minimum presale goal to start, an open bonding curve for the fundraise, and then flattens the curve so that participants have a propotional stake in the upcoming venture.
 - [Coin Machine](https://blog.colony.io/introducing-coin-machine/) - A simple way to continually sell tokens (on Colony).
@@ -289,60 +303,32 @@ These mechanisms can be composed into systems themselves, or added onto a templa
 - [Collab Land](https://collab.land/) - DAO tools to help communities improve their collaboration and coordination.
 - [DAO Ops](https://medium.com/abridged-io/summoning-the-spirit-of-dao-ops-5928ee26b9d5) - Chat based interactions with DAOs.
 
-#### Tokens
+### Diagramming
 
-##### Fungible
-
-The most common form of fungible Ethereum tokens is the ERC-20 token standard. ERC-20 allows for the implementation of a standard API for tokens within smart contracts. This standard provides basic functionality to transfer tokens, as well as allow tokens to be approved so they can be spent by another on-chain third party. A standard interface allows any tokens on Ethereum to be re-used by other applications: from wallets to decentralized exchanges.
-
-An ERC20 token contract keeps track of fungible tokens: any one token is exactly equal to any other token; no tokens have special rights or behavior associated with them. This makes ERC20 tokens useful for things like a medium of exchange currency, voting rights, staking, and more.
-
-Often times people will use the ERC-20 template as a base, but then add additional features and functionality on top. This ensures that the token will have the standard ERC-20 interfaces required to work with wallets, protocols, and exchanges while also incorporating additional features needed for the tokens use case.
-
-**Resources:**
-
-- [Ethereum.org Developer Docs: ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) - A high level overview of fungible tokens and how ERC-20 works.
-- [Ethereum EIP repo Issue 20](https://github.com/ethereum/EIPs/issues/20) - The original discussion and specification for ERC-20.
-- [Ethereum Improvement Proposal 20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) - The final technical specification for ERC-20.
-
-Examples:
-
-- [OpenZeppelin Safe ERC-20](https://docs.openzeppelin.com/contracts/3.x/erc20-supply) - A guide on how to use the [OpenZeppelin ERC-20 implementation](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/SafeERC20.sol).
-- [TORN token](https://github.com/tornadocash/torn-token/blob/master/contracts/TORN.sol) - The [TornadoCash](https://tornado.cash/) token uses the OpenZeppelin Safe ERC-20 as a base, then extends additional functionality on top.
-
-##### Non-Fungible
-
-A Non-Fungible Tokens (NFT) is used to identify something or someone in a unique way. This type of Token is perfect to be used on platforms that offer collectible items, access keys, lottery tickets, numbered seats for concerts and sports matches, etc. This special type of Token has amazing possibilities so it deserves a proper Standard, the ERC-721 came to solve that!
-
-The ERC-721 introduces a standard for NFT, in other words, this type of Token is unique and can have different value than another Token from the same Smart Contract, maybe due to its age, rarity or even something else.
-
-All NFTs have a uint256 variable called tokenId, so for any ERC-721 Contract, the pair contract address, uint256 tokenId must be globally unique. Said that a dApp can have a "converter" that uses the tokenId as input and outputs an image of something cool like zombies, weapons, skills, or amazing characters.
-
-**Resources:**
-
-- [Ethereum.org Developer Docs: ERC-721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) - A high level overview of non-fungible tokens and how ERC-721 works. Also links to other non-fungible token standards at the bottom of the page.
-- [Ethereum EIP repo Issue 721: non fungible token standard](https://github.com/ethereum/EIPs/issues/721) - The original discussion and specification for ERC-721.
-- [Ethereum Improvement Proposal 721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) - The final specification for ERC-721.
-
-Examples:
-
-- [ERC-721 Impleimentations](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md#references) - See the "NFT Implementations and Other Projects" section.
-
-##### Other
-
-Beyond fungible (ERC-20) and non-fungible (ERC-721) tokens, there are many other types of tokens. This includes, but is not limited to:
-
-- 1450 A compatible security token for issuing and trading SEC-compliant securities
-- 1155 Multi Token Standard (lots of games use this for in-game items, weapons, skins, etc..)
-- 1167 Minimal Proxy Contract (some dApps and factories are using this)
-- See more here: `https://eips.ethereum.org/erc`
+Diagramming can help you refine your understanding of the system and it's components. It's also useful when you want to communicate your vision to others. There are many types of diagrams and charts, but what's best for your use case and audience may vary.
 
 **Questions to ask:**
 
-- Are you creating a single or multi-token system (KISS!)?
-- What type of token is the best fit for your use case fungible (ERC-20), unique (ERC-721), or exotic (ERC-XXX).
-- Are tokens transferable and/or is it possible to unlock transferability via a governance decision (admin, community multi-sig, token holder vote, etc..)?
-- What is the supply schedule: fixed, inflationary, variable (ex: bonding curve)?
+- What are the key components of your system that you want to understand and communicate?
+- What are the relationships between those things and/or what things affect them?
+- Is the organization of your diagram intuitive (color coding, labels, use of space, etc..)?
+
+**Examples:**
+
+- Causal loop diagrams can help you see the relationships between components of your system. These types of diagrams are generally very high level. As such they're great for blog posts and outward facing communications. CAUSAL LOOP TEMPLATE GOES HERE.
+- Stock and flow diagrams also show the relationship between things, but often in more detail than a causal loop.
+- [The cadCAD differential specification template](`https://community.cadcad.org/t/differential-specification-syntax-key/31`) is a good exercise to help you think through all the variables at play in your system and how they relate to each other. There's a [Figma template](https://www.figma.com/file/yBgOopbmcdkYxo2jDNmua1/cadCAD-Diff-Spec-Syntax?node-id=0%3A1) or you can create your own in your favorite diagramming software.
+- cadCAD diagrams can be auto-generated for any cadCAD model. It's often as simple as adding a single line of code after you run the model. The [cadCAD Diagram repo](https://github.com/cadCAD-org/cadCAD_diagram) has more information on how to set that up.
+- Solidity contract diagrams can be autogenerated via [Surya](https://github.com/ConsenSys/surya) and/or the [VSCode Soldity Visual Developer extension](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor). You can also manually create diagrams that show each function, it's inputs, and outputs. This can help you (and your community) understand the boundaries of your contract and the permissions and relationships between functions.
+
+**Resources:**
+
+- Figma
+- Lucid chart
+- Whimsical
+- cadCAD
+- Surya
+- Solidity Visual Developer (VSCode)
 
 ### 1 Pager
 
@@ -354,91 +340,80 @@ The paper should describe the various components that are composed to achieve yo
 
 It should also talk about why anyone could/should/would care about your token. You should explain why your token is useful (aka provide value) and how that will drive demand (resulting in a high token price). Supply and demand 101, with tokens. It ain't much, but it's honest work.
 
-### Diagramming
+**Questions to ask:**
 
-Diagramming can help you refine your understanding of the system and it's components. It's also useful when you want to communicate your vision to others. There are many types of diagrams and charts, but what's best for your use case and audience may vary.
+- TBD
 
-#### Causal Loop
+**Examples:**
 
-Template for causal loop diagrams goes here.
+- Good white papers and blog posts go here.
 
-#### Stock and Flow
+**Resources:**
 
-Template for Stock/Flow diagram goes here.
-
-#### cadCAD Differential Specification
-
-[The cadCAD differential specification template](`https://community.cadcad.org/t/differential-specification-syntax-key/31`) is a good exercise to help you think through all the variables at play in your system and how they relate to each other. There's a [Figma template](https://www.figma.com/file/yBgOopbmcdkYxo2jDNmua1/cadCAD-Diff-Spec-Syntax?node-id=0%3A1) or you can create your own in your favorite diagramming software.
-
-#### cadCAD Diagram
-
-cadCAD diagrams can be autogenerated for any cadCAD model. It's often as simple as adding a single line of code after you run the model. The [cadCAD Diagram repo](https://github.com/cadCAD-org/cadCAD_diagram) has more information on how to set that up.
-
-#### Technical contract specification
-
-Solidity contract diagrams can be autogenerated via [Surya](https://github.com/ConsenSys/surya) and/or the [VSCode Soldity Visual Developer extension](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor). You can also manually create diagrams that show each function, it's inputs, and outputs. This can help you (and your community) understand the boundaries of your contract and the permissions and relationships between functions.
+- HackMD
+- VSCodium
+- Google docs
 
 ### Modeling
 
-> Stuff about developing intuition on modeling goes here (go through notes and turn them into something practical).
+A good model provides insights into how your token system would function under various conditions. This can help you check to see if your design goals are likely to hold as usage, price, and other important parameters change. Before you start modeling it's important to know what you want to have happen as well as what are the unknowns you're trying to understand. Ideally these unknowns can be stated as concrete questions. This way you have a clear goal, but also others who contribute to and/or review your model have something concrete to orient around.
 
-#### cadCAD
+**Questions to ask:**
 
-[cadCAD](https://cadcad.org/) is a python based library for modeling complex systems. There's free and open source [demos and tutorials](https://github.com/cadCAD-org/demos). There's also some [templates](https://github.com/cadCAD-org/snippets) to help you get started with your own models. If you have questions there's a [community forum](http://community.cadcad.org/) and [Discord](https://discord.gg/cewBa9zsxS).
+- What are the design goals of your system?
+- What are the unknown states or variables of your system?
+- What questions are you trying to build intuition around via your model?
 
-#### Other
+**Examples:**
 
+- The [cadCAD GitHub org](https://github.com/cadCAD-org) has many [demos](https://github.com/cadCAD-org/demos).
+- The [Gitcoin cadCAD model](https://github.com/gitcoinco/gitcoin_cadcad_model) is open source.
+- Ocean Protocol created a python model called [TokenSpice](https://github.com/oceanprotocol/tokenspice2).
+- 1Hive created a [cadCAD model for conviction voting](https://github.com/1Hive/conviction-voting-cadcad) which they use to inform their governance parameters as well as the token supply schedule.
+
+**Resources:**
+
+- [Python](https://www.python.org/) - You can create your modeling framework in python like Ocean Protocol did with [TokenSpice](https://github.com/oceanprotocol/tokenspice2).
+- [cadCAD](https://cadcad.org/) is a python based library for modeling complex systems. There's free and open source [demos and tutorials](https://github.com/cadCAD-org/demos). There's also some [templates](https://github.com/cadCAD-org/snippets) to help you get started with your own models. If you have questions there's a [community forum](http://community.cadcad.org/) and [Discord](https://discord.gg/cewBa9zsxS).
 - [Machinations](https://machinations.io/) - A platform and graphical interface for designing and simulating games.
-- [DIY Python](https://www.python.org/) - Create your modeling framework in python like Ocean Protocol did with [TokenSpice](https://github.com/oceanprotocol/tokenspice2).
 
 ---
 
 ## Development
 
-Once you know what you're doing and how all the pieces come together you can create a prototype.
+**TL;DR:**
 
-### Platform or DIY?
+- Determine if any available platforms or contracts would meet your needs (or get you close). Then figure out how to build anything that's missing.
+- Review your code and token system. If you're using or building off of previously audited/tested contracts the review process is a lot easier.
 
-> For now we're starting with Ethereum. Can't boil the ocean. That being said, the token design process is rather general and can be applied to any blockchain project.
+### Building
 
-Then once you know what you want, your resources (time/money) and technical ability will determine the tools that are the best fit:
+Once you know what you're doing and how all the pieces come together you can create a prototype. This might look like using a platform (fast/cheap), open source contracts (medium difficulty and cost), or roll your own token system (expensive and time consuming). Which option is best for you will likely be determined by your resources (time and money) and technical ability/interest. If you're creating something really unique rolling your own contracts is the way to go, but otherwise there's a good chance that one of the currently available contracts/platforms can get you 80% of the way there for 20% of the effort. From there you can customize your token system to become whatever you want.
+
+Within the wild world of Ethereum there are many languages to write contracts. [Solidity](https://docs.soliditylang.org/) is the most popular with many tutorials, support, and tooling. [Vyper](https://vyper.readthedocs.io/) and [Fe](https://fe.ethereum.org/) are also good, but are newer and less supported. If you're not familiar with these languages already, here's a few resources to get started.
+
+If you choose to build your own contracts remember to have a full test suite with 100% test coverage (or close to it) so that your community and/or a profession review team isn't spending time on easily avoidable errors.
+
+**Questions to ask:**
+
+- Do you want to be able to pause the contract if/when things are going wrong ('circuit breaker'), and if so, who has that power (project team, community multi-sig, token holder vote)?
+- Do you want to put constraints on the amount of money that can move through the system in a single transaction (rate limiting, maximum usage)?
+- Do you want to create an [upgrade path for bugfixes and improvements](https://consensys.github.io/smart-contract-best-practices/software_engineering/#upgrading-broken-contracts), or migrate to new contracts?
+
+**Examples:**
+
+- Extremely well developed, tested, and documented projects go here.
+
+**Resources:**
 
 - If you want something that works out of the box a social token platform such as CollabLand, Roll, or StakeOnMe might be a good choice. While you'll be able create a token in minutes these platforms may charge fees, have proprietary components, and/or limited customization. As such you'll likely be tied to the platform so choose wisely.
 - If you want to deploy your own independent token system, but still use a template there's a few other options such as Aragon, Moloch, Liquidity Delegated governance, bonding curves, etc..
 - If you really want to build something unique then rolling your own Solidity contracts is the way to go. Even still, there's some basic building blocks you might want to consider such as OpenZeppelin and (more examples go here).
-- Do you want to be able to pause the contract if/when things are going wrong ('circuit breaker'), and if so, who has that power (project team, community multi-sig, token holder vote)?
-- Do you want to put constraints on the amount of money that can move through the system in a single transaction (rate limiting, maximum usage)?
-- Do you want to create an [upgrade path for bugfixes and improvements](https://consensys.github.io/smart-contract-best-practices/software_engineering/#upgrading-broken-contracts), or migrate to new contracts?
-- Is the security of Ethereum mainnet (and it's associated cost) a feature or a bug for your use case? Would you benefit from a faster/cheaper settlement layer, and if so, is a sidechain, L2, or optimistic solution best for your use case?
-
-#### Platform
-
-Stuff about platforms goes here.
-
-#### Templates
-
-Stuff about templates goes here.
-
-#### DIY
-
-Within the wild world of Ethereum there are many languages to write contracts. Solidity is the most popular with many tutorials, support, and tooling. Vyper and Fe are for more advanced developers. If you're not familiar with these languages already, here's a few resources to get started.
-
-Solidity:
-
 - `https://docs.soliditylang.org/`
 - `https://consensys.github.io/smart-contract-best-practices/`
-
-Vyper:
-
 - `https://vyper.readthedocs.io/`
 - `https://github.com/ethereum/fe`
-
-Fe:
-
-`https://fe.ethereum.org/`
-
-**Resources:**
-
+- `https://fe.ethereum.org/`
 - `https://remix.ethereum.org/`
 - `https://eth.build/`
 - `https://ethereum.org/en/developers/learning-tools/`
@@ -448,30 +423,7 @@ Fe:
 - `https://consensys.github.io/smart-contract-best-practices/general_philosophy/`
 - `https://github.com/OpenZeppelin/openzeppelin-contracts`
 - Add that defi library/tutorial thing
-
-Whenever you build stuff yourself remember to have a full test suite with 100% test coverage (or close to it) so that your community and/or a profession review team isn't spending time on easily avoidable errors.
-
 - Ethereum testing resources and best practices goes here.
-
-#### Scaling
-
-As of the summer of 2020 summoning DAO on mainnet is often $100 USD in gas fees, up to $500. From there, simple things like adding new members and voting are $50-100 USD in gas. This prices most communities out of using mainnet for their DAOs. That being said, there are many sidechains and scaling solutions emerging to help DAOs thrive in the wild!
-
-**xDAI:**
-
-- [Aragon.1Hive.org](https://aragon.1hive.org/#/) - Aragon on xDAI thanks to 1Hive.
-- [xDAI.DAOhaus.Club](https://xdai.daohaus.club/) - Easily spin up Moloch DAOs (V1 or V2) on xDAI via DAOhaus.
-
-**IDchain:**
-
-- [Aragon?](https://medium.com/brightid/introducing-idchain-392c76c31d73) - Aragon on IDchain!
-- [IDchain.DAOhaus.Club](https://idchain.daohaus.club/) - DAOhaus on IDchain!
-
-**Snapshot:**
-
-While Snapshot isn't necessarily a scaling solution, it does allow DAO members to achieve rough consensus off-chain - potentially reducing the amount of on-chain transactions required to ratify decisions. That being said, you still have to submit transactions on-chain as Snapshot runs on a server.
-
-- [Snapshot](https://github.com/balancer-labs/snapshot) - Verify user's token balances, then let them sign messages to create off-chain signalling votes. [Create your Snapshot page here](https://docs.snapshot.page/guides/create-a-space)!
 
 ### Auditing
 
@@ -495,6 +447,16 @@ Before you get started with an economic review, there's a few things you can do 
 
 At the moment there are not very many firms who specialize in this type of economic analysis. With the popularity of DeFi we expect this list to grow. For now, here's a few teams that provide token system designs and reviews:
 
+**Questions to ask:**
+
+- TBD
+
+**Examples:**
+
+- Examples of tokenomic reviews go here.
+
+**Resources:**
+
 - [BlockScience](https://block.science/) - An engineering, R&D, and analytics firm specializing in complex systems. Our focus is to design and build data-driven decision systems for new and legacy businesses leveraging engineering methodologies and academic-grade tools. Blockscience [open sources a lot of their work](https://github.com/blockscience) including past projects and even their system modeling library ([cadCAD](https://github.com/BlockScience/cadCAD-Tutorials))
 - [Gauntlet](https://gauntlet.network/) - Gauntlet’s mission is to help make blockchain protocols and smart contracts safer and more trustworthy for users. At the time of writing their projects and tooling are proprietary.
 - [TBD](TBD) - More teams coming soon.
@@ -505,12 +467,19 @@ A technical review looks for bugs in your code. This also requires having a clea
 
 Before you get a technical review, there's a few things you can do to prepare. In the best case you'll catch bugs ahead of time so that the review team can focus on deeper work. In the worst case you'll learn about Ethereum contract security and be better prepared for the review process and future contract development:
 
+**Questions to ask (and things to do):**
+
 - Review [Ethereum contract development best practices](https://consensys.github.io/smart-contract-best-practices/). Know the recommended interaction patterns, check your code for anti-patterns, and run security analysis tools to catch common errors.
 - Make sure you have basic docs and a technical specification. This ensures that the review team knows what you *want* the code to do. Then they can check to see if that's what it actually does.
 - Read security review reports from other projects (see [here](https://consensys.net/diligence/audits/) and [here](https://github.com/trailofbits/publications#security-reviews)) to get a better idea of what to expect. Might even give you ideas of things to check/change before your audit.
 
-Here's a few teams that provide excellent security reviews for Ethereum contracts:
+**Examples:**
 
+- Examples of security audit reports and repos goes here.
+
+**Resources:**
+
+- Ethereum contract auditing tools go here.
 - [Consensys Diligence](https://consensys.net/diligence/) - Consensys Diligence provides a comprehensive smart contract audit service to help everyone from startups to enterprises launch and maintain their Ethereum blockchain applications. They also contribute a lot of open source [reviews and tooling](https://github.com/ConsenSys) to the Ethereum community.
 - [Trail of Bits](https://www.trailofbits.com/) - Trail of Bits provides a variety of services to secure and test both Web2 and Web3 software. They're a great choice if you want an end-to-end security review that goes beyond Solidity contracts. They also contribute a lot of [open source research and tooling](https://www.trailofbits.com/products) to the space.
 - [TBD](TBD) - There's lots of other security firms in the space as well. If you know of any good ones please submit a PR!
@@ -519,9 +488,31 @@ Here's a few teams that provide excellent security reviews for Ethereum contract
 
 ## Deployment
 
-### Testing
+### Scaling
 
-> Ideally incentivized
+Once you've decided what your contracts look like, then you have to deploy them. There are many options. You can deploy on mainnet, a sidechain, or a layer 2 solution.
+
+As of the summer of 2020 deploying contracts on mainnet is often $100 or more (USD) in gas fees. It can then be $10 or more to interact with the contract. This makes many use cases too expensive for mainnet. If your token project falls into that category you might want to explore one of the many scaling solutions available.
+
+**Questions to ask:**
+
+- Is the security of Ethereum mainnet (and it's associated cost) a feature or a bug for your use case? Would you benefit from a faster/cheaper settlement layer, and if so, is a sidechain, L2, or optimistic solution best for your use case?
+
+**Examples:**
+
+- [Aragon.1Hive.org](https://aragon.1hive.org/#/) - Aragon on xDAI thanks to 1Hive.
+- [xDAI.DAOhaus.Club](https://xdai.daohaus.club/) - Easily spin up Moloch DAOs (V1 or V2) on xDAI via DAOhaus.
+- [Aragon](https://medium.com/brightid/introducing-idchain-392c76c31d73) - Aragon on IDchain!
+- [IDchain.DAOhaus.Club](https://idchain.daohaus.club/) - DAOhaus on IDchain!
+- While [Snapshot](https://github.com/balancer-labs/snapshot) isn't necessarily a scaling solution, it does allow token holders to create a signalling vote off-chain for free. Then a community multi-sig can pay the gas to enact the wishes of the community. [Create your Snapshot page here](https://docs.snapshot.page/guides/create-a-space)!
+
+**Resources:**
+
+- ethereum.org
+- xDAI
+- L2 stuff
+
+### Beta Testing
 
 Once you've designed your system and gotten a review you can start to test it out! Remember, with enough eyes all bugs are shallow. With an incentivized test the community and traders can interact with your token system and potentially profit from it. Here the risk and rewards are real, but contained. This caps your downside in the event of an unexpected outcome.
 
@@ -534,25 +525,58 @@ When creating incentivized tests, there's a few ways to go about it:
 - [xDAI](https://www.xdaichain.com/) is an EVM based blockchain. Gas fees, transaction times, and security are lower on xDAI than Ethereum mainnet. This makes it great for non-financial use cases and incentivized testing. Deploying contracts to xDAI is often as simple as switching the chainID from mainnet to xDAI.
 - Beyond the Ethereum ecosystem, there are also other networks that have created incentivized testnets for developers such as Polkadot's [Kasuma](https://kusama.network/).
 
-### Production
+### Shipping
 
-> Ship ship ship
+**Questions to ask:**
 
-Deployment tips and tools (remix, buidler, etc..) go here.
+- Who is the target user?
+- What do you want them to do?
+- Have you talked to them to ensure that they understand what to do?
+- Are there guides and incentives to encourage them to do that thing?
 
-And [create a bug bounty](https://consensys.github.io/smart-contract-best-practices/software_engineering/#bug-bounty-programs)! (even if it's only in your native token1)
+**Examples:**
 
-You might also want to have:
+- Token launch case studies go here.
 
-- documentation and user guides
+**Resources:**
+
+- Deployment tips and tools (remix, buidler, etc..) go here.
+- stuff about verifying the integrity of deployed contracts (local and Etherscan) and also releases: `https://wiki.debian.org/Creating%20signed%20GitHub%20releases`
+- How to [create a bug bounty](https://consensys.github.io/smart-contract-best-practices/software_engineering/#bug-bounty-programs) goes here (even if it's only in your native token1)
+- tips on documentation and user guides
 - onboarding support
 - community marketing/outreach
 
-### Monitoring and analysis
+### Monitoring
 
-Resources to monitor on-chain and community engagement goes here.
+What gets measured gets managed!
 
-This will involve monitoring markets as well as fundamentals, both onchain (token price, distribution, hodl waves, volatility, etc...) and offchain (community engagement, etc..)
+Depending on the use case of your token the velocity/hodl ratio might be a feature or a bug. For example: if your token is supposed to be used to access services velocity is good and hodl is bad. If you token is supposed to be used for governance then hold would show long term engagement/interest whereas velocity might point to traders/investors acquiring tokens to support their short term interests.
+
+**Questions to ask:**
+
+- How much is the token being used? (if your token is used to acquire goods or services)
+- What is the token supply (esp important if dynamic)
+- What is the liquid vs locked up supply (if you have vesting, staking, etc..)
+- What is the current token price?
+- What is the token velocity?
+- How do the hodl waves look?
+- How much development activity is there on the codebase from developers? (git)
+- How much social activity is there in the chats/forum from the community?
+- How much governance activity is there from token holders? (if you have governance)
+- How much search activity is there on the web from speculators? (may or may not be available/reliable)
+- How are all these metrics correlated with each other? Is the price higher when there's more search activity and/or usage? Are any of these metrics a leading indicator for other metrics?
+- What is the volatility of these metrics?
+- What is the 30, 60, and 90 day averages of these metrics?
+
+**Examples:**
+
+- `https://www.hodlwave.com/` - hodl waves example
+- `https://charts.woobull.com/bitcoin-hodl-waves/` - Bitcoin hodl waves
+- `https://ethgasstation.info/` - usage of ETH to pay for gas
+- `https://etherscan.io/charts` - lots of Ethereum stats
+
+**Resources:**
 
 - [Apiary Explorer](https://apiary.1hive.org/orgs)
 - [DAO Dashboard](https://mydaodashboard.com/)
@@ -560,7 +584,9 @@ This will involve monitoring markets as well as fundamentals, both onchain (toke
 - [Deep DAO - Insights for a Decentralized World](http://deepdao.world/#/app/dashboard)
 - [How to monitor your Aragon Organization using Tenderly](https://blog.tenderly.dev/how-to-monitor-your-aragon-organization-using-tenderly/)
 
-### Community engagement and governance
+### Management
+
+AKA community engagement and governance
 
 > Talk about how analysis informs governance and governance informs what we analyze.
 > Create a place for the community to discuss things and mechanisms for them to express their sentiments to affect change.
@@ -617,6 +643,10 @@ Explore ways to help your community go from consuming what you create to creatin
 - 1UP
 - CommonsStack praise bot
 - 1Hive nominations
+- Token curated lists
+- Staking on things to boost them and earn future profits from them: `https://discourse.sourcecred.io/t/boosting-a-prediction-market-on-ideas/306`
+
+> Lots of ideas here: `https://newsletter.banklesshq.com/p/crypto-will-fix-the-music-industry`
 
 ---
 ---
@@ -631,12 +661,3 @@ Each section should have:
 - Questions to ask
 - Examples and templates
 - Resources to learn more
-
-In addition to exploring the technical specifications of tokens/mechanisms/systems it would be good to first identify the high level things such as the core value prop of the token (access, discounts, unique items/experiences, governance, etc..), how to acquire tokens (buy and/or earn), and how to extend and grow the value of tokens over time (network effects). There should be a quickstart guide so that if someone just wants to create a token or add a feature to do a thing they can do so easily.
-
-Should add more stuff on:
-
-- optimistic games and L2git
-- community management/engagement
-
----
