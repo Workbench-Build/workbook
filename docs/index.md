@@ -5,7 +5,11 @@
 ---
 
 - [The Workbook](#the-workbook)
-  - [Design](#design)
+  - [TL;DR:](#tldr)
+    - [Design](#design)
+    - [Development](#development)
+    - [Deployment](#deployment)
+  - [Design](#design-1)
     - [Brainstorming](#brainstorming)
     - [Mechanism design](#mechanism-design)
     - [Tokens](#tokens)
@@ -13,12 +17,12 @@
     - [Diagramming](#diagramming)
     - [1 Pager](#1-pager)
     - [Modeling](#modeling)
-  - [Development](#development)
+  - [Development](#development-1)
     - [Building](#building)
     - [Auditing](#auditing)
       - [Economic Review](#economic-review)
       - [Technical Review](#technical-review)
-  - [Deployment](#deployment)
+  - [Deployment](#deployment-1)
     - [Scaling](#scaling)
     - [Beta Testing](#beta-testing)
     - [Shipping](#shipping)
@@ -28,18 +32,31 @@
 
 ---
 
+## TL;DR:
+
+### Design
+
+- Find a problem to solve (the bigger the better).
+- Understand who has that problem, why, how often, and how painful that problem is to them. Then figure out if/how they could pay (via acquiring tokens or direct payment for services) to have that problem solved. Then, determine the best/easiest way to create a solution for them that they can afford (time/money) and that you can provide.
+- Define design goals for the thing you want to build (characteristics you want to hold under all circumstances).
+- Define roles, methods, states for all the stakeholders who will participate in your token network (end users, providers, developers, community, etc..).
+- Explore mechanisms that can help you create that system. Then compose those mechanisms into a token system.
+- Draw a picture describing the token system. Ideally showing not just the things, but the relationships between the things and how one thing affects another.
+- Write a blog post describing the token system.
+- Create a model simulating how users might interact with the token system. Do the design goals hold under varying market conditions (price, supply/demand, etc..)?
+- Share the description, picture, and model with the community for feedback and contributions. Refine and revisit everything to make it better.
+
+### Development
+
+- TBD
+
+### Deployment
+
+- TBD
+
+---
+
 ## Design
-
-**TL;DR:**
-
-- Find a problem to solve.
-- Define your design goals.
-- Define roles, methods, states.
-- Define mechanisms.
-- Define the composition of mechanisms into a token system.
-- Write a blog post describing it.
-- Draw a picture describing it.
-- Create a model simulating it's behavior.
 
 ### Brainstorming
 
@@ -57,17 +74,13 @@ Ideally you want to be solving a problem that is:
 
 From there, you should be able to explain [why](https://simonsinek.com/product/start-with-why/) you're solving this problem in a way that's simple and intuitive. It should be something so simple you can explain it in a single sentence and people get it. It should be a [meme](https://en.wikipedia.org/wiki/Meme). People should understand what and why. It's your job to abstract away all the complexity of the how so that the solution "just works."
 
-Once you've identified a problem to solve, and people who have that problem, you have to then go solve it for them. This is hard. While choosing the right thing to work on is often what will determine your success or failure, after that it's all about execution. In blockchain land this means you need to create a token system to align incentives for the community to create, use, and maintain an application/protocol.
-
-Tokens = value = incentives. If your token has value people should be incentivized to do things to create/capture that value. If done correctly this can be positive-sum. It's very important that you understand this. Token networks are socio-economic systems. Incentives + humans = value creation. Your token system needs to reward people for doing things that create value for token holders. Then people will want to earn, buy, and hold/use your token. Supply and demand.
+Once you've identified a problem to solve, and people who have that problem, you have to then go solve it for them. This is hard. While choosing the right thing to work on is often what will determine your success or failure, after that it's all about execution. In blockchain land this means you need to create a token system to align incentives for the community to create, use, and maintain an application/protocoln correctly this can be positive-sum. It's very important that you understand this. Token networks are socio-economic systems. Incentives + humans = value creation. Your token system needs to reward people for doing things that create value for token holders. Then people will want to earn, buy, and hold/use your token. Supply and demand.
 
 This is great, but you can already do this with stocks, commodities, and credits for web2 platforms. What makes blockchain tokens more interesting is that the token contracts themselves create credible commitments. Trust is tat the solution "just works."
 
 Once you've identified a problem to solve, and people who have that problem, you have to then go solve it for them. This is hard. While cransferred from people to code. You know what the contract will do, if/how it can be changed, and the process to create those changes. This reduces the risk for people to use these [contracts/protocols vs more centralized services that might change the terms of their API at any time](https://cdixon.org/2018/02/18/why-decentralization-matters). This way parties that don't trust each other can still coordinate and transact via the blockchain, and hopefully your token system helps them do that for your use case.
 
-This is two layers deep in the problem solving stack. First you need to figure out how to solve the core problem (whatever that is) for end users. Then you need to solve the problem of creating an incentive system that gets people to work on that problem. It's like building the car and the factory that builds the car. You need both.
-
-Startup founders have the same problem. They need to solve a problem for end users, while also building a company to solve that problem at scale. The main difference is that there's library of knowledge freely available on how to create, fund, and grow startups. Best practices for token projects are TBD. Token projects are mix of entrepreneurship, politics, economics, software development, systems design, and more. Depending on your goals and system architecture your token project will probably sit on the spectrum between an API, corporation, and government.
+This is two layers deep in the problem n They need to solve a problem for end users, while also building a company to solve that problem at scale. The main difference is that there's library of knowledge freely available on how to create, fund, and grow startups. Best practices for token projects are TBD. Token projects are mix of entrepreneurship, politics, economics, software development, systems design, and more. Depending on your goals and system architecture your token project will probably sit on the spectrum between an API, corporation, and government.
 
 In addition to exploring the technical specifications of tokens/mechanisms/systems it would be good to first identify the high level things such as the core value prop of the token (access, discounts, unique items/experiences, governance, etc..), how to acquire tokens (buy and/or earn), and how to extend and grow the value of tokens over time (network effects). There should be a quickstart guide so that if someone just wants to create a token or add a feature to do a thing they can do so easily.
 
@@ -98,7 +111,7 @@ In addition to exploring the technical specifications of tokens/mechanisms/syste
 **Resources:**
 
 - [YC's Startup School](https://www.startupschool.org/) is a great resource to help you make something people want. The [How to find startup ideas](https://www.youtube.com/watch?v=DOtCl5PU8F0) video can help build intuition for what types of problems to solve, and more likely, prevent you from working on the wrong thing. While YC is focused on startups, a lot of the same concepts around solving problems and creating value for users apply to both startups and token projects. Highly recommend checking out [their videos](https://www.youtube.com/channel/UCcefcZRL2oaA_uBNeo5UOWg).
-- Not to be outdone, [a16z](https://a16z.com/crypto/) also has a [crypto startup school](https://a16z.com/crypto-startup-school/). It has lots of content explaining high level concepts that are essential for the space. You can also sign up for their newsletter to get ongoing insights delivered to your inbox.
+- Not to be outdone, [a16z](https://a16z.com/crypto/) also has a [crypto startup school](https://a16z.com/crypto-startup-school/). It has lots of content explaining high level concepts that are essential for the space. You can also sign up for their newsletter to get ongoing insights delivered to your inbox. They also have a [tldr version here](https://a16z.com/2020/12/28/crypto-users-guide/).
 - [The idea maze](https://a16z.com/tag/idea-maze/) can help you navigate the wild world of emerging technologies.
 - [Simon Sinek](https://simonsinek.com/) has a lot of great content explaining why you should [start with why](https://simonsinek.com/product/start-with-why/).
 
@@ -115,7 +128,7 @@ Also, there are many token system templates that you can use to get started. You
 
 The architecture of your token system will vary based on your use case. The important thing here is to know what you want to do, then use the tools required to get the job done. Don't start with the tools! Otherwise you'll become like a man with a hammer. Choose the tools based on your goals and design constraints.
 
-Before jumping into any concrete implimentation we want to define the roles, methods, and states of our system. This is just a fancy way of saying who can do what and under what circumstances.
+Before jumping into any concrete implementation we want to define the roles, methods, and states of our system. This is just a fancy way of saying who can do what and under what circumstances.
 
 Rights and access controls can be broken down into roles, methods, and states:
 
@@ -162,6 +175,7 @@ Governance is [the process of applying any design feature or control mechanism t
 
 **Resources:**
 
+- Vitalik's blog has a great [coordination post](https://vitalik.ca/general/2020/09/11/coordination.html) that can help you build intuition around aligning interests for all parties involved in a token system.
 - The [Wikipedia mechanism design page](https://en.wikipedia.org/wiki/Mechanism_design). Is a great place to start. If you read one thing on mechanism design, make it this. There's also a whole [category on Wikipedia dedicated to the topic](https://en.wikipedia.org/wiki/Category:Mechanism_design).
 - The Foundations of Cryptoeconomic Systems [lecture](https://www.youtube.com/watch?v=HldQF_MJN_Y) and [paper](https://epub.wu.ac.at/7309/) can help you build intuition around token system design. Beyond that, all the [resources on the BlockScience website](https://block.science/resources) are good.
 
@@ -334,7 +348,7 @@ Diagramming can help you refine your understanding of the system and it's compon
 
 Once you've identified a problem to solve, people who have that problem, and how you're going to solve it for them you should write it down! This will help you clarify your thinking. It will also help you communicate your vision to others. Then they might join you on your quest and/or point out ways that you might improve things.
 
-To start, keep it simple. Just create a single page that describes what you're trying to do, why, and how. Eventually this might evolve into a formal specification, but right now we just want a rough sketch that's simple and intuitive. YOu can then update this as you design, develop, and deploy your token system. Then share it as a blog post or white paper. For now, keep it in a format (Google docs, HackMD, GitHub repo, etc..) that people can easily read, review, and comment on. This can help catch errors early on as well as engage your community.
+To start, keep it simple. Just create a single page that describes what you're trying to do, why, and how. Eventually this might evolve into a formal specification, but right now we just want a rough sketch that's simple and intuitive. You can then update this as you design, develop, and deploy your token system. Then share it as a blog post or white paper. For now, keep it in a format (Google docs, HackMD, GitHub repo, etc..) that people can easily read, review, and comment on. This can help catch errors early on as well as engage your community.
 
 The paper should describe the various components that are composed to achieve your goal, the properties of each mechanism, and the properties of your system as a whole.
 
@@ -467,6 +481,13 @@ A technical review looks for bugs in your code. This also requires having a clea
 
 Before you get a technical review, there's a few things you can do to prepare. In the best case you'll catch bugs ahead of time so that the review team can focus on deeper work. In the worst case you'll learn about Ethereum contract security and be better prepared for the review process and future contract development:
 
+Notes:
+
+- As much as possible use standards (WASM) or battle tested mechanisms (OpenZeppelin). You don't want to roll your own crypto, contracts, or blockchain unless you really need it.
+- If you contracts depend on or connect with any other contracts (DeFi integrations, price feeds, or external code libraries), your system security is also dependent on those external factors. Make sure you understand how secure things you connect with are, as well as what their process is for upgrades and governance. Otherwise, a contract you connect to that looks good now might change in the future, resulting in unintended interactions. As much as possible, embed all dependencies to ensure you’re always in control of what you’re doing.
+- With enough eyes all bugs are shallow. Connecting with the developer community is not just good for creating new things, but also security. It should be clear how to ask questions and raise issues if bugs are found. Everyone should feel comfortable speaking up. Don't build in a bubble! Ex: [yEarn created yAcademy](https://gov.yearn.finance/t/yip-53-yacademy-planting-the-seed-of-a-sustainably-secure-future-for-yearn-and-beyond/7929) to help the community learn about and participate in security auditing and testing of their contracts.
+- Software bugs are a matter of “when” and “how bad”, not “if”. We must make mitigation efforts.
+
 **Questions to ask (and things to do):**
 
 - Review [Ethereum contract development best practices](https://consensys.github.io/smart-contract-best-practices/). Know the recommended interaction patterns, check your code for anti-patterns, and run security analysis tools to catch common errors.
@@ -482,6 +503,7 @@ Before you get a technical review, there's a few things you can do to prepare. I
 - Ethereum contract auditing tools go here.
 - [Consensys Diligence](https://consensys.net/diligence/) - Consensys Diligence provides a comprehensive smart contract audit service to help everyone from startups to enterprises launch and maintain their Ethereum blockchain applications. They also contribute a lot of open source [reviews and tooling](https://github.com/ConsenSys) to the Ethereum community.
 - [Trail of Bits](https://www.trailofbits.com/) - Trail of Bits provides a variety of services to secure and test both Web2 and Web3 software. They're a great choice if you want an end-to-end security review that goes beyond Solidity contracts. They also contribute a lot of [open source research and tooling](https://www.trailofbits.com/products) to the space.
+- Parity, who creates a lot of open source blockchain clients and code, created a [14 point checklist for secure smart contract development](https://www.parity.io/paritys-checklist-for-secure-smart-contract-development/). Lots of great tips on the development/deployment process (whereas the Consensys and Trail of Bits links focus more on contract architecture and testing).
 - [TBD](TBD) - There's lots of other security firms in the space as well. If you know of any good ones please submit a PR!
 
 ---
@@ -578,6 +600,8 @@ Depending on the use case of your token the velocity/hodl ratio might be a featu
 
 **Resources:**
 
+- How to [quantify decentralization](https://news.earn.com/quantifying-decentralization-e39db233c28e).
+- 16 ways to [measure network effects](https://a16z.com/2018/12/13/16-metrics-network-effects/)
 - [Apiary Explorer](https://apiary.1hive.org/orgs)
 - [DAO Dashboard](https://mydaodashboard.com/)
 - [DAO Metrics](https://daometrics.com/)
@@ -590,6 +614,7 @@ AKA community engagement and governance
 
 > Talk about how analysis informs governance and governance informs what we analyze.
 > Create a place for the community to discuss things and mechanisms for them to express their sentiments to affect change.
+> Also talk about how hard it is to balance divergent ideas/projects from the community while also having a clear focus and mission.
 
 - General community best practices
 - Discord server organization
@@ -624,12 +649,20 @@ Talk about minimizing governance and pushing it to the edges here.
 Potential mechanisms include, but are not limited to:
 
 - Tipping mechanisms
+  - [1UP](https://1up.world/) - Only for a single DAOstack DAO atm.
+  - [CommonsStack PraiseBot](https://wiki.commonsstack.org/contributors-guide#what-is-commons-stack-praise) - Very manual atm.
+  - [DAOnuts tipping app](https://github.com/daonuts/tipping-app) - Aragon only atm.
 - Bounties
+  - [BountiesNetwork](https://bounties.network/) - Free and open source, but not very maintained.
+  - [Gitcoin](https://gitcoin.co/bounties/funder) - Proprietary platform that helps create grants and bounties for open source projects. There are fees, but it's updated regularly with new features and has lots of users (hackers and funders).
+  - [DIY bug bounties](https://consensys.github.io/smart-contract-best-practices/software_engineering/#bug-bounty-programs) - You can always create a bounty on your website or forum, however, without a mechanism to stake tokens to the bounty people are trusting that you'll follow through. This could potential deter would be contributors or cause them to discount your offering based on their perception of your ability/liklihood to follow through.
 - DAOs (yes your token can be used in multiple community DAOs for multiple purposes - there doesn't have to be a single organization)
-- Secondary bonding curves
-- AMMs
+- Secondary bonding curves (aka derivative tokens)
+- AMMs (so many!)
 - NFT minting factories
-- DAOhaus transmutation
+  - [Gittron](https://gittron.me/)
+  - [yGifts](https://ygift.to/)
+- [Transmutation](https://github.com/HausDAO/wc/blob/develop/contracts/Transmutation.sol)
 - Etc...
 
 Explore ways to help your community go from consuming what you create to creating things themselves.
@@ -661,3 +694,4 @@ Each section should have:
 - Questions to ask
 - Examples and templates
 - Resources to learn more
+- Communities and teams who specialize in this domain that you can reach out to for help
