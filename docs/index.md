@@ -23,7 +23,6 @@
       - [Economic Review](#economic-review)
       - [Technical Review](#technical-review)
   - [Deployment](#deployment-1)
-    - [Scaling](#scaling)
     - [Beta Testing](#beta-testing)
     - [Shipping](#shipping)
     - [Monitoring](#monitoring)
@@ -42,17 +41,22 @@
 - Define roles, methods, states for all the stakeholders who will participate in your token network (end users, providers, developers, community, etc..).
 - Explore mechanisms that can help you create that system. Then compose those mechanisms into a token system.
 - Draw a picture describing the token system. Ideally showing not just the things, but the relationships between the things and how one thing affects another.
-- Write a blog post describing the token system.
+- Write a blog post describing the token system. Focus on incentive alignment and checks and balances on power for all parties involved.
 - Create a model simulating how users might interact with the token system. Do the design goals hold under varying market conditions (price, supply/demand, etc..)?
 - Share the description, picture, and model with the community for feedback and contributions. Refine and revisit everything to make it better.
 
 ### Development
 
-- TBD
+- Determine if any available platforms or contracts would meet your needs (or get you close). Then figure out how to build anything that's missing.
+- Review your code and token system. If you're using or building off of previously audited/tested contracts the review process is a lot easier.
 
 ### Deployment
 
-- TBD
+- Open up a beta version for early community testing.
+- Determine if you need a scaling solution, and if so, what's the best fit.
+- Ship.
+- Monitor your token system to ensure everything is working as intended.
+- Engage in governance to update and modify the system over time.
 
 ---
 
@@ -74,13 +78,11 @@ Ideally you want to be solving a problem that is:
 
 From there, you should be able to explain [why](https://simonsinek.com/product/start-with-why/) you're solving this problem in a way that's simple and intuitive. It should be something so simple you can explain it in a single sentence and people get it. It should be a [meme](https://en.wikipedia.org/wiki/Meme). People should understand what and why. It's your job to abstract away all the complexity of the how so that the solution "just works."
 
-Once you've identified a problem to solve, and people who have that problem, you have to then go solve it for them. This is hard. While choosing the right thing to work on is often what will determine your success or failure, after that it's all about execution. In blockchain land this means you need to create a token system to align incentives for the community to create, use, and maintain an application/protocoln correctly this can be positive-sum. It's very important that you understand this. Token networks are socio-economic systems. Incentives + humans = value creation. Your token system needs to reward people for doing things that create value for token holders. Then people will want to earn, buy, and hold/use your token. Supply and demand.
+Once you've identified a problem to solve, and people who have that problem, you have to then go solve it for them. This is hard. While choosing the right thing to work on is often what will determine your success or failure, after that it's all about execution. In blockchain land this means you need to create a token system to align incentives for the community to create, use, and maintain an application/protocol correctly this can be positive-sum. It's very important that you understand this. Token networks are socio-economic systems. Incentives + humans = value creation. Your token system needs to reward people for doing things that create value for token holders. Then people will want to earn, buy, and hold/use your token. Supply and demand.
 
-This is great, but you can already do this with stocks, commodities, and credits for web2 platforms. What makes blockchain tokens more interesting is that the token contracts themselves create credible commitments. Trust is tat the solution "just works."
+This is great, but you can already do this with stocks, commodities, and credits for web2 platforms. What makes blockchain tokens more interesting is that the token contracts themselves create credible commitments. Trust is transferred from people to code. You know what the contract will do, if/how it can be changed, and the process to create those changes. This reduces the risk for people to use these [contracts/protocols vs more centralized services that might change the terms of their API at any time](https://cdixon.org/2018/02/18/why-decentralization-matters). This way parties that don't trust each other can still coordinate and transact via the blockchain.
 
-Once you've identified a problem to solve, and people who have that problem, you have to then go solve it for them. This is hard. While cransferred from people to code. You know what the contract will do, if/how it can be changed, and the process to create those changes. This reduces the risk for people to use these [contracts/protocols vs more centralized services that might change the terms of their API at any time](https://cdixon.org/2018/02/18/why-decentralization-matters). This way parties that don't trust each other can still coordinate and transact via the blockchain, and hopefully your token system helps them do that for your use case.
-
-This is two layers deep in the problem n They need to solve a problem for end users, while also building a company to solve that problem at scale. The main difference is that there's library of knowledge freely available on how to create, fund, and grow startups. Best practices for token projects are TBD. Token projects are mix of entrepreneurship, politics, economics, software development, systems design, and more. Depending on your goals and system architecture your token project will probably sit on the spectrum between an API, corporation, and government.
+This is two layers deep in the problem n They need to solve a problem for end users, while also building a company to solve that problem at scale. While there's library of knowledge freely available on how to create, fund, and grow startups - best practices for token projects are TBD. Token projects are mix of entrepreneurship, politics, economics, software development, systems design, and more. Depending on your goals and system architecture your token project will probably sit on the spectrum between an API, corporation, and government.
 
 In addition to exploring the technical specifications of tokens/mechanisms/systems it would be good to first identify the high level things such as the core value prop of the token (access, discounts, unique items/experiences, governance, etc..), how to acquire tokens (buy and/or earn), and how to extend and grow the value of tokens over time (network effects). There should be a quickstart guide so that if someone just wants to create a token or add a feature to do a thing they can do so easily.
 
@@ -248,6 +250,7 @@ Is there an example of a project similar to what you want to build or working on
 **Resources:**
 
 - ***NEED TO ADD MORE DEFI AND TOKEN TEMPLATE STUFF HERE***
+- `https://money-legos.studydefi.com/#/`
 - Loot tokens (play to earn): `https://medium.com/@adamscochran/what-are-loot-tokens-understanding-an-emerging-asset-class-380b0cc38749`
 - [Gnosis multi-sig](https://blog.gnosis.pm/gnosis-safe-multisig-desktop-app-and-contract-interactions-6f8b92c3275b) - It's a shared Ethereum account. Parameters can be set so that actions can only be taken if signatures from many accounts are provided. Those actions can including sending tokens as well as contract interactions.
 - [Snapshot](https://github.com/balancer-labs/snapshot) - Verify user's token balances, then let them sign messages to create off-chain signalling votes. Perform votes off-chain, then enact on-chain via a trusted community multi-sig. [Create your Snapshot page here](https://docs.snapshot.page/guides/create-a-space). Check out current Snapshot pages [here](https://snapshot.page/#/).
@@ -395,14 +398,11 @@ A good model provides insights into how your token system would function under v
 
 ## Development
 
-**TL;DR:**
-
-- Determine if any available platforms or contracts would meet your needs (or get you close). Then figure out how to build anything that's missing.
-- Review your code and token system. If you're using or building off of previously audited/tested contracts the review process is a lot easier.
-
 ### Building
 
-Once you know what you're doing and how all the pieces come together you can create a prototype. This might look like using a platform (fast/cheap), open source contracts (medium difficulty and cost), or roll your own token system (expensive and time consuming). Which option is best for you will likely be determined by your resources (time and money) and technical ability/interest. If you're creating something really unique rolling your own contracts is the way to go, but otherwise there's a good chance that one of the currently available contracts/platforms can get you 80% of the way there for 20% of the effort. From there you can customize your token system to become whatever you want.
+Once you know what you're doing and how all the pieces come together you can create a prototype. This might look like using a platform (fast/cheap), open source contracts (medium difficulty and cost), or roll your own token system (expensive and time consuming). Which option is best for you will likely be determined by your resources (time and money) and technical ability/interest. 
+
+If you're creating something really unique rolling your own contracts is the way to go, but otherwise there's a good chance that one of the currently available contracts/platforms can get you 80% of the way there for 20% of the effort. From there you can customize your token system to become whatever you want.
 
 Within the wild world of Ethereum there are many languages to write contracts. [Solidity](https://docs.soliditylang.org/) is the most popular with many tutorials, support, and tooling. [Vyper](https://vyper.readthedocs.io/) and [Fe](https://fe.ethereum.org/) are also good, but are newer and less supported. If you're not familiar with these languages already, here's a few resources to get started.
 
@@ -510,7 +510,25 @@ Notes:
 
 ## Deployment
 
-### Scaling
+### Beta Testing
+
+Once you've designed your system and gotten a review you can start to test it out! Remember, with enough eyes all bugs are shallow. With an incentivized test the community and traders can interact with your token system and potentially profit from it. Here the risk and rewards are real, but contained. This caps your downside in the event of an unexpected outcome.
+
+If things don't go as planned, find out why and fix it. If things go smoothly, learn from your data top see if there's anything you want to change before deploying in production.
+
+When creating incentivized tests, there's a few ways to go about it:
+
+- [Ethereum](https://ethereum.org/) is another great place to test out your token system. You can create a beta version of your contracts for the community to test before transitioning to the full version. This beta version might have limits on the amount of tokens that can be processed or it might have a limited conversion to new tokens once you're out of beta.
+- You can also deploy contracts anonymously and then test them out to ensure they function as intended before redeploying an official version.
+- [xDAI](https://www.xdaichain.com/) is an EVM based blockchain. Gas fees, transaction times, and security are lower on xDAI than Ethereum mainnet. This makes it great for non-financial use cases and incentivized testing. Deploying contracts to xDAI is often as simple as switching the chainID from mainnet to xDAI.
+  - `https://xdaichain.com/`
+  - `https://defipulse.com/xdai`
+  - `https://bridge.xdaichain.com/`
+  - `https://omni.xdaichain.com/`
+  - `https://www.xdaichain.com/for-users/get-xdai-tokens`
+- Beyond the Ethereum ecosystem, there are also other networks that have created incentivized testnets for developers such as Polkadot's [Kasuma](https://kusama.network/).
+
+### Shipping
 
 Once you've decided what your contracts look like, then you have to deploy them. There are many options. You can deploy on mainnet, a sidechain, or a layer 2 solution.
 
@@ -532,22 +550,7 @@ As of the summer of 2020 deploying contracts on mainnet is often $100 or more (U
 
 - ethereum.org
 - xDAI
-- L2 stuff
-
-### Beta Testing
-
-Once you've designed your system and gotten a review you can start to test it out! Remember, with enough eyes all bugs are shallow. With an incentivized test the community and traders can interact with your token system and potentially profit from it. Here the risk and rewards are real, but contained. This caps your downside in the event of an unexpected outcome.
-
-If things don't go as planned, find out why and fix it. If things go smoothly, learn from your data top see if there's anything you want to change before deploying in production.
-
-When creating incentivized tests, there's a few ways to go about it:
-
-- [Ethereum](https://ethereum.org/) is another great place to test out your token system. You can create a beta version of your contracts for the community to test before transitioning to the full version. This beta version might have limits on the amount of tokens that can be processed or it might have a limited conversion to new tokens once you're out of beta.
-- You can also deploy contracts anonymously and then test them out to ensure they function as intended before redeploying an official version.
-- [xDAI](https://www.xdaichain.com/) is an EVM based blockchain. Gas fees, transaction times, and security are lower on xDAI than Ethereum mainnet. This makes it great for non-financial use cases and incentivized testing. Deploying contracts to xDAI is often as simple as switching the chainID from mainnet to xDAI.
-- Beyond the Ethereum ecosystem, there are also other networks that have created incentivized testnets for developers such as Polkadot's [Kasuma](https://kusama.network/).
-
-### Shipping
+- If you're using an L2 solution make sure that exits are permissionless and trustless so that if the operator becomes malicious you can always exit with your tokens.
 
 **Questions to ask:**
 
