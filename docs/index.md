@@ -93,10 +93,9 @@ Incentives need to be aligned for individuals, but also the system as a whole. I
 - Are incentives aligned for all participants of the system? Do they all participate in value creation and capture via the token?
 - How will people acquire tokens (buy, earn, other)?
 - How will the value of those tokens increase as the token system grows (network effects)?
-- Will you create a network effect (the value of the network to each user grows the more users there are on the network)?
-- When you add social and experiential value to asset classes like stocks, sneakers, and cryptocurrencies, price is divorced from fundamentals and becomes more emotional. Embedding emotional and social can be both a feature and a bug as it'll make your token demand (and thus price) more closely linked to sentiment. How will your project communicate it's values to connect with users on an emotional level?
+- Does your token system create a network effect where the value of the network to each user grows the more users there are on the network?
+- What are your project's values and how will you communicate that with users?
 - In the same way the internet was a democratizing force that gave everyone in the world the ability to easily create and share information, the next step is to give everyone in the world the ability to easily create and share value. What is the value that you are creating and sharing with the world?
-- It’s helpful to think of money as an adjective: moneyness. Every asset exists on a spectrum of moneyness. Things with moneyness often command a premium vs regular commodities. Does your token exhibit moneyness?
 - To answer the question of whether the blockchain is needed, ask yourself: Does the blockchain change the system of trust in any meaningful way, or just shift it around? Does it just try to replace trust with verification? Does it strengthen existing trust relationships, or try to go against them? How can trust be abused in the new system, and is this better or worse than the potential abuses in the old system? And lastly: What would your system look like if you didn’t use blockchain at all?
 
 **Examples:**
@@ -104,6 +103,8 @@ Incentives need to be aligned for individuals, but also the system as a whole. I
 - TBD
 
 **Resources:**
+
+Many of the ideas in this section came from the following resources:
 
 - [a16z](https://a16z.com/crypto/) has a [crypto startup school](https://a16z.com/crypto-startup-school/). It has lots of content explaining high level concepts that are essential for the space. You can also sign up for their newsletter to get ongoing insights delivered to your inbox. They also have a [tldr version here](https://a16z.com/2020/12/28/crypto-users-guide/).
 - [YC's Startup School](https://www.startupschool.org/) is a great resource to help you make something people want. The [How to find startup ideas](https://www.youtube.com/watch?v=DOtCl5PU8F0) video can help build intuition for what types of problems to solve. Might help you avoid spending time working on the wrong thing. While YC is focused on startups, a lot of the same concepts around solving problems and creating value for users apply to both startups and token projects. Highly recommend checking out [their videos](https://www.youtube.com/channel/UCcefcZRL2oaA_uBNeo5UOWg).
@@ -117,58 +118,65 @@ Incentives need to be aligned for individuals, but also the system as a whole. I
 
 > Developing intuition.
 
-How do you design a token system?
+The most important thing is to know what you want to do. Then find tools that can help you do that. Don't start with the tools! If you do you'll become a man with a hammer. Choose the tools based on your goals and design constraints, not the other way around.
 
-The architecture of your token system will vary based on your use case. The important thing here is to know what you want to do, then use the tools required to get the job done. Don't start with the tools! Otherwise you'll become like a man with a hammer. Choose the tools based on your goals and design constraints.
+The first step is just describing what you want to do. Write it down. It should answer who, what, when, where, why.
 
-A sticking point for good designs is often just describing what you want to do. Start with writing a word problem. Describe the system that you want. Then put that into a mathematical context. Then start to write code to test out the basic assumptions.
+A way to define these things in the context of a digital system is rights, roles, and access. Who can do what and under what circumstances.
 
-- First, figure out what you want to accomplish.
-- Then, describe what the design principles and successful outcomes look like.
-- Then choose (or create) a family of patterns that can help you achieve those outcomes and incorporate them into a model to test your assumptions.
+- **State:** all of the information in the system.
+- **Users:** actors who can engage with the system.
+- **Actions:** things users can do.
+- **Rights:** the authority to take an action or access part of the state.
+- **Roles:** bundles of rights assigned to users.
 
-In general the token engineering design process involves determining the system requirements, sketching out a design, and then testing and validating that design.
+Forum example:
 
-System requirements:
+- **State:** all the users,posts, and comments as well as the meta layer of actions and roles.
+- **Users:** regular users and admins.
+- **Actions:** join, post, edit, delete, leave.
+- **Rights:** regular users can join, post, edit and delete their own posts, and leave the forum. Admins can do all that, but for all users.
+- **Roles:** user and admin.
 
-- requirements analysis
-- visual system mapping
-- mathematical specification
+Token system example:
 
-System design:
+- **State:** contract code for a widget, token accounts and balances, contract methods to modify widget.
+- **Users:** token holders and community multi-sig.
+- **Actions:** receive tokens, send tokens, engage with widget contract, modify widget contract.
+- **Rights:** token holders can send and receive tokens as well as vote to signal changes to the parameters of a widget. Community multi-sig accounts can do all that as well as vote to freeze the token contract and modify it's parameters.
+- **Roles:** token holder and multi-sig account.
 
-- differential specification
-- dynamical systems modeling and specification (cadCAD)
+Your thing:
 
-System validation:
+- **State:**
+- **Users:**
+- **Actions:**
+- **Rights:**
+- **Roles:**
 
-- what if experiments
-- testing IRL
-- incorporating data back into the model
+---
 
-**Design principles/properties:**
+Next we want to map actions to mechanisms. Mechanisms are how methods get instantiated. First just describe each mechanism and what it should do.
 
-When you think through your token system it's important to consider what properties you want to hold. This will help you make (or not make) design decisions. One way to think through design principles is to ask yourself: what are the things that people will always want from their tokens? This might include:
+For example, if you were designing a bonding curve you'd need a method to mint tokens and another to burn them. You can describe it as: an ETH token holder can call the buy method to exchange ETH for TOKEN according to the constant product function of the contract.
 
-- An instrument that is secure, trustless, and globally accessible (security).
-- A defensible utility function (fundamental value).
-- Permissionless integrations (developer ecosystem).
-- Stakeholder interests are aligned and represented (community).
-- Hodlers and long-term believers are rewarded vs short term mercenary capital and traders (incentive alignment).
+Once you've defined the mechanisms involved, then you can outline design principles. These are properties your system will maintain under all conditions. Some common principles many token systems aspire to include, but are not limited to:
 
-**Rights, roles, and access paradigms:**
+- **Permissionless:** anyone can interact with the contracts.
+- **Trustless:** the contract run deterministically.
+- **Secure:** the code does what it says it does without unexpected behavior.
 
-Before jumping into any concrete implementation we want to define the roles, methods, and states of our system. This is just a fancy way of saying who can do what and under what circumstances.
+---
 
-- **Roles:** bundles of rights determined by "the system state"
-- **Methods:** actions that can be taken, mutates "the system state" but access or effect may be dependent on roles
-- **State:** all of the information (not limited to smart contract state)
+At this point everything should be high level. We're describing the system. We're not choosing a programming language, framework, blockchain or L2 solution. We're just describing the system.
 
-**Credible Neutrality:**
+As you think through and describe your system there's a few things you might want to keep in mind.
 
-No one likes a rigged game. No one likes watching them and no one likes playing them. If everyone's not bound by the same rules and/or if the rules change or are fuzzy things are going to get weird. People get pissed if the rules don't apply equally or if they change in ways that are unfair or unclear. This is one of the reasons that decentralized protocols are so valuable, they create credible commitments about the rules of the protocol. You can read the code, understand how the system works, and know that anyone interacting with that system will do so based on the same rules. When this happens tokens systems can be said to be [credibly neutral](https://nakamoto.com/credible-neutrality/).
+Decentralized protocols are valuable, because they create credible commitments about the rules of the game. You can read the code, understand how the system works, and know that everyone interacting with the system has to play by the same rules. When this happens tokens systems can be said to be [credibly neutral](https://nakamoto.com/credible-neutrality/).
 
 Rights access paradigms are a way to explicitly model and reason through credible neutrality. To do this we need to map out rights and access controls to show who can do what, how people can move through the system, and how the system itself can be changed (if at all). This way everyone can engage with full information. From there if you were to be dropped into any role within that system you'd know the path and process to gain the role you want. This might be as simple as acquiring tokens to stake or as complex as drafting a governance proposal to create the changes you want to see.
+
+---
 
 Some of the stakeholders common in token networks include, but are not limited to:
 
@@ -183,39 +191,19 @@ Some of the stakeholders common in token networks include, but are not limited t
 
 Better economic alignment between platforms and participants will enable the advent of true stakeholder capitalism to give billions of people the opportunity to build wealth alongside the products and services they love and use.
 
+---
+
 **Governance:**
 
-> Governance should be as simple as possible, but no simpler.
+Governance should enable token holders to achieve a goal. It's a means to an end, not the end itself. It needs to be as simple and intuitive as possible. This way token holders can engage in the governance process, via the governance mechanism, to create the changes they want to see.
 
 The moment you create a modifiable/upgradeable token system you have a governance problem. Another way of framing this is as a rights/roles access problem. To more easily reason about this you need a process to describe and discuss the rules of the game. Then you can figuring out what the rules actually are, who can do what when, and how people participating in the system can change the rules of the system.
 
-For governance to work people need to understand and respect the rules of the system, even if they don't agree with every decision. This is very important. We don't need consensus on the decisions themselves. We need consensus on the way we make decisions.
+For governance to work people need to understand and respect the rules of the system. Then, even if they don't agree with every decision, they can at least respect the process that resulted in that decision. This is very important. We don't need complete agreement on every decision, but we do need to agree on the consensus mechanism we're using to make decisions.
 
 For example: if you respect the rules of the game you'll respect the scores of a game, even if you wish your team won. Once people buy into the idea of the game they can focus on playing the game vs figuring out what the game is or arguing about the rules.
 
 If you don't want to design a governance process from day 1 you can leave it as an upgrade for the future. This way if you want to set control of contracts to a community multi-sig or DAO in the future you can, but you could also set it to the 0 address so that the contract becomes immutable.
-
----
-
-Developing a grammar of cryptoeconomics
-
-mechanisms = words
-protocols = sentences
-systems = paragraphs
-
-Composability of language is what allows us to express and connect rich ideas easily.
-
-Need to create a library of patterns that people can easily instantiate and compose.
-
-Explore the relationship between classes/patterns and instances/things.
-
-Design patterns can be credibly neutral, but often instances are not.
-
-Shelling points are where we have shared language and patterns to describe things and coordinate.
-
-Patterns and mechanisms should have properties that hold under all conditions. Then you can reason about the mechanisms or patterns you want based on properties (toolbox vs based on the mechanisms themselves (man w hammer)
-
-Tokens as energy: liquidity, velocity, and friction to capture value (decreases velocity but can also be captured to put other things to work). All energy in the system should be maximally utilized towards productivity.
 
 ---
 
