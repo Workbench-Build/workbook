@@ -28,7 +28,7 @@ If you know of any good resources that could be added to this document, or citat
     - [Shipping](#shipping)
     - [Monitoring](#monitoring)
     - [Governance](#governance)
-    - [Developer Communities](#developer-communities)
+    - [Communities](#communities)
     - [Upgrades](#upgrades)
 
 ---
@@ -39,51 +39,51 @@ If you know of any good resources that could be added to this document, or citat
 
 ### TL;DR:
 
-- Find a problem to solve (the bigger the better).
-- Understand who has that problem, why, how often, and how painful that problem is to them. Then figure out if/how they could pay (via acquiring tokens or direct payment for services) to have that problem solved. Then, determine the best/easiest way to create a solution for them that they can afford (time/money) and that you can provide.
-- Define design goals for the thing you want to build (characteristics you want to hold under all circumstances).
-- Define roles, methods, states for all the stakeholders who will participate in your token network (end users, providers, developers, community, etc..).
-- Explore mechanisms that can help you create that system. Then compose those mechanisms into a token system.
+- Find a problem to solve.
+- Understand who has that problem, why, how often, and how painful it is for them.
+- Find a solution that's simple, easy, and affordable.
+- Determine if a blockchain and a token system really makes sense.
+- If so, define roles, methods, states for all the stakeholders who will participate in your token system (end users, providers, developers, community, etc..).
+- Explore mechanisms that can help you create that system. Then if there's some you can use or modify compose them into a token system.
 - Draw a picture describing the token system. Ideally showing not just the things, but the relationships between the things and how one thing affects another.
 - Write a blog post describing the token system. Focus on incentive alignment and checks and balances on power for all parties involved.
-- Create a model simulating how users might interact with the token system. Do the design goals hold under varying market conditions (price, supply/demand, etc..)?
-- Share the description, picture, and model with the community for feedback and contributions. Refine and revisit everything to make it better.
+- Create a model simulating how users might interact with the token system.
+- Share with the community for feedback and contributions. Refine and revisit everything to make it better.
 
 ---
 
 ### Brainstorming
 
-It's better to be finding the solution to a big problem than finding a problem for your big solution.
+The bigger the problem you can solve, for the most people, the more value you can create (and capture).
 
-This explores the ideation stage. Here it's most important to think about the value you want to create for users. Who are the users? What problems are you going to solve for them? The bigger the problem you can solve for the most people, the more value you can create (and capture) with your token.
-
-Ideally you want to be solving a problem that is:
+Ideally you want a problem that is:
 
 - Popular (lots of people have it)
 - Growing (more and more people have it)
-- Frequent (those people experience it a lot)
-- Expensive (it's hard for people to solve for themselves)
+- Frequent (they experience it a lot)
+- Expensive (it's hard to solve)
 - Mandatory (it must be solved)
 
-From there, you should be able to explain [why](https://simonsinek.com/product/start-with-why/) you're solving this problem in a way that's simple and intuitive. It should be something so simple you can explain it in a single sentence and people get it. It should be a [meme](https://en.wikipedia.org/wiki/Meme). People should understand what and why. It's your job to abstract away all the complexity of the how so that the solution "just works."
+What problem do you want to solve?
 
-Once you've identified a problem to solve, and people who have that problem, you have to then go solve it for them. This is hard. While choosing the right thing to work on is often what will determine your success or failure, after that it's all about execution. In blockchain land this means you need to create a token system to align incentives for the community to create, use, and maintain an application/protocol correctly this can be positive-sum. It's very important that you understand this. Token networks are socio-economic systems. Incentives + humans = value creation. Your token system needs to reward people for doing things that create value for token holders. Then people will want to earn, buy, and hold/use your token. Supply and demand.
+What will the world look like after you solve it?
 
-Previously this was very hard to do without trusted intermediaries. Physical scarcity was easy, but digital scarcity was impossible. With blockchains we can create digital scarcity. Tokens are a way to create scarcity to capture and share value.
+Who will benefit and why should they care?
 
-This is great, but besides global access why would a token be better than stocks, commodities, and/or application credits? What makes blockchain tokens more interesting is that the token contracts themselves create credible commitments. Trust is transferred from people to code. You know what the contract will do, if/how it can be changed, and the process to create those changes. This reduces the risk for people to use these [contracts/protocols vs more centralized services that might change the terms of their API at any time](https://cdixon.org/2018/02/18/why-decentralization-matters). This way parties that don't trust each other can still coordinate and transact via the blockchain.
+You should be able to explain the problem you're solving, [why](https://simonsinek.com/product/start-with-why/) it's important, and how the world will be better once you've solved it. Everyone should get it. It should be so obvious they ask why they didn't think of it first. Ideally it can become a [meme](https://en.wikipedia.org/wiki/Meme). If people don't get it, work to make it simpler or find a better problem to solve.
 
-This is two layers deep in the problem n They need to solve a problem for end users, while also building a company to solve that problem at scale. While there's library of knowledge freely available on how to create, fund, and grow startups - best practices for token projects are TBD. Token projects are mix of entrepreneurship, politics, economics, software development, systems design, and more. Depending on your goals and system architecture your token project will probably sit on the spectrum between an API, corporation, and government.
+The solution to most problems is not a blockchain. If, however, you need to coordinate multiple stakeholders to share a digital commons then a blockchain might make sense. You could create a game where rules are enforced, computed, and verified via a public blockchain. We'll call this a token system. If you design the token game correctly people will do the things that give them rewards and avoid the things that create punishments.
 
-In addition to exploring the technical specifications of tokens/mechanisms/systems it would be good to first identify the high level things such as the core value prop of the token (access, discounts, unique items/experiences, governance, etc..), how to acquire tokens (buy and/or earn), and how to extend and grow the value of tokens over time (network effects). There should be a quickstart guide so that if someone just wants to create a token or add a feature to do a thing they can do so easily.
+Incentives need to be aligned for individuals, but also the system as a whole. Ideally power is balanced between stakeholders. Common stakeholders are developers, service providers, and end users. They should all have aligned incentives. They should also have the ability to voice their ideas and concerns to influence the system. Tokens can give holders the right to use the network, participate in governance, and benefit from increased demand if the network is successful. It should be very clear what the rights of token holders are. The token should have a clear purpose.
 
 **Questions to ask:**
 
 - What problem are you solving?
 - Who has this problem? How often?
 - How much do they need this problem to be solved?
-- How will your token contribute to solving this problem? Is your token incentivizing people to do work to solve the problem directly, or is it a component of a larger system that's working to solve that problem?
-- Tokens are scarce digital assets that people can own. Is there an opportunity for your token to turn what was preciously an expenditure into an investment?
+- How will your token contribute to solving this problem?
+- Is your token incentivizing people to do work to solve the problem directly, or is it a component of a larger system that's working to solve that problem? If so, why?
+- Tokens are scarce digital assets that people can own. Is there an opportunity for your token to turn what was preciously an expenditure into an investment? Ex: buying computation credits can now go from an expense to an investment in a decentralized computation system.
 - What is the value prop of your token (access, unique items, discounts, governance, etc..)? Why would anyone want it?
 - Is there any part of your token system (including the token itself) that could be removed while still achieving your goals?
 - If you substitute a stable coin or ETH with your token will things still work? If so, then you probably don't need to create a new token.
@@ -97,7 +97,7 @@ In addition to exploring the technical specifications of tokens/mechanisms/syste
 - When you add social and experiential value to asset classes like stocks, sneakers, and cryptocurrencies, price is divorced from fundamentals and becomes more emotional. Embedding emotional and social can be both a feature and a bug as it'll make your token demand (and thus price) more closely linked to sentiment. How will your project communicate it's values to connect with users on an emotional level?
 - In the same way the internet was a democratizing force that gave everyone in the world the ability to easily create and share information, the next step is to give everyone in the world the ability to easily create and share value. What is the value that you are creating and sharing with the world?
 - It’s helpful to think of money as an adjective: moneyness. Every asset exists on a spectrum of moneyness. Things with moneyness often command a premium vs regular commodities. Does your token exhibit moneyness?
-- To answer the question of whether the blockchain is needed, ask yourself: Does the blockchain change the system of trust in any meaningful way, or just shift it around? Does it just try to replace trust with verification? Does it strengthen existing trust relationships, or try to go against them? How can trust be abused in the new system, and is this better or worse than the potential abuses in the old system? And lastly: What would your system look like if you didn’t use blockchain at all? ([from Bruce Schneier](https://www.schneier.com/blog/archives/2019/02/blockchain_and_.html))
+- To answer the question of whether the blockchain is needed, ask yourself: Does the blockchain change the system of trust in any meaningful way, or just shift it around? Does it just try to replace trust with verification? Does it strengthen existing trust relationships, or try to go against them? How can trust be abused in the new system, and is this better or worse than the potential abuses in the old system? And lastly: What would your system look like if you didn’t use blockchain at all?
 
 **Examples:**
 
@@ -106,9 +106,10 @@ In addition to exploring the technical specifications of tokens/mechanisms/syste
 **Resources:**
 
 - [a16z](https://a16z.com/crypto/) has a [crypto startup school](https://a16z.com/crypto-startup-school/). It has lots of content explaining high level concepts that are essential for the space. You can also sign up for their newsletter to get ongoing insights delivered to your inbox. They also have a [tldr version here](https://a16z.com/2020/12/28/crypto-users-guide/).
-- [YC's Startup School](https://www.startupschool.org/) is a great resource to help you make something people want. The [How to find startup ideas](https://www.youtube.com/watch?v=DOtCl5PU8F0) video can help build intuition for what types of problems to solve, and more likely, prevent you from working on the wrong thing. While YC is focused on startups, a lot of the same concepts around solving problems and creating value for users apply to both startups and token projects. Highly recommend checking out [their videos](https://www.youtube.com/channel/UCcefcZRL2oaA_uBNeo5UOWg).
+- [YC's Startup School](https://www.startupschool.org/) is a great resource to help you make something people want. The [How to find startup ideas](https://www.youtube.com/watch?v=DOtCl5PU8F0) video can help build intuition for what types of problems to solve. Might help you avoid spending time working on the wrong thing. While YC is focused on startups, a lot of the same concepts around solving problems and creating value for users apply to both startups and token projects. Highly recommend checking out [their videos](https://www.youtube.com/channel/UCcefcZRL2oaA_uBNeo5UOWg).
 - [The idea maze](https://a16z.com/tag/idea-maze/) can help you navigate the wild world of emerging technologies.
 - [Simon Sinek](https://simonsinek.com/) has a lot of great content explaining why you should [start with why](https://simonsinek.com/product/start-with-why/).
+- [Bruce Schneier](https://www.schneier.com/blog/archives/2019/02/blockchain_and_.html) has some great points as to why you might not want a blockchain. You should only use a blockchain if you really need one.
 
 ---
 
@@ -194,6 +195,30 @@ For example: if you respect the rules of the game you'll respect the scores of a
 
 If you don't want to design a governance process from day 1 you can leave it as an upgrade for the future. This way if you want to set control of contracts to a community multi-sig or DAO in the future you can, but you could also set it to the 0 address so that the contract becomes immutable.
 
+---
+
+Developing a grammar of cryptoeconomics
+
+mechanisms = words
+protocols = sentences
+systems = paragraphs
+
+Composability of language is what allows us to express and connect rich ideas easily.
+
+Need to create a library of patterns that people can easily instantiate and compose.
+
+Explore the relationship between classes/patterns and instances/things.
+
+Design patterns can be credibly neutral, but often instances are not.
+
+Shelling points are where we have shared language and patterns to describe things and coordinate.
+
+Patterns and mechanisms should have properties that hold under all conditions. Then you can reason about the mechanisms or patterns you want based on properties (toolbox vs based on the mechanisms themselves (man w hammer)
+
+Tokens as energy: liquidity, velocity, and friction to capture value (decreases velocity but can also be captured to put other things to work). All energy in the system should be maximally utilized towards productivity.
+
+---
+
 **Questions to ask:**
 
 - What is your token system supposed to incentivize people to do?
@@ -254,6 +279,10 @@ There are many token system templates that you can use to get started. You can u
 
 **Resources:**
 
+> Should the Workbook focus on design patterns and then have separate pages or links for implementations?
+
+https://ethereum.org/en/developers/docs/
+
 **Design patterns and standards:**
 
 Design patterns are abstract blueprints for a class of things. Popular designs are oftend turned into standards. There may be a single or multiple implementations of these design patterns.
@@ -294,16 +323,13 @@ These resources explain the core mechanics of bonding curves:
 
 - `https://medium.com/coinmonks/token-bonding-curves-explained-7a9332198e0e`
 - `https://yos.io/2018/11/10/bonding-curves/`
-
 - `https://blog.relevant.community/how-to-make-bonding-curves-for-continuous-token-models-3784653f8b17`
 - `https://blog.relevant.community/bonding-curves-in-depth-intuition-parametrization-d3905a681e0a`
 - `https://github.com/relevant-community/contracts/tree/bondingCurves/contracts`
-
 - `https://medium.com/@billyrennekamp/converting-between-bancor-and-bonding-curve-price-formulas-9c11309062f5`
 - `https://medium.com/@simondlr/bancors-smart-tokens-vs-token-bonding-curves-a4f0cdfd3388`
 - `https://medium.com/thoughtchains/on-single-bonding-curves-for-continuous-token-models-a167f5ffef89`
 - `https://medium.com/thoughtchains/on-bonding-curves-as-funding-mechanisms-a0812b22cc3d`
-
 - [Bancor whitepaper](../Papers/Bancor-Conversion-Function.pdf) - OG Bancor formula
 - [From curved bonding to configuration spaces](../Papers/'from-curved-bonding-to-configuration-spaces.pdf') - mZ's paper
 
@@ -326,41 +352,6 @@ Projects that use bonding curves in the wild.
 - `https://github.com/pRoy24/katanapools`
 - Aavegotchi
 - TEC Commons
-
-Unorganized bonding curve resources:
-
-`https://medium.com/thoughtchains/on-single-bonding-curves-for-continuous-token-models-a167f5ffef89`
-`https://medium.com/coinmonks/token-bonding-curves-explained-7a9332198e0e`
-`https://medium.com/weidaithriftcoin/token-bonding-curves-the-movie-2ff612fc9263`
-`https://medium.com/protea/exploring-bonding-curve-collateral-c37d4f922bbd`
-`https://docs.balancer.finance/core-concepts/protocol/index#exponentiation-approximation`
-
-`https://media.consensys.net/exploring-continuous-token-models-towards-a-million-networks-of-value-fff153175776`
-`https://medium.com/atchai/can-we-save-the-utility-token-55ef639370cf`
-`https://medium.com/linum-labs/ethereum-tokens-explained-ffe9df918008`
-`https://medium.com/linum-labs/intro-to-bonding-curves-and-shapes-bf326bc4e11a`
-`https://hackernoon.com/introducing-continuous-organizations-22ad9d1f63b7`
-``
-
-`https://github.com/BenSchZA/awesome-bonding`
-`https://github.com/commons-stack/awesome-bonding`
-
-`https://blog.oceanprotocol.com/enabling-short-selling-in-bonding-curves-part-1-af871ad75d40`
-`https://blog.oceanprotocol.com/enabling-short-selling-in-bonding-curves-part-2-4d9da68324fb`
-
-`https://github.com/C-ORG/whitepaper/`
-`https://github.com/yosriady/continuous-token` - this looks promising, albeit outdated
-
-`https://sigmoid-tbc-app.herokuapp.com/`
-`https://medium.com/molecule-blog/designing-different-fundraising-scenarios-with-sigmoidal-token-bonding-curves-ceafc734ed97`
-`https://medium.com/@titian.steiger`
-`https://gitlab.com/linumlabs/molecule-system-modelling/blob/master/jupyter-lab-environment/workspace/molecule-alpha.ipynb`
-`https://gitlab.com/linumlabs/molecule-system-modelling`
-
-Stuff that's cool, but only tangentially relevant to bonding curves.
-
-`https://blog.oceanprotocol.com/towards-a-practice-of-token-engineering-b02feeeff7ca`
-`https://medium.com/dragonfly-research/what-explains-the-rise-of-amms-7d008af1c399`
 
 **Add on mechanisms:**
 
@@ -630,6 +621,8 @@ TBD
 
 **Resources:**
 
+https://ethereum.org/en/developers/docs/programming-languages/
+
 **Solidity:**
 
 https://github.com/cryptofinlabs/audit-checklist
@@ -690,6 +683,33 @@ Diagramming can help you refine your understanding of the system and it's compon
 > You don't know what you don't know.
 
 A good model provides insights into how your token system would function under various conditions. This can help you check to see if your design goals are likely to hold as usage, price, and other important parameters change. Before you start modeling it's important to know what you want to have happen as well as what are the unknowns you're trying to understand. Ideally these unknowns can be stated as concrete questions. This way you have a clear goal, but also others who contribute to and/or review your model have something concrete to orient around.
+
+**Notes:**
+
+A successful socio-economic system is where users are uninterested in gaming the system because there's very little value in doing so.
+
+Blockchains compute deterministically, but dependent on the state. State changes often. If you don't model your system and test it against extreme state conditions you might experience unexpected results even if your code is technically correct.
+
+Data is backward looking. Need to back-test, but also predict and explore the entire state space.
+
+With socio-economic systems often the mechnisms are simple and the humans are the ones doing the computation that makes it complex.
+
+Because models are complex, incentivized human testing is also recommended.
+
+- The map is your model.
+- The territory is real life.
+- Make sure the two are aligned.
+
+Also think through second order effects, esp around behavioral economics, esp how UI/UX will affect that.
+
+- first order: bridge doesn't collapse
+- second order: people slow down to look at view and it causes congestion
+
+Humans are not perfect. They are not completely rational and they don't have perfect information and compute. As such, they tend to express preferences and values rather than optimizing for an explicit reward function. Design mechanisms that work with this, not against it.
+
+MetaGames are when the players change the game as they play.
+
+Model not just things, but the relationships between things
 
 **cadCAD Modeling Checklist**
 
@@ -871,6 +891,7 @@ Notes:
 **Resources:**
 
 - Ethereum contract auditing tools go here.
+- https://ethereum.org/en/developers/docs/security/
 - [Consensys Diligence](https://consensys.net/diligence/) - Consensys Diligence provides a comprehensive smart contract audit service to help everyone from startups to enterprises launch and maintain their Ethereum blockchain applications. They also contribute a lot of open source [reviews and tooling](https://github.com/ConsenSys) to the Ethereum community.
 - [Trail of Bits](https://www.trailofbits.com/) - Trail of Bits provides a variety of services to secure and test both Web2 and Web3 software. They're a great choice if you want an end-to-end security review that goes beyond Solidity contracts. They also contribute a lot of [open source research and tooling](https://www.trailofbits.com/products) to the space.
 - Parity, who creates a lot of open source blockchain clients and code, created a [14 point checklist for secure smart contract development](https://www.parity.io/paritys-checklist-for-secure-smart-contract-development/). Lots of great tips on the development/deployment process (whereas the Consensys and Trail of Bits links focus more on contract architecture and testing).
@@ -937,7 +958,7 @@ As of the summer of 2020 deploying contracts on mainnet is often $100 or more (U
 
 **Resources:**
 
-- ethereum.org
+- ethereum.org: https://ethereum.org/en/developers/docs/layer-2-scaling/
 - xDAI
 - If you're using an L2 solution make sure that exits are permissionless and trustless so that if the operator becomes malicious you can always exit with your tokens.
 - Deployment tips and tools (remix, buidler, etc..) go here.
@@ -1094,7 +1115,7 @@ Notes:
 
 ---
 
-### Developer Communities
+### Communities
 
 Giving people invites to apps can create social sharing and scarcity. This can constrain supply while also driving demand (and reducing server costs if you have a Web2 server). Curates an early community and creates some exclusivity.
 
@@ -1115,6 +1136,16 @@ Note: fully distributed requires advanced level management skills. Requires next
 Branding isn't about you. It's about what you're providing for your customer. It's not about being cool to be cool, it's about helping your customers kick ass. When your customers succeed you succeed, and in a way that feels genuine and builds true fans/community.
 
 If you have no values no one will care about your brand. You have to believe in and communicate something that people care about. Then people will amplify that message to create a community of people with shared values.
+
+Often value is an opinion of what is valuable - but that's based on supply and demand. Ideally your token system allows for localized contextual value vs a global sense of value (same w governance - push it to the edges). Different people like different things. Create systems that give everyone room to innovate and explore.
+
+You don't get to pick your communities. They reflect the values of the project.
+
+Every community is it's own kitchen. Often similar ingredients, but you need someone there tasting things as you go not just blindly following a recipe.
+
+Build something people want and want to be part of.
+
+The culture and values should be reflected in the community as well as the mechanism design.
 
 **Examples:**
 
