@@ -1,11 +1,5 @@
 # The Workbook
 
-This document will take you through the token design, development, and deployment process. In practice you'll go back and forth between steps as your project progresses. Some parts may or may not be relevant to you. Choose your own adventure.
-
-If you know of any good resources that could be added to this document, or citations that are missing, please open an Issue or submit a PR to improve the doc.
-
----
-
 - [The Workbook](#the-workbook)
   - [Design](#design)
     - [TL;DR:](#tldr)
