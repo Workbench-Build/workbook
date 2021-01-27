@@ -25,10 +25,6 @@
     - [Communities](#communities)
     - [Upgrades](#upgrades)
 
----
----
----
-
 ## Design
 
 ### TL;DR:
@@ -43,8 +39,6 @@
 - Write a blog post describing the token system. Focus on incentive alignment and checks and balances on power for all parties involved.
 - Create a model simulating how users might interact with the token system.
 - Share with the community for feedback and contributions. Refine and revisit everything to make it better.
-
----
 
 ### Brainstorming
 
@@ -105,8 +99,6 @@ Many of the ideas in this section came from the following resources:
 - [The idea maze](https://a16z.com/tag/idea-maze/) can help you navigate the wild world of emerging technologies.
 - [Simon Sinek](https://simonsinek.com/) has a lot of great content explaining why you should [start with why](https://simonsinek.com/product/start-with-why/).
 - [Bruce Schneier](https://www.schneier.com/blog/archives/2019/02/blockchain_and_.html) has some great points as to why you might not want a blockchain. You should only use a blockchain if you really need one.
-
----
 
 ### Mechanism Design 101
 
@@ -208,8 +200,6 @@ If you don't want to design a governance process from day 1 you can leave it as 
 - [CommonsStack](https://commonsstack.org/) - A community working to create templates and best practices to realign incentives around public goods.
 - [cadCAD Edu](https://www.cadcad.education/) is a great resource to learn about the token engineering process. While it's focused on cadCAD, the Complete Foundations Bootcamp is a great intro to the token engineering design process as a whole.
 
----
-
 ### Mechanism Design 102
 
 > Exploring common mechanisms
@@ -255,8 +245,6 @@ This section will explore common Web3 mechanisms and standards. It will be focus
     - direct or delegated
     - etc..
 
----
-
 ### Diagramming
 
 > A picture says a thousand words!
@@ -285,8 +273,6 @@ Diagramming can help you refine your understanding of the system and it's compon
 - [cadCAD](https://github.com/cadCAD-org/cadCAD_diagram) - cadCAD (free and open source) has diagramming built in, but it's only for the cadCAD model.
 - [Surya](https://github.com/ConsenSys/surya) - Free and open source tool to visualize Solidity contracts.
 - [Solidity Visual Developer](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor) - [Visual Studio Code](https://code.visualstudio.com/) extension that uses Surya and other things to visualize your Solidity code.
-
----
 
 ### Modeling
 
@@ -326,9 +312,9 @@ A good model provides insights into how your token system would function under v
 - [cadCAD](https://cadcad.org/) is a python based library for modeling complex systems. There's free and open source [demos and tutorials](https://github.com/cadCAD-org/demos). There's also some [templates](https://github.com/cadCAD-org/snippets) to help you get started with your own models. If you have questions there's a [community forum](http://community.cadcad.org/) and [Discord](https://discord.gg/cewBa9zsxS).
 - [Machinations](https://machinations.io/) - A platform and graphical interface for designing and simulating games.
 
----
-
 ### Whitepaper
+
+> Sharing is caring
 
 Once you've identified a problem to solve, people who have that problem, and how you're going to solve it for them you should write it down! This will help you clarify your thinking. It will also help you communicate your vision to others. Then they might join you on your quest and/or point out ways that you might improve things.
 
