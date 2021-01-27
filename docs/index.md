@@ -118,9 +118,15 @@ Many of the ideas in this section came from the following resources:
 
 > Developing intuition.
 
-The most important thing is to know what you want to do. Then find tools that can help you do that. Don't start with the tools! If you do you'll become a man with a hammer. Choose the tools based on your goals and design constraints, not the other way around.
+Before jumping into design, or even implementation, it's good to think about the [properties and values you want the token system to express](https://www.youtube.com/watch?v=6ufHL5AkBEA). These should be concrete properties that your system will maintain under all conditions. This way with each mechanism you add to your system, and the system as a whole, you can check to ensure that it expresses the project's core principles. Some common principles many Web3 projects strive for are:
 
-The first step is just describing what you want to do. Write it down. It should answer who, what, when, where, why.
+- **Permissionless:** anyone can interact with the contracts.
+- **Trustless:** the contract run deterministically.
+- **Secure:** the code does what it says it does without unexpected behavior.
+
+Then once you know what you want to do, you have to figure out how. First know what you want to do, then find tools that can help you do it. Don't start with the tools! If you do you'll become a man with a hammer. Choose the tools based on your goals and design constraints, not the other way around.
+
+The first step is just describing what you want to do. Write it down. You should be able to answer who, what, when, where, why.
 
 A way to define these things in the context of a digital system is rights, roles, and access. Who can do what and under what circumstances.
 
@@ -130,72 +136,38 @@ A way to define these things in the context of a digital system is rights, roles
 - **Rights:** the authority to take an action or access part of the state.
 - **Roles:** bundles of rights assigned to users.
 
-Forum example:
+Starting with "who," users/stakeholders might include:
 
-- **State:** all the users,posts, and comments as well as the meta layer of actions and roles.
-- **Users:** regular users and admins.
-- **Actions:** join, post, edit, delete, leave.
-- **Rights:** regular users can join, post, edit and delete their own posts, and leave the forum. Admins can do all that, but for all users.
-- **Roles:** user and admin.
+- **End users:** acquire tokens to access goods and services.
+- **Service providers:** provide services to earn rewards.
+- **System designers:** design tokenecomic systems for fun and profit.
+- **Community developers:** build software for fun and profit.
+- **Third-party developers:** create integrations for their product or service.
+- **Protocol politicians:** create and/or explain governance proposals to other stakeholders.
+- **Investors:** contribute capital and do work to improve their investments.
+- **Traders:** mercenary capital that chases opportunities such as market volatility, arbitrage, portfolio diversification, etc..
 
-Token system example:
+The state of your system will be the "what" and the 'where." A blueprint of the system. This is what you'll have at the end of the design phase.
 
-- **State:** contract code for a widget, token accounts and balances, contract methods to modify widget.
-- **Users:** token holders and community multi-sig.
-- **Actions:** receive tokens, send tokens, engage with widget contract, modify widget contract.
-- **Rights:** token holders can send and receive tokens as well as vote to signal changes to the parameters of a widget. Community multi-sig accounts can do all that as well as vote to freeze the token contract and modify it's parameters.
-- **Roles:** token holder and multi-sig account.
+"When" explores how your system handles time. If you have governance this will often relate to voting or delay windows before actions can be taken.
 
-Your thing:
+To answer "how" we need to map actions to mechanisms. Mechanisms are how methods get instantiated. First just describe each mechanism and what it should do. Then as your token system evolves you can add more details.
 
-- **State:**
-- **Users:**
-- **Actions:**
-- **Rights:**
-- **Roles:**
+Then once you have a set of mechanisms you can define who has the rights and roles to take what actions. If your system is dynamic and has governance you might also define the process to modify roles and/or modify who has which roles.
+
+At this point everything should still be high level. We're not choosing a programming language, framework, blockchain or L2 solution. We're just describing the system.
 
 ---
 
-Next we want to map actions to mechanisms. Mechanisms are how methods get instantiated. First just describe each mechanism and what it should do.
+Once you more or less know what you want to do you should ask yourself if your system is [credibly neutral](https://nakamoto.com/credible-neutrality/). Decentralized protocols are valuable because they create credible commitments about the rules of the game. You can read the code, understand how the system works, and know that everyone interacting with the system has to play by the same rules. When this happens tokens systems can be said to be credibly neutral.
 
-For example, if you were designing a bonding curve you'd need a method to mint tokens and another to burn them. You can describe it as: an ETH token holder can call the buy method to exchange ETH for TOKEN according to the constant product function of the contract.
+Rights access paradigms are a way to explicitly model and reason through credible neutrality. To do this we need to map out rights and access controls to show who can do what, how people can move through the system, and how the system itself can be changed (if at all). This way everyone can engage with full information.
 
-Once you've defined the mechanisms involved, then you can outline design principles. These are properties your system will maintain under all conditions. Some common principles many token systems aspire to include, but are not limited to:
-
-- **Permissionless:** anyone can interact with the contracts.
-- **Trustless:** the contract run deterministically.
-- **Secure:** the code does what it says it does without unexpected behavior.
+If a system is credibly neutral you could be dropped into any role within that system you'd know the path and process to move towards the role you want. This might be as simple as acquiring tokens to stake or as complex as drafting a governance proposal to create the changes you want to see. This is important because systems with high degrees of credible neutrality tend to attract more users and organic contributors. This can help you grow faster and/or save you time and money on marketing simply because incentives are aligned for all parties involved.
 
 ---
 
-At this point everything should be high level. We're describing the system. We're not choosing a programming language, framework, blockchain or L2 solution. We're just describing the system.
-
-As you think through and describe your system there's a few things you might want to keep in mind.
-
-Decentralized protocols are valuable, because they create credible commitments about the rules of the game. You can read the code, understand how the system works, and know that everyone interacting with the system has to play by the same rules. When this happens tokens systems can be said to be [credibly neutral](https://nakamoto.com/credible-neutrality/).
-
-Rights access paradigms are a way to explicitly model and reason through credible neutrality. To do this we need to map out rights and access controls to show who can do what, how people can move through the system, and how the system itself can be changed (if at all). This way everyone can engage with full information. From there if you were to be dropped into any role within that system you'd know the path and process to gain the role you want. This might be as simple as acquiring tokens to stake or as complex as drafting a governance proposal to create the changes you want to see.
-
----
-
-Some of the stakeholders common in token networks include, but are not limited to:
-
-- End users: acquire tokens to access goods and services.
-- Service providers: provide services to earn rewards.
-- System designers: design tokenecomic systems for fun and profit.
-- Community developers: build software for fun and profit.
-- Third-party developers: create integrations for their product or service.
-- Protocol politicians: create and/or explain governance proposals to other stakeholders.
-- Investors: contribute capital and do work to improve their investments.
-- Traders: contribute capital based on market volatility, arbitrage opportunities, and portfolio diversification strategies.
-
-Better economic alignment between platforms and participants will enable the advent of true stakeholder capitalism to give billions of people the opportunity to build wealth alongside the products and services they love and use.
-
----
-
-**Governance:**
-
-Governance should enable token holders to achieve a goal. It's a means to an end, not the end itself. It needs to be as simple and intuitive as possible. This way token holders can engage in the governance process, via the governance mechanism, to create the changes they want to see.
+If your system needs human input to change or adapt then you need governance. Governance should enable token holders to achieve a goal. It's a means to an end, not the end itself. It needs to be as simple and intuitive as possible. This way token holders can engage in the governance process, via the governance mechanism, to create the changes they want to see.
 
 The moment you create a modifiable/upgradeable token system you have a governance problem. Another way of framing this is as a rights/roles access problem. To more easily reason about this you need a process to describe and discuss the rules of the game. Then you can figuring out what the rules actually are, who can do what when, and how people participating in the system can change the rules of the system.
 
@@ -222,6 +194,7 @@ If you don't want to design a governance process from day 1 you can leave it as 
 - Do all parties involved in your token system (end users, service providers, token holders, etc..) have tokens so that they can participate in the financial upside and management of the token system? If not, why not? How can you enable more stakeholders to participate in a meaningful way?
 - Are there features you want that aren't available via any of the token system templates available?
 - How will the addition of a feature/mechanism affect your token economy? Will it increase velocity or create a sink that locks up supply (and liquidity)?
+- Can you easy answer who, what, when, where, and why questions about your token system?
 
 **Examples:**
 
@@ -236,6 +209,7 @@ If you don't want to design a governance process from day 1 you can leave it as 
 - [Web3 Revenue Primitives](https://github.com/FEMBusinessModelsRing/web3_revenue_primitives) - An open source list of business models that might be helpful for Web3 projects.
 - If you're going to include governance Placeholder VC has a post exploring [ten thesis on decentralized network governance](https://www.placeholder.vc/blog/2020/9/30/ten-theses-on-decentralized-network-governance).
 - [A Token Engineering Process](https://medium.com/@stephen_yo/a-token-engineering-process-16687f3b9a74) - Great article that covers the basics of system mapping and diagramming in the context of token engineering. More great articles on the token engineering process [here](https://blog.oceanprotocol.com/towards-a-practice-of-token-engineering-b02feeeff7ca) and [here](https://medium.com/block-science/on-the-practice-of-token-engineering-part-i-c2cc2434e727)
+- [Re-thinking decentralized governance](https://thedefiant.substack.com/p/we-need-to-re-think-decentralized-5df) - Blake West has some great points on why you want to minimize governance to maximize protocol decentralization and autonomy.
 - [Token Engineering community](https://tokenengineeringcommunity.github.io/website/) - A community working to further the discipline of token engineering through education and outreach. Check out their [Library](https://tokenengineeringcommunity.github.io/website/docs/library-te-101) for more resources.
 - [CommonsStack](https://commonsstack.org/) - A community working to create templates and best practices to realign incentives around public goods.
 - [cadCAD Edu](https://www.cadcad.education/) is a great resource to learn about the token engineering process. While it's focused on cadCAD, the Complete Foundations Bootcamp is a great intro to the token engineering design process as a whole.
