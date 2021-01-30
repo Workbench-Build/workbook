@@ -36,11 +36,13 @@
 - If so, define roles, methods, states for all the stakeholders who will participate in your token system (end users, providers, developers, community, etc..).
 - Explore mechanisms that can help you create that system. Then if there's some you can use or modify compose them into a token system.
 - Draw a picture describing the token system. Ideally showing not just the things, but the relationships between the things and how one thing affects another.
-- Write a blog post describing the token system. Focus on incentive alignment and checks and balances on power for all parties involved.
 - Create a model simulating how users might interact with the token system.
+- Write a blog post describing the token system. Focus on incentive alignment and checks and balances on power for all parties involved.
 - Share with the community for feedback and contributions. Refine and revisit everything to make it better.
 
 ### Brainstorming
+
+![Problems](problems.png)
 
 The bigger the problem you can solve, for the most people, the more value you can create (and capture).
 
@@ -52,20 +54,21 @@ Ideally you want a problem that is:
 - Expensive (it's hard to solve)
 - Mandatory (it must be solved)
 
-What problem do you want to solve?
-
-What will the world look like after you solve it?
-
-Who will benefit and why should they care?
-
 You should be able to explain the problem you're solving, [why](https://simonsinek.com/product/start-with-why/) it's important, and how the world will be better once you've solved it. Everyone should get it. It should be so obvious they ask why they didn't think of it first. Ideally it can become a [meme](https://en.wikipedia.org/wiki/Meme). If people don't get it, work to make it simpler or find a better problem to solve.
 
+![Don't start with the solution](start.png)
+
 The solution to most problems is not a blockchain. If, however, you need to coordinate multiple stakeholders to share a digital commons then a blockchain might make sense. You could create a game where rules are enforced, computed, and verified via a public blockchain. We'll call this a token system. If you design the token game correctly people will do the things that give them rewards and avoid the things that create punishments.
+
+![Stakeholder incentive alignment](flywheel.png)
 
 Incentives need to be aligned for individuals, but also the system as a whole. Ideally power is balanced between stakeholders. Common stakeholders are developers, service providers, and end users. They should all have aligned incentives. They should also have the ability to voice their ideas and concerns to influence the system. Tokens can give holders the right to use the network, participate in governance, and benefit from increased demand if the network is successful. It should be very clear what the rights of token holders are. The token should have a clear purpose.
 
 **Questions to ask:**
 
+- What problem do you want to solve?
+- What will the world look like after you solve it?
+- Who will benefit and why should they care?
 - What problem are you solving?
 - Who has this problem? How often?
 - How much do they need this problem to be solved?
@@ -114,7 +117,9 @@ Then once you know what you want to do, you have to figure out how. First know w
 
 The first step is just describing what you want to do. Write it down. You should be able to answer who, what, when, where, why.
 
-A way to define these things in the context of a digital system is rights, roles, and access. Who can do what and under what circumstances.
+![IAD](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/IAD_framework_diagram.png/400px-IAD_framework_diagram.png)
+
+A way to define these things in the context of a digital system is rights, roles, and access. Who can do what and under what circumstances. This is similar to [Ostrom's institutional analysis and development framework](https://en.wikipedia.org/wiki/Institutional_analysis_and_development_framework) as well as [linux system permissions](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-permissions).
 
 - **State:** all of the information in the system.
 - **Users:** actors who can engage with the system.
@@ -126,7 +131,7 @@ Starting with "who," users/stakeholders might include:
 
 - **End users:** acquire tokens to access goods and services.
 - **Service providers:** provide services to earn rewards.
-- **System designers:** design tokenecomic systems for fun and profit.
+- **System designers:** design tokenomic systems for fun and profit.
 - **Community developers:** build software for fun and profit.
 - **Third-party developers:** create integrations for their product or service.
 - **Protocol politicians:** create and/or explain governance proposals to other stakeholders.
@@ -139,31 +144,31 @@ The state of your system will be the "what" and the 'where." A blueprint of the 
 
 To answer "how" we need to map actions to mechanisms. Mechanisms are how methods get instantiated. First just describe each mechanism and what it should do. Then as your token system evolves you can add more details.
 
-Then once you have a set of mechanisms you can define who has the rights and roles to take what actions. If your system is dynamic and has governance you might also define the process to modify roles and/or modify who has which roles.
+Then once you have a set of mechanisms you can define who can engage with those mechanisms. Roles are a way to group assignments of rights to actors within the system. If you're familiar with linux permissions this is similar to user groups. In this case, however, we're assigning rights to tokens. Then addresses holding tokens will have a role and the rights associated with it.
+
+You might also want to think about the process to modify the rights associated with roles. This would add a layer of [meta governance](https://en.wikipedia.org/wiki/Governance#Metagovernance) to the system enabling actors to change the system itself. This is a double edged sword. More [flexibility allows for adaptation, but also decreases stability](https://thedefiant.substack.com/p/we-need-to-re-think-decentralized-5df). The more a system can change the more power shifts from the mechanism design to the subjective judgement of actors within the system.
 
 At this point everything should still be high level. We're not choosing a programming language, framework, blockchain or L2 solution. We're just describing the system.
 
----
+![Veil of ignorance](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Original_Position.svg/220px-Original_Position.svg.png)
 
-Once you more or less know what you want to do you should ask yourself if your system is [credibly neutral](https://nakamoto.com/credible-neutrality/). Decentralized protocols are valuable because they create credible commitments about the rules of the game. You can read the code, understand how the system works, and know that everyone interacting with the system has to play by the same rules. When this happens tokens systems can be said to be credibly neutral.
+Decentralized protocols are valuable because they create credible commitments about the rules of the game. You can read the code, understand how the system works, and know that everyone interacting with the system has to play by the same rules. When this happens tokens systems can be said to be [credibly neutral](https://nakamoto.com/credible-neutrality/).
 
-Rights access paradigms are a way to explicitly model and reason through credible neutrality. To do this we need to map out rights and access controls to show who can do what, how people can move through the system, and how the system itself can be changed (if at all). This way everyone can engage with full information.
+Rights access paradigms are a way to explicitly model and reason through [the fairness of your token system](https://en.wikipedia.org/wiki/Original_position). To do this we need to map out rights and access controls to show who can do what, how people can move through the system, and how the system itself can be changed (if at all). This way everyone can engage with full information.
 
-If a system is credibly neutral you could be dropped into any role within that system you'd know the path and process to move towards the role you want. This might be as simple as acquiring tokens to stake or as complex as drafting a governance proposal to create the changes you want to see. This is important because systems with high degrees of credible neutrality tend to attract more users and organic contributors. This can help you grow faster and/or save you time and money on marketing simply because incentives are aligned for all parties involved.
+Once the system is mapped out everyone can see the roles available as well as the path to move from one role to another. This might be as simple as acquiring tokens to stake or as complex as drafting a governance proposal to create the changes you want to see. It's important that this process feels fair. There needs to be a meaningful way to contribute to and level up within the system. Projects with high degrees of agency and mobility tend to attract more users and contributors. This can help you grow faster and/or save you time and money on marketing simply because incentives are aligned for all parties involved.
 
----
+![Governance](https://cdn.substack.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7cdfd6c2-13d0-45f4-a25a-cdaf0bc4b3a0_939x570.png)
 
-If your system needs human input to change or adapt then you need governance. Governance should enable token holders to achieve a goal. It's a means to an end, not the end itself. It needs to be as simple and intuitive as possible. This way token holders can engage in the governance process, via the governance mechanism, to create the changes they want to see.
+Some systems need human input. If so, then you have a governance problem. How you solve this coordination problem depends on what you're trying to achieve. Any governance solution you choose is a means to an end, not an end in itself. It needs to be simple and intuitive. Then people can collectively create the changes they want.
 
-The moment you create a modifiable/upgradeable token system you have a governance problem. Another way of framing this is as a rights/roles access problem. To more easily reason about this you need a process to describe and discuss the rules of the game. Then you can figuring out what the rules actually are, who can do what when, and how people participating in the system can change the rules of the system.
+Another way of framing this is as a rights/roles access problem. Through this lens it should be clear what the rules actually are, who can do what when, and how people participating in the system can change the rules of the system. This way everyone has complete information.
 
-For governance to work people need to understand and respect the rules of the system. Then, even if they don't agree with every decision, they can at least respect the process that resulted in that decision. This is very important. We don't need complete agreement on every decision, but we do need to agree on the consensus mechanism we're using to make decisions.
+Then once people know what's going on, even if they don't agree with every decision, they can at least respect the process that resulted in that decision. This is very important. We don't need complete agreement on every decision, but we do need to agree on how we make decisions.
 
-For example: if you respect the rules of the game you'll respect the scores of a game, even if you wish your team won. Once people buy into the idea of the game they can focus on playing the game vs figuring out what the game is or arguing about the rules.
+Then players who choose to play the game will have [voice, loyalty, and exit](https://en.wikipedia.org/wiki/Exit,_Voice,_and_Loyalty). Everyone will have all the information they need to create informed opinions. They'll have a process to share ideas and affect change. They'll also be able to leave the system if they disagree with decisions being made. The more agency players have the more their loyalty to the game will increase. While this can be intense and time consuming, it's a good sign that [people care](https://www.pet3rpan.net/blog/why-do-people-care).
 
-If you don't want to design a governance process from day 1 you can leave it as an upgrade for the future. This way if you want to set control of contracts to a community multi-sig or DAO in the future you can, but you could also set it to the 0 address so that the contract becomes immutable.
-
----
+If you don't want to design a governance process from day 1 you can leave it as an upgrade for the future. You don't have to choose right now, but it's important to think about. Thyen in the future if you want to set control of contracts to a community multi-sig or DAO in the future you can, but you could also set it to the 0 address so that the contract becomes immutable.
 
 **Questions to ask:**
 
@@ -184,7 +189,8 @@ If you don't want to design a governance process from day 1 you can leave it as 
 
 **Examples:**
 
-- TBD
+- 1Hive Luna swarm
+- Gitcoin cadCAD stuff
 
 **Resources:**
 
@@ -196,6 +202,9 @@ If you don't want to design a governance process from day 1 you can leave it as 
 - If you're going to include governance Placeholder VC has a post exploring [ten thesis on decentralized network governance](https://www.placeholder.vc/blog/2020/9/30/ten-theses-on-decentralized-network-governance).
 - [A Token Engineering Process](https://medium.com/@stephen_yo/a-token-engineering-process-16687f3b9a74) - Great article that covers the basics of system mapping and diagramming in the context of token engineering. More great articles on the token engineering process [here](https://blog.oceanprotocol.com/towards-a-practice-of-token-engineering-b02feeeff7ca) and [here](https://medium.com/block-science/on-the-practice-of-token-engineering-part-i-c2cc2434e727)
 - [Re-thinking decentralized governance](https://thedefiant.substack.com/p/we-need-to-re-think-decentralized-5df) - Blake West has some great points on why you want to minimize governance to maximize protocol decentralization and autonomy.
+- [Linux permissions](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-permissions) can provide a simple way to think about rights, roles, and access at a system level.
+- [Original position](https://en.wikipedia.org/wiki/Original_position) describes how to think through desigining a system that is fair and egalitarian.
+- [Exit, voice, and loyalty](https://en.wikipedia.org/wiki/Exit,_Voice,_and_Loyalty) are important concepts to think about as you're designing the available action space for stakeholders.
 - [Token Engineering community](https://tokenengineeringcommunity.github.io/website/) - A community working to further the discipline of token engineering through education and outreach. Check out their [Library](https://tokenengineeringcommunity.github.io/website/docs/library-te-101) for more resources.
 - [CommonsStack](https://commonsstack.org/) - A community working to create templates and best practices to realign incentives around public goods.
 - [cadCAD Edu](https://www.cadcad.education/) is a great resource to learn about the token engineering process. While it's focused on cadCAD, the Complete Foundations Bootcamp is a great intro to the token engineering design process as a whole.
@@ -203,6 +212,11 @@ If you don't want to design a governance process from day 1 you can leave it as 
 ### Mechanism Design 102
 
 > Exploring common mechanisms
+> Describe the notion of the design space as an open creative design space
+> Here's some examples of some common things
+> Talk about design as a language
+> mechanisms, protocols, systems etc... that you can combine to express things
+> build an intuition around the design space like language so you can read and write
 
 This section will explore common Web3 mechanisms and standards. It will be focused at the design level. Implementations of said mechanisms will be left for the [Development](#development) section.
 
@@ -247,7 +261,15 @@ This section will explore common Web3 mechanisms and standards. It will be focus
 
 ### Diagramming
 
+![CIC]()
+
 > A picture says a thousand words!
+> Block diagrams (abstractions of logic - fundamental to systems engineering) => economic games as estimators
+> Makes it clear where the information is coming from
+> Representing composed primitives (mZ will have some examples in the future)
+> AMM (swap, borrow, repay) => those three things allow for lots of actions and systems when you combine the and use them in different ways - or compose them with other systems
+> Simple design that is very expressive
+> Mechanism composition diagrams (TBD)
 
 Diagramming can help you refine your understanding of the system and it's components. It's also useful when you want to communicate your vision to others. There are many types of diagrams and charts, but what's best for your use case and audience may vary.
 
@@ -259,14 +281,15 @@ Diagramming can help you refine your understanding of the system and it's compon
 
 **Examples:**
 
-- [Causal loop diagrams](https://en.wikipedia.org/wiki/Causal_loop_diagram) can help you see the relationships between components of your system. These types of diagrams are generally very high level, but great for quickly illustrating things (like the network effects of your token system). As such they're great for blog posts and outward facing communications. CAUSAL LOOP TEMPLATE GOES HERE.
-- Stock and flow diagrams also show the relationship between things, but often in more detail than a causal loop.
-- [The cadCAD differential specification template](`https://community.cadcad.org/t/differential-specification-syntax-key/31`) is a good exercise to help you think through all the variables at play in your system and how they relate to each other. There's a [Figma template](https://www.figma.com/file/yBgOopbmcdkYxo2jDNmua1/cadCAD-Diff-Spec-Syntax?node-id=0%3A1) or you can create your own in your favorite diagramming software.
-- cadCAD diagrams can be auto-generated for any cadCAD model. It's often as simple as adding a single line of code after you run the model. The [cadCAD Diagram repo](https://github.com/cadCAD-org/cadCAD_diagram) has more information on how to set that up.
-- Solidity contract diagrams can be autogenerated via [Surya](https://github.com/ConsenSys/surya) and/or the [VSCode Soldity Visual Developer extension](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor). You can also manually create diagrams that show each function, it's inputs, and outputs. This can help you (and your community) understand the boundaries of your contract and the permissions and relationships between functions.
+> Actual diagrams of systems go here.
 
 **Resources:**
 
+- [Causal loop diagrams](https://en.wikipedia.org/wiki/Causal_loop_diagram) can help you see the relationships between components of your system. These types of diagrams are generally very high level, but great for quickly illustrating things (like the network effects of your token system). As such they're great for blog posts and outward facing communications. CAUSAL LOOP TEMPLATE GOES HERE.
+- Stock and flow diagrams also show the relationship between things, but often in more detail than a causal loop.
+- [The cadCAD differential specification template](`https://community.cadcad.org/t/differential-specification-syntax-key/31`) is a good exercise to help you think through all the variables at play in your system and how they relate to each other. There's a [Figma template](https://www.figma.com/file/yBgOopbmcdkYxo2jDNmua1/cadCAD-Diff-Spec-Syntax?node-id=0%3A1) or you can create your own in your favorite diagramming software.
+- cadCAD diagrams can be generated for any cadCAD model. It's often as simple as adding a single line of code after you run the model. The [cadCAD Diagram repo](https://github.com/cadCAD-org/cadCAD_diagram) has more information on how to set that up.
+- Solidity contract diagrams can be generated via [Surya](https://github.com/ConsenSys/surya) and/or the [VSCode Soldity Visual Developer extension](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor). You can also manually create diagrams that show each function, it's inputs, and outputs. This can help you (and your community) understand the boundaries of your contract and the permissions and relationships between functions.
 - [Figma](https://www.figma.com/) - Proprietary (but atm free to use) design platform that has become the standard for designers. Great if you want to share designs/diagrams with a larger audience and/or make them look pretty.
 - [Lucid chart](https://www.lucidchart.com/) - Diagramming software for engineers. Proprietary: free to try, but you'll have to pay if you want to use it on a real project.
 - [Whimsical](https://whimsical.com/) - Super simple diagramming software. Also proprietary, free to try, and you'll have to pay for extra features if you want to use it on a real project.
@@ -276,11 +299,28 @@ Diagramming can help you refine your understanding of the system and it's compon
 
 ### Modeling
 
+![Digital twin](https://camo.githubusercontent.com/0b80439a010c3a2d11217c381f39138a8bbd05dd48242200b2f4f684747ea051/68747470733a2f2f692e696d6775722e636f6d2f6b6234546e68362e6a7067)
+
 > You don't know what you don't know.
+> Distinguish between mathematic and computational modeling
+> Modeling: the act of representing the system in concrete terms.
+> Mathematic models usually come before the computation models. Define, then instantiate.
+> Often the mathematic part can be in the Markdown comments of the docs if it's simple enough.
+> Courses in systems dynamics are often where people learn this.
+> If you don't do the math your performative assumptions are biased.
+> Creates reflexivity where you interpret your own interpretations.
+> Mathematic modeling make explicit your own assumptions about the world. Model of world as well as model of mechanisms.
+> Mathematics as ingredients.
+> Forces you to turn vague ideas into something concrete. Clarifies assumptions and/or highlights oversights.
+> Opposite of lifting out patterns. Idea => concrete thing.
+> Model is an instantiation of concepts. but you need to retain the idea that it could be different depending on how the implementation looks. Then can iterate around instances to find the right ones to express the pattern.
+> Iterate around the instance to represent the pattern in the context of your use case.
+> Helps you detect breakdowns when the context the instance is operating inside of changes - then you understand when and where the instance/model works in which contexts. Then you know when things change.
+> For a maths resource add mZ's paper on configurations of state spaces: https://epub.wu.ac.at/7385/1/zargham_shorish_paruch.pdf
 
 A good model provides insights into how your token system would function under various conditions. This can help you check to see if your design goals are likely to hold as usage, price, and other important parameters change. Before you start modeling it's important to know what you want to have happen as well as what are the unknowns you're trying to understand. Ideally these unknowns can be stated as concrete questions. This way you have a clear goal, but also others who contribute to and/or review your model have something concrete to orient around.
 
-**Modeling Checklist**
+Modeling Checklist:
 
 - state variables
 - system parameters
@@ -315,6 +355,14 @@ A good model provides insights into how your token system would function under v
 ### Whitepaper
 
 > Sharing is caring
+> Add more stuff here about open source design, peer review, community engagement to check bugs and provide new ideas
+> Challenge assumptions as well as the design
+> Build buy in and community so that you know you have an idea worth pursuing
+> Communicating and sharing the ideas as part of designing the ideas
+> It's not just the code, but also the people. You need both
+> Need a few laps through the design process before moving onto development
+> Review as part of the design process
+> Add notes reminding people to list citations! and recommend a way to do so in a practical way
 
 Once you've identified a problem to solve, people who have that problem, and how you're going to solve it for them you should write it down! This will help you clarify your thinking. It will also help you communicate your vision to others. Then they might join you on your quest and/or point out ways that you might improve things.
 
