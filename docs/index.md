@@ -5,7 +5,18 @@
     - [TL;DR:](#tldr)
     - [Brainstorming](#brainstorming)
     - [Mechanism Design 101](#mechanism-design-101)
+      - [Properties](#properties)
+      - [System mapping](#system-mapping)
+      - [Neutrality](#neutrality)
+      - [Reflexivity](#reflexivity)
+      - [Governance](#governance)
     - [Mechanism Design 102](#mechanism-design-102)
+      - [Stores of Value](#stores-of-value)
+      - [Supply](#supply)
+      - [Distribution](#distribution)
+      - [Constraints](#constraints)
+      - [Utilities](#utilities)
+      - [Governance](#governance-1)
     - [Diagramming](#diagramming)
     - [Modeling](#modeling)
     - [Whitepaper](#whitepaper)
@@ -21,7 +32,7 @@
     - [Beta Testing](#beta-testing)
     - [Shipping](#shipping)
     - [Monitoring](#monitoring)
-    - [Governance](#governance)
+    - [Governance](#governance-2)
     - [Communities](#communities)
     - [Upgrades](#upgrades)
 
@@ -61,6 +72,8 @@ You should be able to explain the problem you're solving, [why](https://simonsin
 The solution to most problems is not a blockchain. If, however, you need to coordinate multiple stakeholders to share a digital commons then a blockchain might make sense. You could create a game where rules are enforced, computed, and verified via a public blockchain. We'll call this a token system. If you design the token game correctly people will do the things that give them rewards and avoid the things that create punishments.
 
 ![Stakeholder incentive alignment](flywheel.png)
+
+![Flywheels](https://miro.medium.com/max/488/1*GbcdaP3XN3boHYxi1zXHZA.png)
 
 Incentives need to be aligned for individuals, but also the system as a whole. Ideally power is balanced between stakeholders. Common stakeholders are developers, service providers, and end users. They should all have aligned incentives. They should also have the ability to voice their ideas and concerns to influence the system. Tokens can give holders the right to use the network, participate in governance, and benefit from increased demand if the network is successful. It should be very clear what the rights of token holders are. The token should have a clear purpose.
 
@@ -107,6 +120,8 @@ Many of the ideas in this section came from the following resources:
 
 > Developing intuition.
 
+#### Properties
+
 Before jumping into design, or even implementation, it's good to think about the [properties and values you want the token system to express](https://www.youtube.com/watch?v=6ufHL5AkBEA). These should be concrete properties that your system will maintain under all conditions. This way with each mechanism you add to your system, and the system as a whole, you can check to ensure that it expresses the project's core principles. Some common principles many Web3 projects strive for are:
 
 - **Permissionless:** anyone can interact with the contracts.
@@ -116,6 +131,8 @@ Before jumping into design, or even implementation, it's good to think about the
 Then once you know what you want to do, you have to figure out how. First know what you want to do, then find tools that can help you do it. Don't start with the tools! If you do you'll become a man with a hammer. Choose the tools based on your goals and design constraints, not the other way around.
 
 The first step is just describing what you want to do. Write it down. You should be able to answer who, what, when, where, why.
+
+#### System mapping
 
 ![IAD](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/IAD_framework_diagram.png/400px-IAD_framework_diagram.png)
 
@@ -150,6 +167,8 @@ You might also want to think about the process to modify the rights associated w
 
 At this point everything should still be high level. We're not choosing a programming language, framework, blockchain or L2 solution. We're just describing the system.
 
+#### Neutrality
+
 ![Veil of ignorance](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Original_Position.svg/220px-Original_Position.svg.png)
 
 Decentralized protocols are valuable because they create credible commitments about the rules of the game. You can read the code, understand how the system works, and know that everyone interacting with the system has to play by the same rules. When this happens tokens systems can be said to be [credibly neutral](https://nakamoto.com/credible-neutrality/).
@@ -157,6 +176,16 @@ Decentralized protocols are valuable because they create credible commitments ab
 Rights access paradigms are a way to explicitly model and reason through [the fairness of your token system](https://en.wikipedia.org/wiki/Original_position). To do this we need to map out rights and access controls to show who can do what, how people can move through the system, and how the system itself can be changed (if at all). This way everyone can engage with full information.
 
 Once the system is mapped out everyone can see the roles available as well as the path to move from one role to another. This might be as simple as acquiring tokens to stake or as complex as drafting a governance proposal to create the changes you want to see. It's important that this process feels fair. There needs to be a meaningful way to contribute to and level up within the system. Projects with high degrees of agency and mobility tend to attract more users and contributors. This can help you grow faster and/or save you time and money on marketing simply because incentives are aligned for all parties involved.
+
+#### Reflexivity
+
+![Reflexivity](https://cdn.substack.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7e85cf6d-8c6f-4e62-8937-30d03c7d2c47_1086x440.png)
+
+> Add some info and resources to explore reflexivity, both in the context of growth and network effects (good) as well as unexpected incentive feedback loops that could lead to rewarding people for things that don't drive fundamental value for the system (less good).
+
+https://danco.substack.com/p/rwhitehousebets
+
+#### Governance
 
 ![Governance](https://cdn.substack.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7cdfd6c2-13d0-45f4-a25a-cdaf0bc4b3a0_939x570.png)
 
@@ -227,15 +256,16 @@ This section will explore common Web3 mechanisms and standards. It will be focus
     - Non-fungible
       - 721
       - 1155
-  - Fixed
-    - most ICOs
-  - Continuous
-    - bonding curve
-    - elastic rebasing
-  - Inflationary
-    - BTC
-  - Deflationary
-    - maybe soon ETH
+  - Supply
+    - Fixed
+      - most ICOs
+    - Continuous
+      - bonding curve
+      - elastic rebasing
+    - Inflationary
+      - BTC
+    - Deflationary
+      - maybe soon ETH
 - Incentives (aka finance)
   - vaults
   - poison pill
@@ -258,6 +288,102 @@ This section will explore common Web3 mechanisms and standards. It will be focus
     - simple or super majority
     - direct or delegated
     - etc..
+
+#### Stores of Value
+
+> The goal of this section is to explore a few of the different token standards around, their properties, and how you might use them.
+
+Tokens can be many things: units of account, mediums of exchange, stores of value, and more. They're a scarce digital asset. They can be both fungible and non-fungible. How they're used determines their value to those who use them. It's subjective. Given the permissionless nature of blockchain technology it's possible (likely even) that use cases for tokens grow over time. Imagine a token that starts as a way to access a chat, that then gets incorporated into a dApp, and that then becomes a currency used for all sorts of things within a community.
+
+Fungible tokens are tokens that can be exchanged for one another. All tokens are the same. There's no way to differentiate between them. This is the most common type of token. It's often used to represent commodities or financial assets. These tokens are easy to trade and price via decentralized markets.
+
+- LINKS TO FUNGIBLE TOKEN RESOURCES GO HERE
+
+Non-fungible tokens (NFTs) are unique. They have a provenance and story. These are often used to represent collectibles. The structure of many NFTs allows for data to be stored within the token itself making it great for artists, creators, and games. These tokens are often priced much more subjectively. While there might be a market of buyers for NFTs in general, each NFT is bought and sold independently making price discovery much more subjective.
+
+- LINKS TO NON-FUNGIBLE TOKEN RESOURCES GO HERE
+
+#### Supply
+
+With both fungible and non-fungible tokens the supply is important. Fungible tokens can become scarce collectibles if there's a lot of demand and limited supply. NFTs can also act like commodities if many editions are created. Token supply should be related to the use case. One size does not fit all. Some variables to consider are:
+
+- Fixed vs continuous supply: if you want your token to be a rare collectible asset then it's likely going to have a fixed or limited supply. If, however, you want it to act like a commodity then it's supply might be linked to a productive output such as work contributed or collateral locked.
+- Scarce vs widely distributed asset: if the goal of your token is to engage the community, capitalize the network, and align incentives and power between multiple stakeholders then you'll want to distribute the token widely. (see Incentives section for token distribution mechanisms)
+
+Fixed supply means that the supply will not change. The tokens are minted and that's it.
+
+Continuous supply includes many things including, but not limited to:
+
+- governance mechanisms that allow parties to mint more tokens in tranches
+- monetary policies that result in token inflation or deflation
+- user controlled mechanisms such as bonding curves
+
+Scarce tokens are few and far between. They're rare. This can be great for concentrating power, attention, and price action.
+
+Widely distributed tokens are plentiful. They enable commerce, governance, and other activities to occur. These tokens get their value not from their scarcity, but from the fact that they are used by many people in many places. Network effects.
+
+#### Distribution
+
+> This section explores mechanisms to distribute tokens.
+
+- airdrop to users
+- various "mining" programs
+- staking to earn (often NFTs)
+- etc..
+
+#### Constraints
+
+> This section explore mechanisms that can control or shape the distribution, supply, or useage of tokens. Things like poison pills, time locks, account limits, dividends, etc..
+
+- poison pill
+- rage-quit
+- time locks (aka staking)
+- etc..
+
+#### Utilities
+
+> Things that can give tokens more value/utility
+
+**Token permissioning:**
+
+- chats (community)
+- services (SaaS)
+- data (newsletters)
+
+**Discount tokens:**
+
+- A discount token gives the holder a discount on a product or service.
+- The discount token yield (aggregate and user-level) grows proportionally to network usage (demand for products/services).
+- The discount yield returns more benefits to users than passive token holders. Users will rationally acquire discount tokens to get a discount on services they use (think Amazon Prime). This would be more relevant if we develop services that resemble a SaaS model (community analytics, ongoing consultations/support, etc..)
+- The denomination of fees may be in any form, such as a utility token or stablecoin. This makes pricing much easier.
+- Learn more about discount tokens via this [overview](https://blog.coinfund.io/the-fundamentals-of-discount-tokens-cc400c66198e) and the [Sweetbridge discount token paper (PDF)](https://sweetbridge.com/assets/docs/WP-Sweetbridge-Discount-Tokens.pdf).
+
+**Dividends and royalties:**
+
+- Talk about mechanisms that return a portion of the value earn by a thing (dApp, protocol, etc..) to token holders (often staked).
+- Staking/inflationary rewards may or may not also qualify.
+
+**Collateral:**
+
+- Tokens backed by collateral command a monetary premium on top of their utility, commodity value, governance power, etc..
+- Bonding curves are a great example here.
+
+#### Governance
+
+> This section explores mechanisms that allow for collective decision making. Note, this might include mechanisms as well as policies as both could be viewed as design patterns.
+
+Patterns:
+
+- admin
+- multi-sigs
+- quadradic
+- conviction
+- ranked choice
+- wait for quiet
+- time boxed or continuous
+- simple or super majority
+- direct or delegated
+- etc..
 
 ### Diagramming
 
@@ -443,12 +569,6 @@ Design patterns are abstract blueprints for a class of things. Popular designs a
   - [Ethereum EIP repo Issue 721: non fungible token standard](https://github.com/ethereum/EIPs/issues/721) - The original discussion and specification for ERC-721.
   - [Ethereum Improvement Proposal 721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) - The final specification for ERC-721.
 - [Bonding curves](TBD) - Explain the concept here.
-- Discount token model:
-  - A discount token gives the holder a discount on a product or service.
-  - The discount token yield (aggregate and user-level) grows proportionally to network usage (demand for products/services).
-  - The discount yield returns more benefits to users than passive token holders. Users will rationally acquire discount tokens to get a discount on services they use (think Amazon Prime). This would be more relevant if we develop services that resemble a SaaS model (community analytics, ongoing consultations/support, etc..)
-  - The denomination of fees may be in any form, such as a utility token or stablecoin. This makes pricing much easier.
-  - Learn more about discount tokens via this [overview](https://blog.coinfund.io/the-fundamentals-of-discount-tokens-cc400c66198e) and the [Sweetbridge discount token paper (PDF)](https://sweetbridge.com/assets/docs/WP-Sweetbridge-Discount-Tokens.pdf).
 - [Airdrops](TBD) - Send people tokens based on a prior heuristics. This might involve rewarding users of your protocol such as with UNI, or contributors to Gitcoin grants such as with BADGER.
 - Play to Earn (AKA [Loot tokens](https://medium.com/@adamscochran/what-are-loot-tokens-understanding-an-emerging-asset-class-380b0cc38749)) - Explain how "play to earn" works here.
 - [Multi-signature accounts](TBD) - Explain the concept here.
