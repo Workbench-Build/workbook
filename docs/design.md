@@ -237,27 +237,23 @@ Let's explore what we mean by primitives, patterns, and systems.
 
 Primitives should have properties that hold under all conditions. Then you can reason about the mechanisms or patterns you want based on the properties you want.
 
-Most economic activity comprises certain common, repetitive actions, regardless of the industry or use case in question. These are economic primitives.
-
-The credo is simple - if you solve for the economic primitives required by your people, prosperity and innovation will follow. If you make it easier to do the little tasks that need to be done in almost every business dealing, your economy will reap the rewards.
-
-At the end of the day, all of this comes back to economic primitives. Whenever a new solution makes it easier, cheaper, or more convenient to do certain repetitive, abstractable tasks, not only does the new mechanism replace the incumbent, but all of society benefits as a result. Productivity increases. New ideas emerge. Lives improve.
-
-> https://tigerfeathers.substack.com/p/the-internet-country
-
 **Examples of primitives:**
 
 - fungible token
 - non-fungible token
-- commit/reveal
-- redemption
-- time delay
+- send
+- check balance
+- check time
+- vault
 - stake (lockup)
 - linear function
 - exponential function
 - quadratic function
-- swap
-- check balance
+- simple majority policy
+- super majority policy
+- proportional redemption policy
+- simple membership policy (1 token 1 membership)
+- tiered membership policy (multiple permissions for multiple balance levels)
 
 ### Patterns
 
@@ -265,11 +261,31 @@ At the end of the day, all of this comes back to economic primitives. Whenever a
 
 Design patterns compose primitives into mechanisms that perform a function. How these mechanisms are then used varies. Patterns can be said to be neutral as they are abstract ideas. Instances, however, are opinionated based on the context and purpose of each unique instance IRL.
 
-Examples of patterns:
+**Examples of patterns:**
 
-- Rage-quit (delay + redemption)
-- quadratic voting (stake + exponential vesting + vote)
-- auction (bid, escrow, commit/reveal, sale policy, swap)
+- tipping (send)
+- swap (token, vault, check balance, exchange policy, send)
+- voting (check balance, voting policy)
+- commit/reveal (check balance, commit, reveal)
+- auction (bid, escrow, commit/reveal, auction policy, swap)
+- conviction voting (check balance, stake, vesting policy, voting policy)
+- time delay (que action, check time, action execution policy)
+- redemption (token, vault, check balance, redemption policy)
+- rage-quit (time delay, redemption)
+- discount tokens (check balance, discount policy, swap)
+- dividends (tokens, vault, distribution policy, send)
+- escrow (vault, send)
+- membership (check balance, membership policy)
+- vesting (check balance, check time, vesting policy)
+- airdrop (airdrop policy, send)
+
+**Discount tokens:**
+
+- A discount token gives the holder a discount on a product or service.
+- The discount token yield (aggregate and user-level) grows proportionally to network usage (demand for products/services).
+- The discount yield returns more benefits to users than passive token holders. Users will rationally acquire discount tokens to get a discount on services they use (think Amazon Prime). This would be more relevant if we develop services that resemble a SaaS model (community analytics, ongoing consultations/support, etc..)
+- The denomination of fees may be in any form, such as a utility token or stablecoin. This makes pricing much easier.
+- Learn more about discount tokens via this [overview](https://blog.coinfund.io/the-fundamentals-of-discount-tokens-cc400c66198e) and the [Sweetbridge discount token paper (PDF)](https://sweetbridge.com/assets/docs/WP-Sweetbridge-Discount-Tokens.pdf).
 
 ### Systems
 
