@@ -14,12 +14,13 @@
     - [Governance](#governance)
     - [Resources](#resources-1)
   - [Mechanism Design 102](#mechanism-design-102)
-    - [Primitives](#primitives)
+    - [Concepts](#concepts)
     - [Patterns](#patterns)
     - [Systems](#systems)
   - [Mechanism Design 103](#mechanism-design-103)
     - [From Curved Bonding to Configuration Spaces](#from-curved-bonding-to-configuration-spaces)
     - [Economic Games as Estimators](#economic-games-as-estimators)
+    - [Translating Commons-Based Peer Production Values into Metrics: Towards Commons-Based Crypto-Currencies](#translating-commons-based-peer-production-values-into-metrics-towards-commons-based-crypto-currencies)
   - [Diagramming](#diagramming)
   - [Modeling](#modeling)
   - [Whitepaper](#whitepaper)
@@ -219,41 +220,92 @@ If you don't want to design a governance process from day 1 you can leave it as 
 
 > Primitives and patterns.
 
-Depending on your use case you might want to use or modify a popular system or roll your own. That being said, being able to think about system design from [first principles](https://waitbutwhy.com/2015/11/the-cook-and-the-chef-musks-secret-sauce.html) can help you understand, modify, and maximally utilize your token system to achieve your goals. Given how outcomes in community economies are non-linear, a small nudge in the right direction could have a large impact. You might also want to roll your own token system from scratch and design something completely new! That's cool too, and if so, you'll definitely want to have all the tools available at your disposal.
+Depending on your use case you might want to use or modify a popular system or roll your own. That being said, being able to think about system design from [first principles](https://waitbutwhy.com/2015/11/the-cook-and-the-chef-musks-secret-sauce.html) can help you understand, modify, and optimize your token system to achieve your goals. Given how outcomes in community economies are non-linear, a small nudge in the right direction could have a large impact. You might also want to roll your own token system from scratch and design something completely new! That's cool too, and if so, you'll definitely want to have all the tools available at your disposal.
 
-To explore system design from first principles it helps to think of it as a language. Shared language and ideas make it easier to coordinate. This includes high level ideas such as memes and low level primitives such as individual words. Language allows us to express, share, and modify ideas. System design is an expression of ideas. As a language it might look something like:
+To explore system design from first principles it helps to think of it as a language. Shared language and ideas make it easier to coordinate. System design is an expression of ideas. As a language it might look something like:
 
-- primitives => words
+- concepts => words
 - patterns => sentences
 - systems => paragraphs
 
-With a shared system design grammar we can read and write in that language. This allows us to reason about systems from first principles. Rather than relying on blog posts or hand wavey statement, we can actually understand what systems do and why. This makes it easier to engage with the system. This is essential for system design as well as community engagement and governance.
+With a shared system design grammar we can read and write in that language. This allows us to reason about systems from first principles. Rather than relying on blog posts or hand wavey statement, we can actually understand what systems do and why. We can also start to explore how we might modify systems to solve new problems. This can be helpful for system design as well as community engagement and governance.
 
-Let's explore what we mean by primitives, patterns, and systems.
+Let's explore what we mean by concepts, patterns, and systems.
 
-### Primitives
+### Concepts
 
-> Minimal functions
+This section explores core concepts token system design. If you imagine a tree, these would be the trunk that branches and leaves build on.
 
-Primitives should have properties that hold under all conditions. Then you can reason about the mechanisms or patterns you want based on the properties you want.
+There are many concepts more fundamental than the ones we describe here. Those are often called [primitives](https://en.wikipedia.org/wiki/Primitive). They're the roots of the tree. The simplest form of an idea that cannot be broken down further. These are very useful to understand!
 
-**Examples of primitives:**
+Some core token design concepts could be thought of as primitives, but others as compositions. While classification is important, that's not the focus here as it varies from field to field. Context is important. This section is to explore core concepts in the context of token systems.
 
-- fungible token
-- non-fungible token
-- send
-- check balance
-- check time
-- vault
-- stake (lockup)
-- linear function
-- exponential function
-- quadratic function
+**[Cryptography](https://en.wikipedia.org/wiki/Cryptographic_primitive):**
+
+- [One-way hash function](https://en.wikipedia.org/wiki/One-way_hash_function) — compute a reduced hash value for a message (e.g., SHA-256)
+- [Symmetric key encryption](https://en.wikipedia.org/wiki/Private_key_cryptography) — Compute a ciphertext decodable with the same key used to encode (e.g., AES)
+- [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) — encrypt data with a public key that is then only decodable with the corresponding private key (e.g., RSA)
+- [Digital signatures](https://en.wikipedia.org/wiki/Digital_signatures) — cryptographically sign data with a private key in a way that's verifiable via a public key.
+- [Mixers](https://en.wikipedia.org/wiki/Mix_network) — pool data from many users to anonymize what came from whom
+- [Zero knowledge proofs](https://en.wikipedia.org/wiki/Zero-knowledge_proof) — verify the integrity of a request or computation without revealing any information about the data being requested or processed.
+- [Commitments](https://en.wikipedia.org/wiki/Commitment_scheme) — commit to a chosen value while keeping it hidden to others, with the ability to reveal it later
+- [Pseudorandom number generation](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator) - generate a number that is as good as random within the context in which it's being used.
+- [More cryptographic primitives](https://en.wikipedia.org/wiki/Category:Cryptographic_primitives)
+
+**Economics:**
+
+- linear functions
+- exponential functions
+- quadratic functions
+- payments (send money)
+- payment requests (invoices)
+- markets (places where buyers and sellers can exchange assets if they agree on a price)
+- exchange rate (the price buy/sell one asset for another according to a policy - can be algorithmic or based on market activity)
+- options (a contract that gives the holder the option to buy or sell an asset at a specific price at a specific time - they are financial assets that can be bought and sold just like anything else)
+- insurance (a contract that provides payouts dependent on a policy)
+- interest rates (time dependent payments)
+- lending (give assets for an IOU, often with interest payments)
+- borrowing (get assets for an IOU, often with interest payments)
+- collateral (assets locked until the IOU is paid or forfeit in order to pay off the IOU)
+- credit scores (risk assessment for undercollateralized lending)
+- supply schedule (the rate of inflation or deflation of a currency)
+
+**Blockchains:**
+
+- gas
+- block number
+- addresses (pub/priv key crypto, hold/send/receive tokens, create cryptographic signatures)
+- fungible tokens
+- non-fungible tokens
+- mint/burn tokens
+- stake tokens (lockup)
+- constant function market makers
+
+**Game theory:**
+
+- credible commitments
+- small vs large games
+- zero sum vs positive sum games
+- cooperative or individual games
+- fixed vs iterated games
+- sequential vs simultaneous games
+- pareto optimal outcomes
+- dominant strategies
+- game warping (changing player's available action set and/or incentives)
+- games with complete vs incomplete information
+
+**Governance:**
+
 - simple majority policy
 - super majority policy
-- proportional redemption policy
-- simple membership policy (1 token 1 membership)
-- tiered membership policy (multiple permissions for multiple balance levels)
+- X of Y policy
+- quadradic
+- conviction
+- ranked choice
+- wait for quiet (vote, time delay, quiet policy)
+- time boxed or continuous
+- simple or super majority
+- direct or delegated
 
 ### Patterns
 
@@ -263,6 +315,7 @@ Design patterns compose primitives into mechanisms that perform a function. How 
 
 **Examples of patterns:**
 
+- send (check balance, change balance)
 - tipping (send)
 - swap (token, vault, check balance, exchange policy, send)
 - voting (check balance, voting policy)
@@ -278,6 +331,14 @@ Design patterns compose primitives into mechanisms that perform a function. How 
 - membership (check balance, membership policy)
 - vesting (check balance, check time, vesting policy)
 - airdrop (airdrop policy, send)
+- poison pill (check balance, poison policy, mint tokens)
+- token curated registry (ledger, proposal policy, voting)
+- proportional redemption policy
+- simple membership policy (1 token 1 membership)
+- tiered membership policy (multiple permissions for multiple balance levels)
+- identity
+- identity verification (kyc or sybil resistance)
+- bonding curves (cfmm, mint/burn)
 
 **Discount tokens:**
 
@@ -303,6 +364,8 @@ Examples of systems:
 
 ## Mechanism Design 103
 
+If you really want to get into mechanism design there are some papers we recommend reading.
+
 ### From Curved Bonding to Configuration Spaces
 
 **Description:** Bonding curves are continuous liquidity mechanisms which are used in market design for cryptographically-supported token economies. Tokens are atomic units of state information which are cryptographically verifiable in peer-to-peer networks.Bonding curves are an example of an enforceable mechanism through which participating agents influence this state. By designing such mechanisms, an engineer may establish the topological structure of a token economy without presupposing the utilities or associated actions of the agents within that economy. This is accomplished by introducing configuration spaces, which are proper subsets of the global state space representing all achievable states under the designed mechanisms. Any global properties true for all points in the configuration space are true for all possible sequences of actions on the part of agents. This paper generalizes the notion of a bonding curve to formalize the relationship between cryptographically enforced mechanisms and their associated configuration spaces, using invariant properties of conservation functions. We then proceed to apply this frame-work to analyze the augmented bonding curve design, which is currently under development by a project in the non-profit funding sector.
@@ -315,15 +378,21 @@ Examples of systems:
 **Paper:** https://epub.wu.ac.at/7433/
 **Code:** https://github.com/cadCAD-org/demos/blob/master/demos/Multiscale/bonding_curve/Bonding_Curve.ipynb
 
+### Translating Commons-Based Peer Production Values into Metrics: Towards Commons-Based Crypto-Currencies
+
+Commons-based peer-production (CBPP) constitutes today an important driver for innovation, social and cultural development, both online and offline, through the establishment of an alternative, commons-based ecosystem, relying on peer-production and collaboration amongst peers contributing towards a common good. Yet, to the extent that it operates outside of the market economy, the value of CBPP cannot be understood by relying exclusively on traditional market mechanisms (such as pricing). Based on empirical research on emerging value forms in the context of CBPP, we seek to achieve a better understanding of the value produced by CBPP communities, so as to come up with an alternative, universal, denominator of value that could act as an interface between the commons-based ecosystem and the market economy.
+
+**Paper:** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2725415
+
 <br />
 
 ## Diagramming
 
 Diagramming can help you refine your understanding of the system and it's components. It's also useful when you want to communicate your vision to others. There are many types of diagrams and charts, but what's best for your use case and audience may vary.
 
-[Causal loop diagrams](https://en.wikipedia.org/wiki/Causal_loop_diagram) can help you see the relationships between components of your system. These types of diagrams are generally very high level, but great for quickly illustrating things (like the network effects of your token system). As such they're great for blog posts and outward facing communications. CAUSAL LOOP TEMPLATE GOES HERE.
+[Causal loop diagrams](https://en.wikipedia.org/wiki/Causal_loop_diagram) can help you see the relationships between components of your system. These types of diagrams are generally very high level, but great for quickly illustrating things (like the network effects of your token system). As such they're great for blog posts and outward facing communications. There's even a [causal loop syntax developed by Systemic](https://systemic2016.wordpress.com/system-dynamics-causal-loop/).
 
-Stock and flow diagrams also show the relationship between things, but often in more detail than a causal loop.
+[Stock and flow diagrams](https://systemic2016.wordpress.com/system-dynamics-stock-and-flow-modelling/) also show the relationship between things, but often in more detail than a causal loop.
 
 [The cadCAD differential specification template](`https://community.cadcad.org/t/differential-specification-syntax-key/31`) is a good exercise to help you think through all the variables at play in your system and how they relate to each other. There's a [Figma template](https://www.figma.com/file/yBgOopbmcdkYxo2jDNmua1/cadCAD-Diff-Spec-Syntax?node-id=0%3A1) or you can create your own in your favorite diagramming software.
 
