@@ -58,7 +58,7 @@ Ideally you want a problem that is:
 - Expensive (it's hard to solve)
 - Mandatory (it must be solved)
 
-You should be able to explain the problem you're solving, [why](https://simonsinek.com/product/start-with-why/) it's important, and how the world will be better once you've solved it. Everyone should get it. It should be so obvious they ask why they didn't think of it first. Ideally it can become a [meme](https://en.wikipedia.org/wiki/Meme). If people don't get it, work to make it simpler or find a better problem to solve.
+You should be able to explain the problem you're solving, [why](https://simonsinek.com/product/start-with-why/) it's important, and how the world will be better once you've solved it. Everyone should get it. It should be so obvious they ask why they didn't think of it first. [Don't make it boring](https://avc.com/2011/09/minimum-viable-personality/). Make it a [meme](https://en.wikipedia.org/wiki/Meme). If people don't get it, make it simpler or find a better problem to solve.
 
 **Questions to ask:**
 
@@ -218,7 +218,7 @@ If you don't want to design a governance process from day 1 you can leave it as 
 
 ## Mechanism Design 102
 
-> Primitives and patterns.
+> Thinking from first principles.
 
 Depending on your use case you might want to use or modify a popular system or roll your own. That being said, being able to think about system design from [first principles](https://waitbutwhy.com/2015/11/the-cook-and-the-chef-musks-secret-sauce.html) can help you understand, modify, and optimize your token system to achieve your goals. Given how outcomes in community economies are non-linear, a small nudge in the right direction could have a large impact. You might also want to roll your own token system from scratch and design something completely new! That's cool too, and if so, you'll definitely want to have all the tools available at your disposal.
 
@@ -227,6 +227,8 @@ To explore system design from first principles it helps to think of it as a lang
 - concepts => words
 - patterns => sentences
 - systems => paragraphs
+- ecosystems => chapters
+- movements => books
 
 With a shared system design grammar we can read and write in that language. This allows us to reason about systems from first principles. Rather than relying on blog posts or hand wavey statement, we can actually understand what systems do and why. We can also start to explore how we might modify systems to solve new problems. This can be helpful for system design as well as community engagement and governance.
 
@@ -240,25 +242,33 @@ There are many concepts more fundamental than the ones we describe here. Those a
 
 Some core token design concepts could be thought of as primitives, but others as compositions. While classification is important, that's not the focus here as it varies from field to field. Context is important. This section is to explore core concepts in the context of token systems.
 
-**[Cryptography](https://en.wikipedia.org/wiki/Cryptographic_primitive):**
+We assume that designers understand these concepts and that developers instantiate these core mechanisms correctly and securely. A security review can help check these things.
 
-- [One-way hash function](https://en.wikipedia.org/wiki/One-way_hash_function) — compute a reduced hash value for a message (e.g., SHA-256)
-- [Symmetric key encryption](https://en.wikipedia.org/wiki/Private_key_cryptography) — Compute a ciphertext decodable with the same key used to encode (e.g., AES)
+**Cryptography:**
+
+> https://en.wikipedia.org/wiki/Cryptographic_primitive
+> https://en.wikipedia.org/wiki/Category:Cryptographic_primitives
+
 - [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) — encrypt data with a public key that is then only decodable with the corresponding private key (e.g., RSA)
 - [Digital signatures](https://en.wikipedia.org/wiki/Digital_signatures) — cryptographically sign data with a private key in a way that's verifiable via a public key.
+- [One-way hash function](https://en.wikipedia.org/wiki/One-way_hash_function) — A unique fingerprint for a piece of data that can be signed to verify it's source (e.g., SHA-256)
+- [Commitments](https://en.wikipedia.org/wiki/Commitment_scheme) — commit to a chosen value while keeping it hidden to others, with the ability to reveal it later
 - [Mixers](https://en.wikipedia.org/wiki/Mix_network) — pool data from many users to anonymize what came from whom
 - [Zero knowledge proofs](https://en.wikipedia.org/wiki/Zero-knowledge_proof) — verify the integrity of a request or computation without revealing any information about the data being requested or processed.
-- [Commitments](https://en.wikipedia.org/wiki/Commitment_scheme) — commit to a chosen value while keeping it hidden to others, with the ability to reveal it later
 - [Pseudorandom number generation](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator) - generate a number that is as good as random within the context in which it's being used.
 - [More cryptographic primitives](https://en.wikipedia.org/wiki/Category:Cryptographic_primitives)
 
 **Economics:**
 
-- linear functions
-- exponential functions
-- quadratic functions
-- payments (send money)
-- payment requests (invoices)
+> https://en.wikipedia.org/wiki/Economics
+> https://en.wikipedia.org/wiki/Category:Economics
+> https://en.wikipedia.org/wiki/Finance
+> https://en.wikipedia.org/wiki/Category:Finance
+
+- [money](https://en.wikipedia.org/wiki/Money)
+- [assets](https://en.wikipedia.org/wiki/Asset) (things worth money)
+- send (transaction)
+- request (invoice)
 - markets (places where buyers and sellers can exchange assets if they agree on a price)
 - exchange rate (the price buy/sell one asset for another according to a policy - can be algorithmic or based on market activity)
 - options (a contract that gives the holder the option to buy or sell an asset at a specific price at a specific time - they are financial assets that can be bought and sold just like anything else)
@@ -272,16 +282,23 @@ Some core token design concepts could be thought of as primitives, but others as
 
 **Blockchains:**
 
+> https://en.wikipedia.org/wiki/Blockchain
+> https://en.wikipedia.org/wiki/Category:Blockchains
+
 - gas
 - block number
 - addresses (pub/priv key crypto, hold/send/receive tokens, create cryptographic signatures)
 - fungible tokens
 - non-fungible tokens
 - mint/burn tokens
-- stake tokens (lockup)
-- constant function market makers
+- send/receive tokens
+- stake (contract controlled tokens)
+- time delay/lock (action cannot be taken until X block)
 
 **Game theory:**
+
+> https://en.wikipedia.org/wiki/Game_theory
+> https://en.wikipedia.org/wiki/Category:Game_theory
 
 - credible commitments
 - small vs large games
@@ -292,20 +309,35 @@ Some core token design concepts could be thought of as primitives, but others as
 - pareto optimal outcomes
 - dominant strategies
 - game warping (changing player's available action set and/or incentives)
-- games with complete vs incomplete information
+- complete vs incomplete information
 
-**Governance:**
+**Governance policies:**
 
-- simple majority policy
-- super majority policy
-- X of Y policy
-- quadradic
-- conviction
-- ranked choice
+> https://en.wikipedia.org/wiki/Governance
+> https://en.wikipedia.org/wiki/Category:Governance
+
+- technocratic (rough consensus)
+- plutocratic (1 token 1 vote)
+- democratic (1 person 1 vote)
+- simple majority policy (>= 51%)
+- super majority policy (>> 51%)
+- X of Y policy (multisig)
+- quadratic (log(plutocratic))
+- conviction (vesting => threshold)
 - wait for quiet (vote, time delay, quiet policy)
 - time boxed or continuous
-- simple or super majority
 - direct or delegated
+- [ranked choice](https://en.wikipedia.org/wiki/Instant-runoff_voting)
+
+**Properties:**
+
+These are hard to quantify, but essential to understand if you want to use, contribute to, and create systems with the properties you care about.
+
+- Decentralization (who are the stakeholders in the system and is power balanced between them?)
+- Transparency (does everyone engaging with the system have complete information about the system?)
+- Adaptability (is there a way for parties to coordinate and make decisions together to guide the system?)
+- Security (is the system itself secure and is there a security review process for changes? Are there fallbacks if there is a security breach?)
+- Simplicity (is the system easy to understand and engage with?)
 
 ### Patterns
 
@@ -315,16 +347,14 @@ Design patterns compose primitives into mechanisms that perform a function. How 
 
 **Examples of patterns:**
 
-- send (check balance, change balance)
-- tipping (send)
+- tipping (micro-transaction)
 - swap (token, vault, check balance, exchange policy, send)
 - voting (check balance, voting policy)
 - commit/reveal (check balance, commit, reveal)
 - auction (bid, escrow, commit/reveal, auction policy, swap)
 - conviction voting (check balance, stake, vesting policy, voting policy)
-- time delay (que action, check time, action execution policy)
 - redemption (token, vault, check balance, redemption policy)
-- rage-quit (time delay, redemption)
+- proportional redemption policy / rage-quit (time delay, redemption)
 - discount tokens (check balance, discount policy, swap)
 - dividends (tokens, vault, distribution policy, send)
 - escrow (vault, send)
@@ -332,20 +362,83 @@ Design patterns compose primitives into mechanisms that perform a function. How 
 - vesting (check balance, check time, vesting policy)
 - airdrop (airdrop policy, send)
 - poison pill (check balance, poison policy, mint tokens)
-- token curated registry (ledger, proposal policy, voting)
-- proportional redemption policy
 - simple membership policy (1 token 1 membership)
 - tiered membership policy (multiple permissions for multiple balance levels)
 - identity
 - identity verification (kyc or sybil resistance)
-- bonding curves (cfmm, mint/burn)
+
+**Bonding curves:**
+
+Components:
+
+- collateral vault
+- mint/burn tokens
+- cfmm policy
+
+About:
+
+- A bonding curve allows you to bond a token as collateral in exchange for a token minted along a curve (or unbond in order to receive the collateral back). The exchange rate is determined by a polynomial with x as the exchange rate and y as the token supply. As the supply fluctuates (from people bonding or unbonding) the exchange rate changes. An exponential function is often used, but it can be anything. Linear and sigmoid functions are also often used.
+
+Resources to learn more:
+
+- TBD
+
+Implementations and code:
+
+- TBD
+
+**Automated market makers:**
+
+Components:
+
+- collateral vault
+- check balance
+- swap policy
+- send tokens
+
+About:
+
+- Automated market makers allow any address to perform swaps with a token pool based on an algorithmic policy. The policy determines the exchange rate between tokens. Often a constant product function (x*y=k) is used, but it can be anything. For swaps tokens are exchanged, not minted. If you put liquidity into the pool then a liquidity provider token is minted. This gives you a proportional claim on the liquidity in that pool.
+- This is kind of like a bonding curve that requires multiple tokens as input rather than one, but unlike a bonding curve the collateral pool fluctuates as people perform swaps. Also unlike a bonding curve, the policy that mints liquidity provider tokens is often proportional to your stake in the pool. This is like if you flattened a bonding curve. That being said, you could use a polynomial curve. Then you'd have both an AMM and a bonding curve.
+
+Resources to learn more:
+
+- TBD
+
+**Token curated registry:**
+
+Components:
+
+- data schema
+- store data
+- check balance
+- curation policy
+- manage (add/remove/modify) data
+
+About:
+
+- It's a registry of information that's curated by token holder actions. the data format and the data stored by the registry are open ended. Any tokens can be used to interact with the registry as long as the signal aggregation mechanism can check that an address holds the tokens. The policy to process input can vary. It might weight upvotes and downvotes based on tokens held, it might implement a quadratic function based on token balances, or it might take other factors into consideration such as time held, vesting conviction, etc.. The registry might allow anyone to submit data or additions might require a vote or stake (to be burned if spam). The important thing is that the mechanism can process inputs from token holders to curate the registry of information.
+
+Resources to learn more:
+
+- TBD
 
 **Discount tokens:**
 
-- A discount token gives the holder a discount on a product or service.
-- The discount token yield (aggregate and user-level) grows proportionally to network usage (demand for products/services).
-- The discount yield returns more benefits to users than passive token holders. Users will rationally acquire discount tokens to get a discount on services they use (think Amazon Prime). This would be more relevant if we develop services that resemble a SaaS model (community analytics, ongoing consultations/support, etc..)
-- The denomination of fees may be in any form, such as a utility token or stablecoin. This makes pricing much easier.
+Components:
+
+- token list
+- check balance
+- discount policy
+
+About:
+
+- A discount token gives the holder a discount on a product or service. The discount token yield (aggregate and user-level) grows proportionally to network usage (demand for products/services). The discount yield returns more benefits to users than passive token holders. Users will rationally acquire discount tokens to get a discount on services they use (think Amazon Prime). This would be more relevant if we develop services that resemble a SaaS model (community analytics, ongoing consultations/support, etc..). The denomination of fees may be in any form, such as a utility token or stablecoin. This makes pricing much easier.
+- Counterintuitively, the active mechanisms for the discount token are not within the token itself. Any token can be used. What matters is the system that offers a discount. This can be incorporated into many token systems by choosing a token (or tokens) to offer discounts for holding, checking the balance of an account interacting with the system, and then providing a discount to that account if they hold the token. This requires a discount token list, a way to check an account balance, and a policy to determine the discount offered. The discount policy could be proportional to the tokens held, the time tokens are held, or anything else.
+- If multiple tokens are eligible for discounts then you could use a token curated registry to allow users and service providers of a system to choose the token list. Then you could enable [charity through marginal price discrimination](https://vitalik.ca/general/2017/03/11/a_note_on_charity.html) if multiple services offered discounts to a curated list of token holders. This could be charitable (ex people who earned badges from contributing to [Gitcoin](https://gitcoin.co/)), or it could be a marketing strategy if you offer discounts to users of a competing service (ex an AMM that offers discounts to UNI holders). It's all about how you use it.
+
+Resources to learn more:
+
 - Learn more about discount tokens via this [overview](https://blog.coinfund.io/the-fundamentals-of-discount-tokens-cc400c66198e) and the [Sweetbridge discount token paper (PDF)](https://sweetbridge.com/assets/docs/WP-Sweetbridge-Discount-Tokens.pdf).
 
 ### Systems
@@ -359,6 +452,7 @@ Examples of systems:
 - Gardens (conviction voting, issuance policy, agent, etc..)
 - Moloch (voting, delegation, rage quit, minion, etc..)
 - Uniswap (check balance, approve spend, swap)
+- [Charity through marginal price discrimination](https://vitalik.ca/general/2017/03/11/a_note_on_charity.html)
 
 <br />
 
