@@ -15,7 +15,19 @@
     - [Resources](#resources-1)
   - [Mechanism Design 102](#mechanism-design-102)
     - [Concepts](#concepts)
+      - [Cryptography](#cryptography)
+      - [Economics](#economics)
+      - [Game theory](#game-theory)
+      - [Blockchains](#blockchains)
+      - [Properties](#properties-1)
+      - [Decision making systems](#decision-making-systems)
     - [Patterns](#patterns)
+      - [Tipping](#tipping)
+      - [Bonding curves](#bonding-curves)
+      - [Automated market makers (AMM)](#automated-market-makers-amm)
+      - [Constant function market makers (CFMM)](#constant-function-market-makers-cfmm)
+      - [Token curated registry](#token-curated-registry)
+      - [Discount tokens](#discount-tokens)
     - [Systems](#systems)
   - [Mechanism Design 103](#mechanism-design-103)
     - [From Curved Bonding to Configuration Spaces](#from-curved-bonding-to-configuration-spaces)
@@ -159,8 +171,6 @@ Then once you have a set of mechanisms you can define who can engage with those 
 
 You might also want to think about the process to modify the rights associated with roles. This would add a layer of [meta governance](https://en.wikipedia.org/wiki/Governance#Metagovernance) to the system enabling actors to change the system itself. This is a double edged sword. More [flexibility allows for adaptation, but also decreases stability](https://thedefiant.substack.com/p/we-need-to-re-think-decentralized-5df). The more a system can change the more power shifts from the mechanism design to the subjective judgement of actors within the system.
 
-At this point everything should still be high level. We're not choosing a programming language, framework, blockchain or L2 solution. We're just describing the system.
-
 **Questions to ask:**
 
 - Can you easy answer who, what, when, where, and why questions about your token system?
@@ -197,6 +207,8 @@ If you don't want to design a governance process from day 1 you can leave it as 
 - It's very important to make your governance process as simple as possible. Is there any way for you to minimize governance while still giving users control over your token system?
 
 ### Resources
+
+Many of the ideas in this section came from or were inspired by the following resources:
 
 - Vitalik's blog has a great [coordination post](https://vitalik.ca/general/2020/09/11/coordination.html) that can help you build intuition around aligning interests for all parties involved in a token system.
 - The [Wikipedia mechanism design page](https://en.wikipedia.org/wiki/Mechanism_design). Is a great place to start. If you read one thing on mechanism design, make it this. There's also a whole [category on Wikipedia dedicated to the topic](https://en.wikipedia.org/wiki/Category:Mechanism_design).
@@ -242,112 +254,161 @@ There are many concepts more fundamental than the ones we describe here. Those a
 
 Some core token design concepts could be thought of as primitives, but others as compositions. While classification is important, that's not the focus here as it varies from field to field. Context is important. This section is to explore core concepts in the context of token systems.
 
-We assume that designers understand these concepts and that developers instantiate these core mechanisms correctly and securely. A security review can help check these things.
+We assume that designers understand these concepts and that developers instantiate these mechanisms correctly and securely. If you're not familiar with these concepts, or want a refresher, browsing [Wikipedia](https://www.wikipedia.org/) is highly recommended. While there are many other resources exploring these topics, Wikipedia presents information in a factual and generally unopinionated way. They're not trying to sell you anything. It's just information. This can make it a lot easier to understand the concepts themselves vs how they might be used in a particular context.
 
-**Cryptography:**
+#### Cryptography
 
-> https://en.wikipedia.org/wiki/Cryptographic_primitive
-> https://en.wikipedia.org/wiki/Category:Cryptographic_primitives
+- [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) — Encrypt data with a public key that is then only decodable with the corresponding private key (e.g., RSA).
+- [Digital signatures](https://en.wikipedia.org/wiki/Digital_signatures) — Cryptographically sign data with a private key in a way that's verifiable via a public key.
+- [Multi-signature](https://en.wikipedia.org/wiki/Multisignature) - M of N need to sign for something to be valid.
+- [One-way hash function](https://en.wikipedia.org/wiki/One-way_hash_function) — A unique fingerprint for a piece of data that can be signed to verify it's source (e.g., SHA-256).
+- [Commitments](https://en.wikipedia.org/wiki/Commitment_scheme) — Commit to a chosen value while keeping it hidden to others, with the ability to reveal it later.
+- [Mixers](https://en.wikipedia.org/wiki/Mix_network) — Pool data from many users to anonymize what came from whom.
+- [Zero knowledge proofs](https://en.wikipedia.org/wiki/Zero-knowledge_proof) — Verify the integrity of a request or computation without revealing any information about the data being requested or processed.
+- [Pseudorandom number generation](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator) - Generate a number that is as good as random within the context in which it's being used.
 
-- [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) — encrypt data with a public key that is then only decodable with the corresponding private key (e.g., RSA)
-- [Digital signatures](https://en.wikipedia.org/wiki/Digital_signatures) — cryptographically sign data with a private key in a way that's verifiable via a public key.
-- [One-way hash function](https://en.wikipedia.org/wiki/One-way_hash_function) — A unique fingerprint for a piece of data that can be signed to verify it's source (e.g., SHA-256)
-- [Commitments](https://en.wikipedia.org/wiki/Commitment_scheme) — commit to a chosen value while keeping it hidden to others, with the ability to reveal it later
-- [Mixers](https://en.wikipedia.org/wiki/Mix_network) — pool data from many users to anonymize what came from whom
-- [Zero knowledge proofs](https://en.wikipedia.org/wiki/Zero-knowledge_proof) — verify the integrity of a request or computation without revealing any information about the data being requested or processed.
-- [Pseudorandom number generation](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator) - generate a number that is as good as random within the context in which it's being used.
-- [More cryptographic primitives](https://en.wikipedia.org/wiki/Category:Cryptographic_primitives)
+Further reading:
 
-**Economics:**
+- https://en.wikipedia.org/wiki/Cryptographic_primitive
+- https://en.wikipedia.org/wiki/Category:Cryptographic_primitives
 
-> https://en.wikipedia.org/wiki/Economics
-> https://en.wikipedia.org/wiki/Category:Economics
-> https://en.wikipedia.org/wiki/Finance
-> https://en.wikipedia.org/wiki/Category:Finance
+#### Economics
 
-- [money](https://en.wikipedia.org/wiki/Money)
-- [assets](https://en.wikipedia.org/wiki/Asset) (things worth money)
-- send (transaction)
-- request (invoice)
-- markets (places where buyers and sellers can exchange assets if they agree on a price)
-- exchange rate (the price buy/sell one asset for another according to a policy - can be algorithmic or based on market activity)
-- options (a contract that gives the holder the option to buy or sell an asset at a specific price at a specific time - they are financial assets that can be bought and sold just like anything else)
-- insurance (a contract that provides payouts dependent on a policy)
-- interest rates (time dependent payments)
-- lending (give assets for an IOU, often with interest payments)
-- borrowing (get assets for an IOU, often with interest payments)
-- collateral (assets locked until the IOU is paid or forfeit in order to pay off the IOU)
-- credit scores (risk assessment for undercollateralized lending)
-- supply schedule (the rate of inflation or deflation of a currency)
+- [Public goods](https://en.wikipedia.org/wiki/Public_goods) - Goods that are non-rivalrous and non-excludable.
+- [Common goods](https://en.wikipedia.org/wiki/Common_good_(economics)) - Goods that are rivalrous and non-excludable.
+- [Club goods](https://en.wikipedia.org/wiki/Club_good) - Goods that are excludable, but non-rivalrous.
+- [Private goods](https://en.wikipedia.org/wiki/Private_goods) - Goods that are rivalrous and excludable.
+- [Agent](https://en.wikipedia.org/wiki/Agent_(economics)) - An autonomous decision making actor within a system.
+- [Rational agent](https://en.wikipedia.org/wiki/Rational_agent) - Theoretic human models that assume agents are optimizing for economic rewards above all else. Also known as [homo economicus](https://en.wikipedia.org/wiki/Homo_economicus).
+- [Wall Street bets](https://www.reddit.com/r/wallstreetbets/) - A community of self described irrational agents who use unconventional processes to evaluate and trade stocks.
+- [Supply](https://en.wikipedia.org/wiki/Supply_(economics)) - The amount of things available.
+- [Demand](https://en.wikipedia.org/wiki/Demand) - The amount people want certain things (for whatever reason).
+- [Money](https://en.wikipedia.org/wiki/Money) - A substance of agreed upon value that can be used measure, store, and exchange value.
+- [Assets](https://en.wikipedia.org/wiki/Asset) - Things that have monetary value.
+- [Digital assets](https://en.wikipedia.org/wiki/Digital_assets) - Data with monetary value.
+- [Security](https://en.wikipedia.org/wiki/Security_(finance)) - A tradable financial asset. Note: different jurisdictions have different rules around how they define securities.
+- [Bonds](https://en.wikipedia.org/wiki/Bond_(finance)) - A tradeable IOU that entitles the holder to receive payments of interest and principle of a loan.
+- [Equity](https://en.wikipedia.org/wiki/Equity_(finance)) - Ownership of assets that may have debts or other liabilities attached to them. Equity is transferable and can be bought and sold (either via a public equity market such as a stock exchange or a private equity transaction).
+- [Stock](https://en.wikipedia.org/wiki/Stock) - A (tradeable) certificate that entitles the holder to fractional ownership in a company (equity).
+- [Transaction](https://en.wiktionary.org/wiki/transaction) - Send/sign/do stuff.
+- [Invoice](https://en.wikipedia.org/wiki/Invoice) - Request money.
+- [Contract](https://en.wikipedia.org/wiki/Contract) - An agreement (often in writing) that specifies things that will happen. Parties can agree to contracts and an enforcement layer/process. If a party breaches a contract the other party can go to the enforcement layer for settlement.
+- [Market](https://en.wikipedia.org/wiki/Market_(economics)) - Medium to facilitate buyers and sellers exchanging assets if they agree on a price.
+- [Exchange rate](https://en.wikipedia.org/wiki/Exchange_rate) - The price buy/sell one asset for another according to a policy - can be algorithmic or based on market activity.
+- [Options](https://en.wikipedia.org/wiki/Option_(finance)) - A contract that gives the holder the option to buy or sell an asset at a specific price at a specific time - they are financial assets that can be bought and sold just like anything else.
+- [Insurance](https://en.wikipedia.org/wiki/Insurance) - A contract that provides payouts dependent on a policy, often in the event of a negative outcome.
+- [Interest rate](https://en.wikipedia.org/wiki/Interest_rate) - A policy that determines how interest payments on the principle of a loan are paid over time.
+- [Lending](https://en.wikipedia.org/wiki/Lending) - Give assets for an IOU, often with interest payments.
+- [Borrowing](https://en.wikipedia.org/wiki/Debt) - Get assets now for an IOU to pay in the future, often with interest payments. The IOU contract becomes an asset. It can be traded and whoever holds it is eligible to receive the principle and interest payments.
+- [Collateral](https://en.wikipedia.org/wiki/Collateral_(finance)) - Assets that are locked until a thing happens. That thing might be debt (an IOU contract) being paid, an action/event occurring (ex bail), or as a deterrent against future rule breaking behavior (ex staking to validate ETH 2 or to prevent spam in DAO governance proposals). If the thing does not happen then the collateral can be seized.
+- [Credit score](https://en.wikipedia.org/wiki/Credit_score) - Risk assessment for under-collateralized lending.
+- [Supply schedule](https://en.wikipedia.org/wiki/Money_supply) - The rate of inflation or deflation of a currency.
+- [Political economy](https://en.wikipedia.org/wiki/Political_economy#Current_approaches) - How social/political forces affect the choice of economic policies.
+- [Common pool resource](https://en.wikipedia.org/wiki/Common-pool_resource) - A type of good consisting of a natural or human-made resource system (e.g. an irrigation system or fishing grounds), whose size or characteristics makes it costly, but not impossible, to exclude potential beneficiaries from obtaining benefits from its use. This is often a renewable natural resource that faces problems of overuse and muse be managed and allocated sustainably.
+- [Prediction markets](https://en.wikipedia.org/wiki/Prediction_market) - The main purposes of prediction markets are eliciting aggregating beliefs over an unknown future outcome. Traders with different beliefs trade on contracts whose payoffs are related to the unknown future outcome and the market prices of the contracts are considered as the aggregated belief.
 
-**Blockchains:**
+Further reading:
 
-> https://en.wikipedia.org/wiki/Blockchain
-> https://en.wikipedia.org/wiki/Category:Blockchains
+- https://en.wikipedia.org/wiki/Economics
+- https://en.wikipedia.org/wiki/Category:Economics
+- https://en.wikipedia.org/wiki/Finance
+- https://en.wikipedia.org/wiki/Category:Finance
 
-- gas
-- block number
-- addresses (pub/priv key crypto, hold/send/receive tokens, create cryptographic signatures)
-- fungible tokens
-- non-fungible tokens
-- mint/burn tokens
-- send/receive tokens
-- stake (contract controlled tokens)
-- time delay/lock (action cannot be taken until X block)
+#### Game theory
 
-**Game theory:**
+- [Schelling point](https://en.wikipedia.org/wiki/Focal_point_(game_theory)) - A solution or strategy that people tend to choose by default in the absence of communication.
+- [Mechanism design](https://en.wikipedia.org/wiki/Mechanism_design) - Designing systems that incentivize autonomous self interested agents to choose actions that result in a certain outcome for the system as a whole.
+- [Pareto optimality](https://en.wikipedia.org/wiki/Pareto_efficiency) - A set of strategies that maximizes the utility/value for all parties involved. Often this is not the dominant strategy for any individual player and they can deviate from the pareto optimality to increase their own utility/value at the cost of other players.
+- [Pareto improvement](https://en.wikipedia.org/wiki/Pareto_efficiency) - A change that allows agents in a system to gain utility/value without any agents losing utility/value (positive-sum improvements to the game/system).
+- [Zero sum vs positive sum games](https://en.wikipedia.org/wiki/Game_theory#Zero-sum_/_non-zero-sum) - Are players creating more value (growing the pie) or just competing to reallocating it among themselves (slicing up a current pie)? Note: many games, including the [prisoner's dilemma](https://en.wikipedia.org/wiki/Prisoner%27s_dilemma), can be positive-sum resulting in rewards for both players (often *if* they cooperate). Also, there is a possibility for games to be zero sum while creating positive externalities in the larger game of life (for example via [gains from trade](https://en.wikipedia.org/wiki/Gains_from_trade)).
+- [Cooperative or individual games](https://en.wikipedia.org/wiki/Game_theory#Cooperative_/_non-cooperative) - A game is cooperative if the players are able to form binding commitments enforced via external systems (e.g. through contract law or blockchain contracts). A game is non-cooperative if players cannot form alliances or if all agreements need to be self-enforcing (e.g. through credible threats).
+- [Discrete vs continuous iterated games](https://en.wikipedia.org/wiki/Game_theory#Discrete_and_continuous_games) - Does the game end or continue on indefinitely? If it continues, does it [progress uninterrupted](https://en.wikipedia.org/wiki/Game_theory#Infinitely_long_games) or are there rounds?
+- [Complete vs incomplete information](https://en.wikipedia.org/wiki/Game_theory#Perfect_information_and_imperfect_information) - Do all players have full information about the game including the rules and the current state of the game? What information is public and what is private?
+- [Sequential vs simultaneous games](https://en.wikipedia.org/wiki/Game_theory#Simultaneous_/_sequential) - Do players take turns or do all players take action in real time?
+- [Small vs large games](https://unenumerated.blogspot.com/2015/05/small-game-fallacies.html) - Larger systems and incentives that influence agent's preferences, projected rewards/punishments, and gameplay strategies within a smaller system.
+- [Commitments](https://en.wikipedia.org/wiki/Credible_commitment) - Mechanisms that provide assurances around the execution of a contract. IRL this can include credible rewards and punishments depending on the outcome of an event. With deterministic computation (ie blockchains) it can also include the direct execution of events via contract code.
+- [Dominant strategies](https://en.wikipedia.org/wiki/Strategic_dominance) - A strategy that is better for a player than any other strategy regardless of the actions other players may take.
+- [Collective action problems](https://en.wikipedia.org/wiki/Collective_action#Collective_action_problem) - A situation in which multiple individuals would all benefit from a certain action, but has an associated cost making it implausible that any individual can or will undertake and solve it alone. The ideal solution is then to undertake this as a collective action, the cost of which is shared. A tool that can help is [assurance contracts](https://en.wikipedia.org/wiki/Assurance_contract).
 
-> https://en.wikipedia.org/wiki/Game_theory
-> https://en.wikipedia.org/wiki/Category:Game_theory
+Further reading:
 
-- credible commitments
-- small vs large games
-- zero sum vs positive sum games
-- cooperative or individual games
-- fixed vs iterated games
-- sequential vs simultaneous games
-- pareto optimal outcomes
-- dominant strategies
-- game warping (changing player's available action set and/or incentives)
-- complete vs incomplete information
+- https://en.wikipedia.org/wiki/Game_theory
+- https://en.wikipedia.org/wiki/Category:Game_theory
 
-**Governance policies:**
+#### Blockchains
 
-> https://en.wikipedia.org/wiki/Governance
-> https://en.wikipedia.org/wiki/Category:Governance
+- [Blockchain](https://en.wikipedia.org/wiki/Blockchain) - A virtual computer that runs on a distributed network of physical computers and uses cryptography and economic incentives to create a shared public ledger that can only be modified deterministically according to protocol policy.
+- [Bitcoin](https://en.wikipedia.org/wiki/Bitcoin) - The original peer to peer decentralized blockchain network.
+- [Ethereum](https://en.wikipedia.org/wiki/Ethereum) - A blockchain with general purpose computation and scripting capabilities.
+- [Gas](https://en.wikipedia.org/wiki/Ethereum#Gas) - Gas is a generic term that we'll use to refer to the asset used to pay for computation on blockchain networks.
+- [Block number](TBD) - The index of a block in the chain.
+- [Accounts](https://en.wikipedia.org/wiki/Ethereum#Accounts) - A cryptographic public/private key pair that allows the owner to hold, send, and receive tokens on a blockchain network as well as create cryptographic signatures on or off of the blockchain.
+- [Smart contracts](https://en.wikipedia.org/wiki/Smart_contract) - Contracts that execute deterministically via blockchain computation.
+- [Fungible tokens](TBD) - Tokens that are [fungible](https://en.wikipedia.org/wiki/Fungibility) for other tokens of the same type.
+- [Non-fungible tokens](TBD) - Tokens that are unique and not fungible.
+- Minting/burning tokens
+- Sending/receiving tokens
+- Contract interactions
+- Meme coins
 
-- technocratic (rough consensus)
-- plutocratic (1 token 1 vote)
-- democratic (1 person 1 vote)
-- simple majority policy (>= 51%)
-- super majority policy (>> 51%)
-- X of Y policy (multisig)
-- quadratic (log(plutocratic))
-- conviction (vesting => threshold)
-- wait for quiet (vote, time delay, quiet policy)
-- time boxed or continuous
-- direct or delegated
-- [ranked choice](https://en.wikipedia.org/wiki/Instant-runoff_voting)
+Further reading:
 
-**Properties:**
+- https://en.wikipedia.org/wiki/Blockchain
+- https://en.wikipedia.org/wiki/Category:Blockchains
+
+#### Properties
 
 These are hard to quantify, but essential to understand if you want to use, contribute to, and create systems with the properties you care about.
 
-- Decentralization (who are the stakeholders in the system and is power balanced between them?)
-- Transparency (does everyone engaging with the system have complete information about the system?)
-- Adaptability (is there a way for parties to coordinate and make decisions together to guide the system?)
-- Security (is the system itself secure and is there a security review process for changes? Are there fallbacks if there is a security breach?)
-- Simplicity (is the system easy to understand and engage with?)
+- [Decentralization](https://en.wikipedia.org/wiki/Decentralization) - Decentralization is the process by which the activities of an organization, particularly those regarding planning and decision making, are distributed or delegated away from a central, authoritative location or group.
+- [Autonomy](https://en.wikipedia.org/wiki/Autonomy) - Autonomy is the capacity to make an informed, uncoerced decision. Autonomous organizations or institutions are independent or self-governing.
+- [Organization](https://en.wikipedia.org/wiki/Organization) - An organization is an entity – such as a company, an institution, or an association – comprising one or more people and having a particular purpose. The word is derived from the Greek word organon, which means tool or instrument, musical instrument, and organ.
+- [Transparency](https://en.wikipedia.org/wiki/Perfect_information) - Does everyone engaging with the system have complete information about the system's rules and state?
+- [Governance](https://en.wikipedia.org/wiki/Governance) - Is there a way for parties to coordinate and make decisions together to guide the system?
+- [Security](https://en.wikipedia.org/wiki/Security) - Is there a security review process for changes to the system? Are there fallbacks if there is a security breach?
+- [Defense in depth](https://en.wikipedia.org/wiki/Defense_in_depth) - Layered security creating multiple backups if something fails or is breached.
+- [Simplicity](https://en.wikipedia.org/wiki/Simplicity) - Is the system easy to understand and engage with?
+- [Meme](https://en.wikipedia.org/wiki/Meme) - An idea that carries symbolic meaning representing a particular phenomenon or theme. This is important because when things become memes they become schelling points for society.
+- Technocratic (rough consensus)
+- Plutocratic (1 token 1 vote)
+- Democratic (1 person 1 vote)
+
+#### Decision making systems
+
+- [First past the post](https://en.wikipedia.org/wiki/First-past-the-post_voting) - (first to get X votes)
+- [Majority rule](https://en.wikipedia.org/wiki/Majority_rule) (the most votes)
+- [Super majority](https://en.wikipedia.org/wiki/Supermajority) (>> 51%)
+- [Plurality](https://en.wikipedia.org/wiki/Plurality_(voting)) (more votes than any other option)
+- [Quadratic](https://en.wikipedia.org/wiki/Quadratic_voting) (voting weight = log(tokens held))
+- [Conviction](https://medium.com/giveth/conviction-voting-a-novel-continuous-decision-making-alternative-to-governance-aa746cfb9475) (vesting => threshold)
+- [Futarchy](https://en.wikipedia.org/wiki/Futarchy) (betting => most bet action is taken) (https://mason.gmu.edu/~rhanson/futarchy.html)
+- [Ranked choice](https://en.wikipedia.org/wiki/Instant-runoff_voting)
+- [Instant-runoff](https://en.wikipedia.org/wiki/Instant-runoff_voting)
+- [Ranked voting](https://en.wikipedia.org/wiki/Ranked_voting_systems)
+- Wait for quiet (vote, if vote flips last min extend vote, else process vote)
+- Vested voting weight (voting weight vests over time based on a parameter such as time tokens are held in a wallet or staked in a contract)
+
+Policy parameters:
+
+- (who) Automated, direct, or delegated
+- (what) Auction, proposal, etc..
+- (when) Time boxed or continuous
+- (where) The contract in cyberspace
+- (why) Incentives
+
+Further reading:
+
+- https://en.wikipedia.org/wiki/Governance
+- https://en.wikipedia.org/wiki/Category:Governance
 
 ### Patterns
 
-> Things that do things
-
+> Things that do thingConstant Function Market Maker. A constant function market maker (CFMM) is a smart contract-liquidity pool that holds (at least) two cryptoassets in reserve and allows anyone to deposit tokens of one type and thereby to withdraw tokens of the other type. To determine the exchange rate, smart contract-based liquidity pools use variations of the constant product model, where the relative price is a function of the smart contract's token reserve ratio. 
 Design patterns compose primitives into mechanisms that perform a function. How these mechanisms are then used varies. Patterns can be said to be neutral as they are abstract ideas. Instances, however, are opinionated based on the context and purpose of each unique instance IRL.
 
-**Examples of patterns:**
+**Pattern to do list:**
 
-- tipping (micro-transaction)
+- time delay/lock (action cannot be taken until X block)
 - swap (token, vault, check balance, exchange policy, send)
 - voting (check balance, voting policy)
 - commit/reveal (check balance, commit, reveal)
@@ -360,14 +421,26 @@ Design patterns compose primitives into mechanisms that perform a function. How 
 - escrow (vault, send)
 - membership (check balance, membership policy)
 - vesting (check balance, check time, vesting policy)
-- airdrop (airdrop policy, send)
 - poison pill (check balance, poison policy, mint tokens)
 - simple membership policy (1 token 1 membership)
 - tiered membership policy (multiple permissions for multiple balance levels)
 - identity
 - identity verification (kyc or sybil resistance)
+- airdrop (airdrop policy, send)layer
+- prediction market
 
-**Bonding curves:**
+#### Tipping
+
+Components:
+
+- varies based on implementation.
+
+About:
+
+- Tipping is a way to show thanks via a gift. In the context of a tokenized community it's a way to share value. Users can send tokens directly with just a Web3 wallet, however, if mainnet gas fees are high the cost of the tx might be more than the tip. To address this a Layer 2 system and/or an off-chain community points system could be introduced. The idea being that tipping is more of a social thing with low value transactions, so you can accumulate tips/points off-chain, then settle on-chain when you have enough for it to be worthwhile.
+- While anyone can send anyone tokens - tipping is a social activity - and as such culture and UX make it part of the community/experience. For tipping to be successful it's good to keep amounts (and transaction fees) low so that it's a nice boost, but not something valuable enough for people to try to go out of their way to make receiving tips their #1 goal. If, however, you're building for influencers then that might be a good thing. Just make sure you design your system so that incentives are aligned.
+
+#### Bonding curves
 
 Components:
 
@@ -387,13 +460,12 @@ Implementations and code:
 
 - TBD
 
-**Automated market makers:**
+#### Automated market makers (AMM)
 
 Components:
 
 - collateral vault
-- check balance
-- swap policy
+- check balancelayer
 - send tokens
 
 About:
@@ -405,7 +477,19 @@ Resources to learn more:
 
 - TBD
 
-**Token curated registry:**
+#### Constant function market makers (CFMM)
+
+Constant Function Market Maker. A constant function market maker (CFMM) is a smart contract-liquidity pool that holds (at least) two cryptoassets in reserve and allows anyone to deposit tokens of one type and thereby to withdraw tokens of the other type. To determine the exchange rate, smart contract-based liquidity pools use variations of the constant product model, where the relative price is a function of the smart contract's token reserve ratio.
+
+![CFMM](https://files.stlouisfed.org/files/htdocs/publications/images/uploads/2021/Sch21Q2Fig4NEW_20210205034634.jpg)
+
+In its simplest form, the constant product model can be expressed as xy = k, where x and y correspond to the smart contract's token reserves and k is a constant. Considering that this equation must hold, when someone executes a trade, we get (x + Δx) · (y + Δy) = k. It can then be easily shown that Δy = (k/x + Δx) – y. Consequently, Δy will assume negative values for any Δx > 0. In fact, any exchange corresponds to a move on a convex token reserve curve. A liquidity pool using this model cannot be depleted, as tokens will get more expensive with lower reserves. When the token supply of either one of the two tokens approaches zero, its relative price rises infinitely as a result.
+
+It is important to point out that smart contract-based liquidity pools are not reliant on external price feeds (so-called oracles). Whenever the market price of an asset shifts, anyone can use the arbitrage opportunity and trade tokens with the smart contract until the liquidity pool price converges to the current market price. The implicit bid/ask spread of the constant product model (plus a small trading fee) may lead to the accumulation of additional funds. Anyone who provides liquidity to the pool receives pool share tokens that allow them to participate in this accumulation and to redeem these tokens for their share of a potentially growing liquidity pool.
+
+> This description of CFMM was copied from [Fabian Schär](https://cif.unibas.ch/en/team/professors/prof-dr-fabian-schaer/)'s report: [Decentralized Finance: On Blockchain- and Smart Contract-Based Financial Markets](https://research.stlouisfed.org/publications/review/2021/02/05/decentralized-finance-on-blockchain-and-smart-contract-based-financial-markets). It's an excellent read and highly recommended for anyone interested in DeFi or blockchain based token systems.
+
+#### Token curated registry
 
 Components:
 
@@ -423,7 +507,7 @@ Resources to learn more:
 
 - TBD
 
-**Discount tokens:**
+#### Discount tokens
 
 Components:
 
@@ -447,8 +531,11 @@ Resources to learn more:
 
 Systems are like patterns in they compose things into larger things. They're also similar in that at the design level they can be abstract and neutral, but in practice each instance is opinionated. As far as levels of abstraction go, primitives are maximally generic whereas systems are maximally opinionated.
 
-Examples of systems:
+**Systems to do list:**
 
+- prediction markets
+- [buy back and make](https://www.placeholder.vc/blog/2020/9/17/stop-burning-tokens-buyback-and-make-instead)
+- [liquidity bootstrapping pools](https://medium.com/balancer-protocol/building-liquidity-into-token-distribution-a49d4286e0d4) (multi-token multi-curve AMM)
 - Gardens (conviction voting, issuance policy, agent, etc..)
 - Moloch (voting, delegation, rage quit, minion, etc..)
 - Uniswap (check balance, approve spend, swap)
@@ -519,7 +606,7 @@ Solidity contract diagrams can be generated via [Surya](https://github.com/Conse
 
 ![Digital twin](https://camo.githubusercontent.com/0b80439a010c3a2d11217c381f39138a8bbd05dd48242200b2f4f684747ea051/68747470733a2f2f692e696d6775722e636f6d2f6b6234546e68362e6a7067)
 
-A good model provides insights into how your token system would function under various conditions. This can help you check to see if your design goals are likely to hold as usage, price, and other important parameters change. Before you start modeling it's important to know what you want to have happen as well as what are the unknowns you're trying to understand. Ideally these unknowns can be stated as concrete questions. This way you have a clear goal, but also others who contribute to and/or review your model have something concrete to orient around.
+A good [model](https://en.wikipedia.org/wiki/Conceptual_model) provides insights into how your token system would function under various conditions. This can help you check to see if your design goals are likely to hold as usage, price, and other important parameters change. Before you start modeling it's important to know what you want to have happen as well as what are the unknowns you're trying to understand. Ideally these unknowns can be stated as concrete questions. This way you have a clear goal, but also others who contribute to and/or review your model have something concrete to orient around.
 
 Modeling Checklist:
 
