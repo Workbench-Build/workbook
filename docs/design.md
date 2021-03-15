@@ -24,7 +24,6 @@
     - [Patterns](#patterns)
       - [Tipping](#tipping)
       - [Bonding curves](#bonding-curves)
-      - [Automated market makers (AMM)](#automated-market-makers-amm)
       - [Constant function market makers (CFMM)](#constant-function-market-makers-cfmm)
       - [Token curated registry](#token-curated-registry)
       - [Discount tokens](#discount-tokens)
@@ -93,7 +92,7 @@ Now that you've identified a problem what's the best way to solve it? Often time
 - If you substitute a stable coin or ETH with your token will things still work? If so, then you probably don't need to create a new token.
 - Does the blockchain change the system of trust in any meaningful way, or just shift it around? Does it just try to replace trust with verification?
 - Does the token create new trust relationships or strengthen existing trust relationships?
-- What would your system look like if you didn’t use blockchain at all?
+- What would your system look like if you didn't use blockchain at all?
 
 ### Incentive Alignment
 
@@ -261,7 +260,7 @@ We assume that designers understand these concepts and that developers instantia
 - [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) — Encrypt data with a public key that is then only decodable with the corresponding private key (e.g., RSA).
 - [Digital signatures](https://en.wikipedia.org/wiki/Digital_signatures) — Cryptographically sign data with a private key in a way that's verifiable via a public key.
 - [Multi-signature](https://en.wikipedia.org/wiki/Multisignature) - M of N need to sign for something to be valid.
-- [One-way hash function](https://en.wikipedia.org/wiki/One-way_hash_function) — A unique fingerprint for a piece of data that can be signed to verify it's source (e.g., SHA-256).
+- [One-way hash function](https://en.wikipedia.org/wiki/One-way_hash_function) — A unique fingerprint for a piece of data that can be signed to verify it's source (e.g., SHA-256). OpenZeppelin has a great [hash functions explainer](https://forum.openzeppelin.com/t/hash-functions/1306) as well.
 - [Commitments](https://en.wikipedia.org/wiki/Commitment_scheme) — Commit to a chosen value while keeping it hidden to others, with the ability to reveal it later.
 - [Mixers](https://en.wikipedia.org/wiki/Mix_network) — Pool data from many users to anonymize what came from whom.
 - [Zero knowledge proofs](https://en.wikipedia.org/wiki/Zero-knowledge_proof) — Verify the integrity of a request or computation without revealing any information about the data being requested or processed.
@@ -271,6 +270,7 @@ Further reading:
 
 - https://en.wikipedia.org/wiki/Cryptographic_primitive
 - https://en.wikipedia.org/wiki/Category:Cryptographic_primitives
+- https://forum.openzeppelin.com/t/the-crypto-in-cryptocurrencies-and-beyond/1107
 
 #### Economics
 
@@ -460,24 +460,17 @@ Implementations and code:
 
 - TBD
 
-#### Automated market makers (AMM)
+#### Constant function market makers (CFMM)
+
+> sometimes also called Automatic Market Makers (AMMs)
 
 Components:
 
-- collateral vault
-- check balancelayer
-- send tokens
+- check balance
+- swap policy
+- receive tokens => send tokens
 
 About:
-
-- Automated market makers allow any address to perform swaps with a token pool based on an algorithmic policy. The policy determines the exchange rate between tokens. Often a constant product function (x*y=k) is used, but it can be anything. For swaps tokens are exchanged, not minted. If you put liquidity into the pool then a liquidity provider token is minted. This gives you a proportional claim on the liquidity in that pool.
-- This is kind of like a bonding curve that requires multiple tokens as input rather than one, but unlike a bonding curve the collateral pool fluctuates as people perform swaps. Also unlike a bonding curve, the policy that mints liquidity provider tokens is often proportional to your stake in the pool. This is like if you flattened a bonding curve. That being said, you could use a polynomial curve. Then you'd have both an AMM and a bonding curve.
-
-Resources to learn more:
-
-- TBD
-
-#### Constant function market makers (CFMM)
 
 Constant Function Market Maker. A constant function market maker (CFMM) is a smart contract-liquidity pool that holds (at least) two cryptoassets in reserve and allows anyone to deposit tokens of one type and thereby to withdraw tokens of the other type. To determine the exchange rate, smart contract-based liquidity pools use variations of the constant product model, where the relative price is a function of the smart contract's token reserve ratio.
 
@@ -488,6 +481,11 @@ In its simplest form, the constant product model can be expressed as xy = k, whe
 It is important to point out that smart contract-based liquidity pools are not reliant on external price feeds (so-called oracles). Whenever the market price of an asset shifts, anyone can use the arbitrage opportunity and trade tokens with the smart contract until the liquidity pool price converges to the current market price. The implicit bid/ask spread of the constant product model (plus a small trading fee) may lead to the accumulation of additional funds. Anyone who provides liquidity to the pool receives pool share tokens that allow them to participate in this accumulation and to redeem these tokens for their share of a potentially growing liquidity pool.
 
 > This description of CFMM was copied from [Fabian Schär](https://cif.unibas.ch/en/team/professors/prof-dr-fabian-schaer/)'s report: [Decentralized Finance: On Blockchain- and Smart Contract-Based Financial Markets](https://research.stlouisfed.org/publications/review/2021/02/05/decentralized-finance-on-blockchain-and-smart-contract-based-financial-markets). It's an excellent read and highly recommended for anyone interested in DeFi or blockchain based token systems.
+
+You can learn more about CFMM's at the following resources:
+
+- [When Does the Tail Wag the Dog? Curvature and Market Making](https://www.placeholder.vc/blog/2021/1/13/when-does-the-tail-wag-the-dog-curvature-and-market-making) - In this paper, we (Placeholder VC) propose a basic definition of price sensitivity and liquidity. We show that this definition is tightly related to the curvature of a CFMM's trading function and can be used to explain a number of heuristic results. For example, we show that low-curvature markets are good for coins whose market value is approximately fixed and that high-curvature markets are better for liquidity providers when traders have an informational edge. Additionally, the results can also be used to model interacting markets and explain the rise of incentivized liquidity provision, also known as 'yield farming.'
+  - [Can one hear the shape of a CFMM? (Part 1)](https://www.placeholder.vc/blog/2020/12/2/can-one-hear-the-shape-of-a-cfmm-part-1) - Explains the basics of CFMMs and how they're used in practice. Part 1 explores the relationship between curvature, liquidity, and volatility, both within a CFMM market and in the broader market as a whole.
 
 #### Token curated registry
 
